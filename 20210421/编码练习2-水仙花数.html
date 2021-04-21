@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var number = Number(prompt("请输入一个数字"));
+        console.log(number);
+        var geweishu = Math.floor(number%10);
+        console.log(geweishu);
+        var shiweishu = Math.floor((number%100)/10);
+        console.log(shiweishu);
+        var baiweishu = Math.floor((number%1000)/100);
+        console.log(baiweishu);
+
+        var total = geweishu*geweishu*geweishu+shiweishu*shiweishu*shiweishu+baiweishu*baiweishu*baiweishu;
+        console.log(total);
+        if(number == total && number > 100 && number<1000){
+            document.write("是水仙花数");
+        }else{
+            document.write("不是水仙花数");
+        }
+    </script>
+</body>
+</html>

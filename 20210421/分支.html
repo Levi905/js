@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // var time = prompt("请输入当前时间");
+
+
+        // if(time>0 && time<24){
+        //     if(time>7 && time<12){
+        //         document.write("现在是早上");
+        //     }else if(time>12 && time<17){
+        //         document.write("现在是下午");
+        //     }else{
+        //         document.write("现在是下晚上");
+        //     }
+        // }else{
+        //     document.write("请输入正确时间");
+        // }
+        
+        var date = new Date().getHours();
+        alert(date);
+            if(date>7 && date<12){
+                document.write("现在是早上");
+            }else if(date>12 && date<17){
+                document.write("现在是下午");
+            }else{
+                document.write("现在是晚上");
+            }
+
+    </script>
+</body>
+</html>

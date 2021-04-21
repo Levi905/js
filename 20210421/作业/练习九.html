@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        display: inline-block;
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+</style>
+
+<body>
+
+    <script>
+        var sum = 0;
+        for(var i=1; i<=9;i++){
+            for(var j=1;j<=i;j++){
+                var a = Math.random()*255;
+                var b = Math.random()*255;
+                var c = Math.random()*255;
+                var d = Math.random();
+                sum = i*j;
+                document.write(`<div style="background-color: rgba(${a}, ${b}, ${c}, ${d});">${i}*${j}=${sum}</div>`);
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

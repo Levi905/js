@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 400px;
+        height: 400px;
+        /* background-color: rgba(red, green, blue, alpha); */
+    }
+</style>
+<body>
+    <!-- <div style="background-color: rgba(red, green, blue, alpha);"></div> -->
+
+    <script>
+        var a = Number(prompt("请输入第1个样色属性值"));
+        var b = Number(prompt("请输入第2个样色属性值"));
+        var c = Number(prompt("请输入第3个样色属性值"));
+        var d = Number(prompt("请输入第4个样色属性值"));
+        document.write(`<div style="background-color: rgba(${a}, ${b}, ${c}, ${d});"></div>`);
+    </script>
+</body>
+</html>

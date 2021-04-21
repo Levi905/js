@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        for(i =100;i<=999;i++){
+            var geweishu = Math.floor(i%10);
+            var shiweishu = Math.floor((i%100)/10);
+            var baiweishu = Math.floor((i%1000)/100);
+            if(geweishu == shiweishu && geweishu== baiweishu && shiweishu == baiweishu){
+                document.write(i+"<br>");
+            }
+        }
+    </script>
+</body>
+</html>
