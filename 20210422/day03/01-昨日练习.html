@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1.输出从1乘到10的积：   答案：3628800
+        2.输出从100加到500的和
+        3.输出100内的所有能被5整除的数字
+        4.输出100到999之间的所有位相同的数字(即 111 222 333...999)
+        5.输出100到999之间的所有水仙花数
+        6.用户有3次登陆机会。3次输错，程序结束。中间有一次数对了，提示登陆成功并结束程序
+        7.用户输入一个数，判断是否是质数(质数：该数只能被1和本身整除 比如13
+
+        解题步骤：
+        1. 分析题意，看是否有需要判断，或者重复执行的地方
+        2. 根据题意，按照解题思路进行编写程序。 加注释
+        3. 每写一句或一部分代码，就进行测试。 保证已经写的代码没有问题
+        */
+      // 7 质数  (只能被1和本身整除)推断质数规律 ：10以上质数不能被2 或3 或5 或7整除
+      // 7-1  10以上100以下质数不能被2 或3 或5 或7整除
+      //   var number = Number(prompt('请输入待检测的数字'));
+      //   if (number==2 || number==3 || number ==5 || number ==7){
+      //       document.write(`${number}是质数`);
+      //   }else if(number %2!=0 && number%3!=0 && number %5!=0 && number %7!=0){
+      //     document.write(`${number}是质数`);
+      //   }else{
+      //     document.write(`${number}不是质数`);
+      //   }
+
+      // 7-2 测试该数是否能被1和本身之间的数字进行整除
+      var number = Number(prompt("请输入待检测的数字"));
+      //和被检测数的中间每一个数进行除法运算，只要被中间的某个数整除过一次就不是质数，记录被整除的次数
+      if (number == 1) {
+        document.write("不是质数");
+      } else {
+        //判断是不是质数
+        var count = 0; //记录被整除的次数
+        for (var i = 2; i < number; i++) {
+          if (number % i == 0) {
+            //整除了，次数+1
+            count++;
+          }
+        }
+        //for循环结束后，判断次数
+        if (count > 0) {
+          document.write(`${number}不是质数`);
+        } else {
+          document.write(`${number}是质数`);
+        }
+      }
+
+      // 6
+      //   for (var i = 1; i <= 3; i++) {
+      //     var username = prompt("请输入登录名");
+      //     var userpass = prompt("请输入密码");
+      //     if (username == "admin" && userpass == "ad123") {
+      //       alert("登录成功");
+      //       //提前终止循环
+      //       i=3;
+      //     } else {
+      //       alert("登录失败，用户名或密码错误");
+      //       //继续循环
+      //     }
+      //   }
+
+      // 5
+      //   for (var number = 100; number <= 999; number++) {
+      //     // 获取它的每位数
+      //     // 个数
+      //     var ge = number % 10;
+      //     // 十位数
+      //     var shi = ((number - ge) % 100) / 10;
+      //     //百位数
+      //     var bai = parseInt(number / 100);
+      //     //判断
+      //     if (
+      //       ge * ge * ge + shi * shi * shi + bai * bai * bai == number &&
+      //       bai > 0
+      //     ) {
+      //       document.write(`该数: ${number}是水仙花数`);
+      //     }
+      //   }
+
+      // 4
+      // 判断一个数是不是 "同位数"    在所有3位数中找出所有"同位数"
+      //获取每位数，判断是否一致
+
+      //获取每个三位数，并依次判断
+      //   for (var num = 100; num <= 999; num++) {
+      //     var ge = num % 10;
+      //     var shi = parseInt((num / 10) % 10);
+      //     var bai = parseInt(num / 100);
+      //     //判断
+      //     if (ge == shi && shi == bai) {
+      //       document.write(`${num}是同位数`);
+      //     }
+      //   }
+
+      //1
+      /*
+        1*1*2*3*4*...*9*10 ---重复做乘法.乘数从1开始，依次递增到10 
+        */
+      //    var total = 1;
+      //    //重复做乘法，每次乘以递增数 i
+      //    for(var i=1;i<=10;i++){
+      //         // total = total*i;
+      //         total *=i;
+      //    }
+      //    document.write(total);
+
+      // 2
+      //    var total = 0;
+      //    for(var i=100;i<=500;i++){
+      //         total = total  +i;
+      //    }
+      //    document.write(total);
+
+      // for(var i=0;i<=100;i++){
+      //     //需满足某条件才能输出, ----if
+      //     if(i%5==0 && i%2==0){
+      //         document.write(`${i}<br>`);
+      //     }
+      // }
+    </script>
+  </body>
+</html>

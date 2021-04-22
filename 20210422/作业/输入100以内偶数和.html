@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        var oushu = 0;
+        var jishu = 0;
+        for(var i=1;i<=100;i++){
+            if(i%2==0){
+                oushu = oushu + i;
+            }else{
+                jishu = jishu + i;
+            }
+        }
+        document.write(`偶数和为：${oushu}，奇数和为：${jishu}`);
+
+    </script>
+</body>
+</html>

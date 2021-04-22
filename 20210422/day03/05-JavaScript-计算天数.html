@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 用户分别输入3次，表示年份、月份、日期。计算该日期是当年的第几天
+        //思路：利用switch来加上已过月份的天数+ 当月已过天数
+        /*
+        题意分析： 2021 4 22  : 当月的22天+已经过的 前3月天数  22 +31 +28 +31
+        每月的天数是固定的。--->switch 
+        一月：31  二月：28 3月：31 4月：30 5月；31 6月：30 7月：31 8月：31 9月：30 10月：31 11月：30 
+        12月：31
+        */
+       var year = Number(prompt('请输入年份'));
+       var mouth = Number(prompt('请输入月份'));
+       var day = Number(prompt('请输入日期')); 20
+       var days = day;//当年已经过的天数,加上当月已经过的天数
+       
+       //加上已经过的月份的天数
+        switch(mouth-1){
+            case 11: days+=30;
+            case 10: days+=31;
+            case 9: days +=30;
+            case 8:days+=31; 
+            case 7:days+=31;
+            case 6:days+=30;
+            case 5:days+=31;
+            case 4:days+=30;
+            case 3:days+=31;
+            case 2:days+=28;
+            case 1:days+=31;
+        }
+        //如果是闰年并且月份要大于2，那么就加一天
+        // if((year%4==0 && year %100!=0 || year %400==0) && mouth >2){
+        //     //闰年加一天
+        //    days++;
+        // }
+        //嵌套if
+        //判断是否是闰年，为true的情况下再去判断月份
+        if(year%4==0 && year %100!=0 || year %400==0){
+            //相当于同时满足
+            if(mouth >2){
+                days++;//天数加1
+            }
+        }
+        document.write(`${year}年${mouth}月${day}日是当年的第${days}天`);
+    
+    </script>
+</body>
+</html>

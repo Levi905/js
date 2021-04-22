@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1. 鸡兔问题： 鸡兔的脚数量一共40只， 鸡兔一共15只，求鸡兔分别是多少。
+        2. 计算x的y次方,底数x和指数y由用户输入
+           
+        3. 输入n的值，计算  1*1+2*2+...+n*n的和
+        4. 判断当前日期是星期几。(可利用 new Date().getDay()来获取当天对应星期的数字，0-6 0表示星期天)
+           --switch
+        5. 猜数字游戏：系统随机生成一个1000内的随机数，用户输入数字进行猜测，
+        如果大了则提示大了，小了则提示小了。直到相等则游戏结束。结束后输出游戏的猜测次数。--while
+        */
+
+        // var date = new Date().getDay();
+        var date = 3;
+        if(date==0){
+            document.write('今天是星期天');
+        }else if(date ==1){
+            document.write('今天是星期一');
+        
+        }else if(date ==2){
+            document.write('今天是星期二');
+        
+        }else if(date ==3){
+            document.write('今天是星期三');
+        
+        }else if(date ==4){
+            document.write('今天是星期四');
+        
+        }else if(date ==5){
+            document.write('今天是星期五');
+        }else if(date ==6){
+            document.write('今天是星期六');
+        }
+
+
+
+
+       // 3 输入5 计算 0+1*1+2*2 +3*3+4*4 +5*5 的和
+       //var num = Number(prompt('输入数字'))
+    //    var sum = 0;
+    //    for(var i=1;i<=num;i++){
+    //         // sum += i*i;
+    //         sum =sum + i*i;
+    //    }
+    //    document.write(sum);
+
+
+
+
+
+       // 1
+    //    var x;//鸡的数量
+    //    var y;//兔的数量
+    //    // x +y =15  2x +4y = 40
+    //    //假设，鸡数量从0开始取，一直取到15只，--for
+    //    //x就是鸡的数量
+    //    for(x=0;x<=15;x++){
+    //        y = 15-x;// 兔的数量
+    //        if(2*x + 4*y ==40){
+    //            //符合条件
+    //            document.write(`鸡的数量：${x} ,兔子的数量:${y}`)
+    //        }
+    //    }
+
+        // 2  2的3次方 =>3个2相乘    1*2*2*2   重复的乘法运算 3的4次方 x的y次方
+        // 2的-3次方 = 2的3次方分之一
+        // var x = Number(prompt('请输入底数x'));
+        // var y = Number(prompt('请输入指数y'));
+        // var total = 1;
+        // //对y进行判断，
+        // if(y >0 ){
+        //     for(var i=1;i<=y;i++){
+        //       total*=x;
+        //     }   
+        // }else {
+        //     for(var i=1;i<=-y;i++){
+        //       total*=x;
+        //     }
+        //     // 1除以
+        //     total = 1/total;
+        // }
+        // document.write(total);
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //输出今天是星期几
+         // var date = new Date().getDay();
+        // var date = 3;
+        // if(date==0){
+        //     document.write('今天是星期天');
+        // }else if(date ==1){
+        //     document.write('今天是星期一');
+        
+        // }else if(date ==2){
+        //     document.write('今天是星期二');
+        
+        // }else if(date ==3){
+        //     document.write('今天是星期三');
+        
+        // }else if(date ==4){
+        //     document.write('今天是星期四');
+        
+        // }else if(date ==5){
+        //     document.write('今天是星期五');
+        // }else if(date ==6){
+        //     document.write('今天是星期六');
+        // }
+
+        //switch 改造
+        var date = 0;
+        switch (date) {
+            case 0:document.write('今天是星期天');break;
+            case 1:document.write('今天是星期一');break;
+            case 2:document.write('今天是星期二');break;
+            case 3:document.write('今天是星期三');break;
+            case 4:document.write('今天是星期四');break;
+            case 5:document.write('今天是星期五');break;
+            case 6:document.write('今天是星期六');break;
+            default: 
+                document.write('输入不合法');
+            break;
+        }
+
+    </script>
+</body>
+</html>

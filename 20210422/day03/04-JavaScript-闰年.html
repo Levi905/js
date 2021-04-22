@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //闰年:该年的2月份有29天，一般年份是28天。即闰年多了一天。
+        //要求：1. 闰年能被4整除并且不能被100整除
+        //        2. 闰年能被400整除
+        var year = 2021;
+        //判断是不是闰年
+        if(year%4==0 && year %100!=0 || year %400==0){
+            document.write(`${year}是闰年`);
+        }
+    </script>
+</body>
+</html>

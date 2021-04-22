@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var guess = parseInt(Math.random()*1000);
+        console.log(guess);
+        var count = 0;
+        var flag = true;
+        while(flag){
+            var userguess = Number(prompt("请输入你猜的数字"));
+            if(userguess == guess){
+                alert("猜对了");
+                flag = false;
+                document.write("数字是"+guess);
+                count++;
+            }else{
+                if(userguess > guess){
+                    alert("猜错了，大了");
+                }else{
+                    alert("猜错了，小了");
+                }
+                count++;
+            }
+        }
+        document.write("<br>一共猜了"+count+"次");
+    </script>
+</body>
+</html>

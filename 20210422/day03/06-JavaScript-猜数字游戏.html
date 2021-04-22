@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  5. 猜数字游戏：系统随机生成一个1000内的随机正整数，用户输入数字进行猜测，
+      // 如果大了则提示大了，小了则提示小了。直到相等则游戏结束。结束后输出游戏的猜测次数。
+      // alert(parseInt(Math.random()*1000));
+      //用户输入 ，及判断 --- >循环   循环的结束条件是用户数==系统数
+      /*
+        1. 生成随机数
+        2. 用户输入，并进行对比-if
+        3. 如果不正确，重复第二步--for
+        */
+      var random = parseInt(Math.random() * 1000);
+    //   alert(random);
+      var userinput = Number(prompt("请输入猜测的数字"));
+      //循环--用户输入及对比.不相等，循环继续
+      for (; random != userinput;) {
+
+        if (userinput > random) {
+          alert("大了");
+        } else if (userinput < random) {
+          alert("小了");
+        }
+        //重新猜测
+        userinput = Number(prompt("请输入猜测的数字"));
+      }
+      //循环结束的唯一条件：相等
+      alert(`相等，游戏结束,猜测的次数为：${i}次`);
+
+      
+    </script>
+  </body>
+</html>

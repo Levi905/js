@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //定义总路程
+        var distance = Number(prompt("请输入总路程"));
+        //定义当前兔子所行进的路程
+        var rabbit = 0;
+        //定义当前乌龟所行进的路程
+        var tortoise = 0;
+        //定义当前秒速
+        var time = 0;
+        while(rabbit < distance && tortoise < distance){
+            if(Math.random()<0.5){
+                rabbit = rabbit+5;
+                tortoise = tortoise+2;
+                document.write(`兔子当前行进：${rabbit}：乌龟当前行进：${tortoise}<br>`);
+            }else{
+                tortoise = tortoise+2;
+                document.write(`兔子当前行进：${rabbit}：乌龟当前行进：${tortoise}<br>`);
+            }
+            time++;
+        }
+        if(rabbit>tortoise){
+            document.write(`兔子赢了，比赛一共${time}秒`);
+        }else{
+            document.write(`乌龟赢了，比赛一共${time}秒`);
+        }
+    </script>
+</body>
+</html>
