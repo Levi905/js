@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //记录总数
+        var sum = 0;
+        //记录天数
+        var count = 0;
+        
+        while(sum<100){
+            //每天购买的数量
+            count++;
+            var apple = 1;
+            for(var i = 1;i<=count;i++){
+                apple = apple*2;
+                
+            }
+            var s = sum+apple;
+            
+            if(s<100){
+                sum = sum + apple;
+            }else{
+                sum = sum;
+                count--;
+                break;
+            }
+            
+            // sum = sum + apple;
+            document.write(`今天是第${count}天，今天买了${apple}个苹果，当前总共买了${sum}个苹果<br>`);
+        }
+        document.write(`平均每天花费${sum*0.8/count}<br>`);
+
+        document.write("<br><br><br><br><br>");
+    </script>
+
+    <script>
+        var n = Number(prompt("请输入一个数"));
+
+        for(var i = 1;i<=n;i++){
+            for(var j = 1;j<=2*i-1;j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+
+        document.write("<br><br><br><br><br>");
+    </script>
+
+    <script>
+        //定义总路程
+        var sum = 0;
+        //定义每次的初始高度
+        var h = 100;
+        for(var i = 1;i<=10;i++){
+            sum = sum + h +h/2;
+            h = h/2;
+            document.write(`当前到落地的总路程是${sum}：当前高度是${h}<br>`);
+        }
+        document.write(`总路程是${sum-h}，弹起后的高度是${h}`);
+    </script>
+</body>
+</html>
