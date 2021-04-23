@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1. 用户登录：用户有3次机会登录，中间某一次输入成功，提示成功后终止程序。
+           或3次都输错，也终止程序  break
+
+        2. 利用 while  switch break 实现登录注册功能
+           要求：1. 用户通过输入不同的数字有不同的功能。
+               1. 登录  2. 注册  3.退出 
+               2. 没有默认用户，需要实现用户注册后可以使用该账号进行登录
+               3. 注册的用户需包含用户名和密码，保存到不同的变量中
+        */
+
+        // 1. 用户输入
+        // 2. 用switch进行判断。对应case中书写功能代码 。 
+        // 3. 用户输入以及switch代码用循环包围，实现多次的登录或注册
+        // 4.只要输入3才会退出程序
+        //保存注册的用户
+        var username;
+        var userpass;
+
+        while(){
+            var input = prompt('1. 登录  2. 注册  3.退出 ');
+            switch (input) {
+            case "1"://登录 
+            break;
+            case "2"://注册 
+
+            break;
+            case "3"://退出，结束循环
+            break;
+            default:document.write('输入不合法');break;
+            }
+        }
+    </script>
+</body>
+</html>

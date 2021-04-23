@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 需求：输出 1 2 3 4  6  7 8 9 10 , -- 跳过某一次循环过程。
+      // 如何提前中断循环
+
+
+      //break
+      //语法
+      //   for(var i=1;i<=10;i++){
+    //       document.write(i);
+    //       break;//输出1后结束循环
+    //   }
+
+    // 嵌套循环中的break
+    for(var i=1;i<=9;i++){
+        //外层循环的一个过程，内 循环都会完整的跑完一次
+        //内循环：输出1到9
+        for(var j=1;j<=9;j++){
+            document.write(` ${j} `);
+            break;//结束内循环
+           
+        }
+        //内循环：输出换行
+        document.write('<br>');
+        break;//结束外循环
+    }
+    document.write('2');
+    //输出一个1 +br
+
+
+
+
+    //break例子
+
+      //例子。1到10 的循环，输出5之后就终止循环
+    
+    //   for(var i=1;i<=10;i++){
+          
+    //       if(i==6){
+    //           break;//当i为5时终止循环
+    //       }
+    //       document.write(i);
+    //   }
+
+
+
+
+
+    //例子： 判断一个数是否是质数
+    //只要中间的任意一个数字整除过该数，就不是质数
+    // 15  : 1 2 3
+    // var num = 13;
+    // for(var i=2;i<num;i++){
+    //     if(num%i==0){
+    //         //已经被整除过，就不是质数，后续的循环过程就不需要了，就可以提前结束循环
+    //         break;
+    //     }
+    // }
+    // document.write(i);//终止循环i的数值 13,for循环自然结束
+
+    // if(i<num){
+    //     document.write(`${num}不是质数`);
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //continue
+      // for(var i=1;i<=10;i++){
+
+      //     document.write(i);
+      //     continue;//跳过当前循环过程，继续下一次循环
+      //     // 跳过
+      //     document.write('哈哈哈');
+      // }
+
+      //跳过5
+    //   for (var i = 1; i <= 10; i++) {
+    //     if (i == 5) {
+    //       continue; //当i==5时跳过
+    //     }
+    //     document.write(i);
+    //   }
+
+      //continue应用：例子：输出100内的质数
+    //   for (var num = 1; num <= 100; num++) {
+    //     if (num == 1) {
+    //       continue; //跳过1，下面还没执行的代码会跳过
+    //     }
+    //     //当num！=1时
+    //     var count = 0;
+    //     for (var i = 2; i < num; i++) {
+    //       if (num % i == 0) {
+    //         count++;
+    //       }
+    //     }
+    //     if (count == 0) {
+    //       document.write(`${num}是质数<br>`);
+    //     }
+    //   }
+    </script>
+  </body>
+</html>

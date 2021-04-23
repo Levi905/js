@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        /*
+        完成龟兔赛跑程序：比赛路程由用户输入，兔子速度为每次走5，乌龟每次走2，
+        但兔子每次有50%不跑，乌龟稳定速度，求跑完比赛路程兔子和乌龟用的次数以及谁赢了.
+        分析；比赛路程为100 。
+
+        比赛结束：1. 只要有一个跑完，比赛结束 
+                 2. 都跑完，比赛才结束
+
+        计量单位：每一次循环过程就算一个时间单位
+        */
+       var match = 100;//比赛路程
+       // 乌龟兔子的当前路程
+       var tu_distance = 0;//兔子当前路程
+       var wu_distance = 0;//乌龟当前路程
+       //记录比赛时间
+       var time = 0;
+       // 1.只要有一个跑完，比赛结束 
+       while(tu_distance <match && wu_distance <match){
+           //一次过程,兔子有50% 走， 乌龟稳定速度
+           wu_distance+=3;
+           if(Math.random() >0.5){
+               tu_distance+=5;
+           }
+           time++;//次数自增，即描述时间
+       }
+       //判断兔子和乌龟的路程
+       document.write(`比赛时间为： ${time}`);
+       if(tu_distance >wu_distance){
+           document.write('兔子赢了');
+       }else if(tu_distance < wu_distance){
+           document.write('乌龟赢了');
+       }else{
+           document.write('同时到达');
+       }
+
+
+
+
+
+        /*
+        输入一个数字，倒序输出数字并求出位数之和(while) 。比如1234   输出4321 位数之和为1+2+3+4=10
+        分析：输入的数字位数不固定。位数不固定，没办法通过一次性获取所有位来处理。
+        但无论怎样，任何一个整数，通过%10 来获取个位数
+        比如： 1234   %10   得到4     除以10取整  =>123  
+               123    %10   得到3     除以10取整  =>12 
+               12    %10   得到2     除以10取整  =>1
+               1    %10   得到1     除以10取整  =>0  结束
+        */
+    //    var num = parseInt(prompt('请输入一个数字'));
+    //    var total = 0;
+    //    while(num!=0){
+    //        //% 10 
+    //        var ge = num %10;
+    //        document.write(ge);//输出
+    //        total+=ge;//位数累加
+    //        // /10取整
+    //        num =  parseInt(num/10);
+    //    }
+    //    document.write("<br>")
+    //    document.write(total);
+
+
+
+
+      //输出100内的所有质数
+      /*
+        1. 完成对单个数的判断
+        2. 加入一个for循环来进行处理
+        */
+    //   for (var num = 1; num <= 100; num++) {
+    //     if (num == 1) {
+    //       document.write("1不是质数<br>");
+    //     } else {
+    //       // var num = 13;
+    //       //单个数字的判断
+    //       // 和中间的每个数进行整除,如果整除次数大于0，就不是质数
+    //       var count = 0;
+    //       for (var i = 2; i < num; i++) {
+    //         if (num % i == 0) {
+    //           count++;
+    //         }
+    //       }
+    //       if (count == 0) {
+    //         document.write(`${num}是质数<br>`);
+    //       }
+    //     }
+    //   }
+
+      /*给20块钱买可乐，每瓶可乐3块钱，
+        喝完之后退瓶子可以换回1块钱，问最多可以喝到多少瓶可乐
+        分析：只要余额不小于3块，一直买可乐，--重复买可乐--循环(for while)
+        */
+      //    var count = 0;//购买可乐的数量
+      //    var total =20;//余额
+      //    //买可乐
+      //    while(total >=3){
+      //        count++;//可乐数量加1
+      //        total-=3;//买可乐给3块
+      //        total++;//退了瓶子加一块
+      //    }
+      //    document.write(count);
+
+      /*
+        输出100内所有偶数之和
+        */
+      //    var i=1;
+      //    var total = 0;//累加和
+      //    while(i<=100){
+      //     if(i%2==0){
+      //         //是偶数,相加
+      //         total +=i;
+      //     }
+      //     i++;
+      //    }
+      //    document.write(total);
+    </script>
+  </body>
+</html>
