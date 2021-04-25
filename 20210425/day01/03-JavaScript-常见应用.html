@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* div {
+          background-image: url("车牌.png");
+          background-repeat: no-repeat;
+          width: 648px;
+          height: 209px;
+          font-size: 110px;
+          color: white;
+          line-height: 209px;
+          padding-left: 210px;
+      } */
+      div{
+          border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+      
+    <script>
+      // 1. 随机数据
+      //随机点名
+      var names = ["周星星", "达叔", "李云龙", "栋东", "渣渣辉", "墟锟"];
+      //随机下标 (0-5)
+      var index = parseInt(Math.random() * names.length);
+      // document.write(names[index]);
+      //练习：随机车牌号
+
+      var arr = [1, 2, 3, 4, 5, "A", "B", "C", "D"];
+      //将生成的字符拼接到一个大字符串里
+      var str = "";
+      for (var i = 1; i <= 5; i++) {
+        var index = parseInt(Math.random() * arr.length);
+        str +=arr[index];//字符串拼接
+      }
+    //   document.write(`<div>${str}</div>`);
+
+      // document.write(`<div>川A${num}</div>`);
+
+      //练习：随机宽高(1000内)、颜色圆
+      var colors = ['green','red','yellowgreen','greenyellow','pink'];
+      var width = parseInt(Math.random()*1000);
+      var color = colors[parseInt(Math.random()*colors.length)];
+      document.write(`<div style="width:${width}px;height:${width}px;background-color:${color};"></div>`)
+
+      
+    </script>
+  </body>
+</html>

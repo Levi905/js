@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        var arr = [321,43,213,543,312,534,312,54,32,4,3,2,23,234];
+        var min = 0;
+        var l = arr.length-1;
+        for(var i=0;i<=l;i++){
+            for(var j=i+1;j<=l;j++){
+                if(arr[i]<arr[j]){
+                    min = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = min;
+                    
+                }
+            }
+        }
+
+        for(var i = 0;i<arr.length;i++){
+            document.write(arr[i]+"<br>");
+        }
+    </script>
+</body>
+</html>

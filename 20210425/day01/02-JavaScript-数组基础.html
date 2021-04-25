@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //需求：保存全班的数学成绩，并求出平均成绩以及总成绩
+        var score1 = 59;
+        var score2 = 98;
+        var score3 = 61;
+        var score4 = 78;
+        var score5 = 45;
+        // document.write((score1 +score2 +score3 +score4 +score5)/5);
+        // 问题：需要对多个数据进行处理时，传统定义多个变量的方式过于繁琐。--数组
+
+        //定义数组
+        // var nums =[59,98,61,78,45];
+
+        //1. 获取数据
+        // document.write(nums[0]);//59
+        // document.write(nums[2]);//61
+        //2.修改数据
+        // nums[2]=70;
+
+        //3 添加数据
+        // nums[5]= 80;
+        // nums[6]= 42;
+
+        // nums[nums.length] =80;//执行后length自动更新
+        // nums[nums.length] =42;
+
+        //4. 获取长度
+        // document.write(nums.length+"<br>");
+
+        //5.删除最后一个数据
+        // nums.length--;
+        // nums.length--;
+
+        //6. 获取数组中所有的数据
+        var nums =[59,98,61,78,45]; 
+        // document.write(nums[0]);
+        // document.write(nums[1]);
+        // document.write(nums[2]);
+        // document.write(nums[3]);
+        // document.write(nums[4]);//最后一个数据
+        //i是指代的下标
+        // for(var i=0;i<nums.length;i++){
+        //     document.write(nums[i]+"<br>");
+        // }
+        // document.write(nums);
+
+        /*
+        练习：
+        完成快递仓库的数据管理
+        1. 在仓库中追加多个快递:顺丰、圆通、韵达、韵达、百世、京东、顺丰、顺丰.
+        2. 输出所有的快递
+        3. 删除最后一个快递并输出该快递
+        4. 仓库中有几个快递
+        5. 扩展：倒序输出快递
+        6. 扩展：仓库中有几个顺丰快递，几个韵达快递
+        */
+        var bags = [];//表示快递仓库
+        //1 
+        bags[bags.length] = "顺丰";
+        bags[bags.length] = "圆通";
+        bags[bags.length] = "韵达";
+        bags[bags.length] = "韵达";
+        bags[bags.length] = "百世";
+        bags[bags.length] = "京东";
+        bags[bags.length] = "顺丰";
+        bags[bags.length] = "东风";
+
+        // 2
+        // document.write(bags);
+        // for(var i=0;i<bags.length;i++){
+        //     document.write(bags[i]+"<br>");
+        // }
+        //3 
+        // var last = bags[bags.length-1];
+        // bags.length--;
+
+        // document.write(last);
+
+        //4 
+        // document.write(bags.length);
+
+        //5 倒序输出
+        // for(var i=bags.length-1;i>=0;i--){
+        //     document.write(bags[i]+"<br>");
+        // }
+
+        // 6.仓库中有几个顺丰快递，几个韵达快递
+        //思路：找到所有的快递，依次的进行对比(判断)
+        // var  shunfeng = 0;
+        // var yunda = 0; 
+        // for(var i=0;i<bags.length;i++){
+        //     if(bags[i]=="顺丰"){
+        //         shunfeng++;//顺丰数量加1
+        //     }else if(bags[i]=="韵达"){
+        //         yunda++;//韵达数量加1
+        //     }
+        // }
+        // document.write(`顺丰快递个数为${shunfeng},韵达快递数量为${yunda}`)
+
+
+
+
+
+    </script>
+</body>
+</html>

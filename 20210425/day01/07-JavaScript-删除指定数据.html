@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //指定位置删除
+        var arr = [1,2,3,4,5,6];//=>[1,2,4,5,6];
+        var index = 2;//待删除的下标
+        // 从下标为index开始，后一个下标的数据向前移动了一个位置。
+        // arr[2]=arr[3];
+        // arr[3]=arr[4];
+        // arr[4]=arr[5];
+        //i<arr.length-1是为了保证i+1不会超过允许的最大下标
+        for(var i =index;i<arr.length-1;i++){
+            arr[i]=arr[i+1];
+        }
+        arr.length--;
+        document.write(arr);
+
+    </script>
+</body>
+</html>

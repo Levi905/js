@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //数组的定义方式
+        var shuzu = [];
+        //array()数组
+        var arr = new Array();
+        //定义有数据的数组
+        var shuzu1 = [1,2,3,"1","2","2"];
+        //定义有数据的数组--array形式
+        var arr1 = new Array(1,2,3,"1","2","3");
+        for(var i = 0;i<=shuzu1.length-1;i++){
+            document.write(shuzu1[i]+"<br>");
+        }
+        
+        //操作数组的方法（数组中数据都是根据下标来进行操作的，下标的起始点是0，找到数组中的数据通过arr[n]。）
+        //获取数组中数据的方法
+        alert(shuzu1[0]);
+        //修改数组中的数据
+        shuzu1[1] = 11;
+        alert(shuzu1[1]);
+        //增加数组中的数据
+        alert(shuzu1.length);//获取数组长度
+        shuzu1[6] = "新增";
+        alert(shuzu1[6]);
+        alert(shuzu1.length);//获取数组长度
+        //删除数组中的数据
+        shuzu1.length--;//默认删除数组最后一个数据
+        //获取数组中数据的个数
+        alert(shuzu1.length);//获取数组长度
+        //获取所有数据
+        for(var i = 0;i<shuzu1.length;i++){
+            document.write(shuzu1[i]+"<br>");
+        }
+    </script>
+</body>
+</html>

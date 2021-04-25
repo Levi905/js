@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [67,32,87,234,56,32,87,1000,-198];
+        var l = arr.length-1;
+        var max = 0;
+        var min = 0;
+        for(var i = 0;i<=l;i++){
+            for(var j = 1;j<=l;j++){
+                if(arr[i]>arr[j] && arr[i]>max){
+                    max = arr[i];
+                    min = arr[j];
+                }else if(arr[i]<arr[j] && arr[i]<min){
+                    min = arr[i];
+                }
+            }
+        }
+        document.write(`max:${max}<br>min:${min}<br>`);
+    </script>
+</body>
+</html>

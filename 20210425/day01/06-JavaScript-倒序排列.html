@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          //练习：倒序排列
+          var arr= [2,30,1,9,5,7];//  => [7,5,9,1,30,2]
+        
+        //通过下标来找到交换的规律              下标
+        //第一个数和倒数第一个数进行交换      0               arr.length-1
+        //第二个数和倒数第二个数进行交换      1               arr.length-1-1
+        //第三个数和倒数第三个数进行交换      2               arr.length-1-2
+        //第i个数和倒数第i个数进行交换       i-1              arr.length-1-(i-1)
+        //第i+1个数和倒数第i+1个数进行交换   i                  arr.length-1-i
+
+        /*
+        2,30,1,9,5,7
+        第一次：  7,30,1,9,5,2
+        第二次：  7,5,1,9,30,2
+        第三次：  7,5,9,1,30,2
+        第四次：  7,5,1,9,30,2
+        第五次：  7,30,1,9,5,2
+        第六次：  2,30,1,9,5,7
+        */
+       // 1
+
+        // for(var i=0;i<arr.length/2;i++){
+        //     //当下标为i的数据和下标为arr.length-1-i 进行交换
+        //     // a: arr[i]   b:arr[arr.length-i-1]
+        //     var temp =arr[i];
+        //     arr[i]  =arr[arr.length-i-1];
+        //     arr[arr.length-i-1] =temp;
+        // }
+        // document.write(arr);
+
+        //2 
+       // 思路：新建一个数组，第一个数组倒序输出，把倒序输出的数据添加到第二个数组中
+       /*
+       var arr= [2,30,1,9,5,7];//  => [7,5,9,1,30,2]
+       var newArr =[];
+       for(var i=arr.length-1;i>=0;i--){
+           //将arr[i]追加到newArr中
+           newArr[newArr.length] = arr[i];
+       }
+       document.write(newArr);
+       */
+
+
+    </script>
+</body>
+</html>

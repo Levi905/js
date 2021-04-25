@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 指定位置插入
+        // var arr = [1,2,4,5,6];
+        // var index = 0;//插入下标
+        // var data = 3;//插入的数据
+        // arr.length++;//添加一个位置
+        // for(var i=arr.length-1;i>=index;i--){
+        //     arr[i] = arr[i-1];
+        // }
+        // //指定位置设置数据
+        // arr[index]=data;
+
+        // document.write(arr);
+
+
+
+        // 用户登录
+        var users = ['admin','qiang','deng','zhangsan'];
+        var passes = ['ad123','q123','d123','z123'];
+
+        //进行登录判断
+        var userinput = prompt('请输入用户名');
+        var passinput = prompt('请输入密码');
+        // 判断:依次和数组中的用户名进行对比->获取数组中的每个数据，并进行判断
+        // 2 利用循环次数变量是否自然结束来判断
+        for(var i=0;i<users.length;i++){
+            if(users[i]==userinput &&passes[i]==passinput){
+                alert('登录成功');
+                //成功后不需要继续遍历
+                break;
+            }else{
+                //当遍历到最后一个仍没对比上时，说明用户名或密码错误
+                if(i==users.length-1){
+                    alert('用户名或密码错误');
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        //1. 利用开关变量来保存判断情况
+        /*
+        var isRight = false;//保存用户是否登陆成功
+        for(var i=0;i<users.length;i++){
+            if(users[i]==userinput &&passes[i]==passinput){
+                // alert('登录成功');
+                //成功后不需要继续遍历
+                isRight=true;
+                break;
+            }else{
+                //当遍历到结束后，才知道是否错误
+            }
+        }
+
+
+
+        if(isRight==true){
+            alert('登录成功')
+        }else{
+            alert('用户名或密码错误');
+        }
+        */
+
+
+
+    </script>
+</body>
+</html>

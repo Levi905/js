@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var username = ["a", "b", "c", "d"];
+        var password = ["a", "b", "c", "d"];
+        var flag = true;
+
+        var count = 3;
+        while (flag && count>0) {
+            var u = prompt("请输入用户名");
+            var p = prompt("请输入密码");
+            for (var i = 0; i <= username.length - 1; i++) {
+                if (username[i] == u && password[i] == p) {
+                    flag = false;
+                    
+                }
+            }
+            if(flag == false){
+                alert("登录成功");
+                count = count-3;
+            }else{
+                alert("登录失败");
+                count = count-1;
+                
+            }
+        }
+
+    </script>
+</body>
+
+</html>
