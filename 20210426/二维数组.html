@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [];
+        var arr1 = [1.1,1.2,1.3,1.4];
+        var arr2 = [2.1,2.2,2.3,2.4,];
+        arr.push(arr1);
+        arr.push(arr2);
+        var name=Number(prompt("name"));
+        var psd = Number(prompt("psd"));
+        for(var i=0;i<arr[0].length;i++){
+            if(arr[0][i]==name && arr[1][i]==psd){
+                alert("ok");
+            }else{
+                alert("no");
+            }
+        }
+    </script>
+</body>
+</html>

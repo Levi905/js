@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [45,12,89,92,53,76,89,61];
+        //1.追加34、89、90
+        arr.push(34,89,90);
+        document.write(arr+"<br>");
+        //2.删除第一个数据
+        arr.splice(0,1);
+        document.write(arr+"<br>");
+        //3.删除最低分，并在同样的位置插入56、67
+        var min = arr[0];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]<min){
+                min = arr[i];
+            }
+        }
+        var index = arr.indexOf(min);
+        document.write(min+"<br>");
+        document.write(index+"<br>");
+        arr.splice(index,1,56,67);
+        document.write(arr+"<br>");
+        //4.将数组转为字符串 进行输出，成绩间以”-”分割
+        var str = arr.join('-');
+        document.write(str+"<br>");
+        //5.获取第一次和最后一次出现89的下标
+        var index89 = arr.indexOf(89);
+        document.write(index89+"<br>");
+        var lindex89 = arr.lastIndexOf(89);
+        document.write(lindex89+"<br>");
+        //6.所有分数+5分
+        var arr5 = [];
+        for(var i=0;i<arr.length;i++){
+            arr5[i] = arr[i]+5;
+        }
+        document.write(arr5+"<br>");
+        //7.获取所有不及格的分数,并返回到一个新数组中
+        var arr6 = [];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]<60){
+                arr6.push(arr[i]);
+            }
+        }
+        document.write(arr6+"<br>");
+        //8.删除分数为92的分数，并在同一个位置插入67、87、90
+        var index92 = arr.indexOf(92);
+        arr.splice(index92,1,67,87,90);
+        document.write(arr+"<br>");
+        //9.数组倒序存放
+        arr.reverse();
+        document.write(arr+"<br>");
+        //10.获取除开第一个和最后一个的其他所有成绩
+        var arr0 = arr.slice(1,arr.length-1);
+        document.write(arr0+"<br>");
+    </script>
+</body>
+</html>

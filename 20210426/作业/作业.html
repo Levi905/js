@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = ["顺丰", "韵达", "圆通", "顺丰", "韵达", "京东", "京东", "韵达", "顺丰", "京东"];
+        /*
+            1-1:获取京东快递第一次出现和最后一次出现的下标
+            1-2:将数组中的 数据进行输出，每个数据之间以-分割
+            1-3:获取最后四个快递并放入到新数组中
+            1-4:删除前四个快递并追加1个京东、3个顺丰快递
+            1-5:将所有快递进行倒序存放
+            1-6:删除第一个和最后一个数据
+            1-7:求出快递数量最多的快递公司并输出数量
+        */
+        document.write(`第一次出现的位置是：${arr.indexOf("京东")}，最后一次出现的位置是：${arr.lastIndexOf("京东")}。<br>`);
+        document.write(arr.join("-") + "<br>");
+        var arrLastFour = arr.slice(arr.length - 4, arr.length);
+        document.write(arrLastFour + "：这是数组最后是个快递<br>");
+        arr.splice(0, 4, "京东", "顺丰", "顺丰", "顺丰");
+        document.write("删除新增后的数组如下：" + arr + "<br>");
+        arr.reverse();
+        document.write("倒序存放后的数组如下：" + arr + "<br>");
+        arr.splice(0, 1);
+        arr.pop();
+        document.write("删除第一个和最后一个之后的数组：" + arr + "<br>");
+
+        for (var i = 0; i <= arr.length - 1; i++) {
+            
+        }
+
+
+
+        /*
+        2. 利用函数知识完成以下题目：
+        2-1:定义一个函数，传入一个数字，判断该数是否是水仙花数
+        2-2:定义一个函数，实现随机一个川A非新能源车牌号，并返回该车牌号
+        2-3:定义一个函数，传入一个数组，判断该数组是否全由数字构成
+        2-4:定义一个函数，传入一个由数字构成的数组，判断该数组是否是回文数组，比如[1,2,3,2,1]是回文数组，正着读和反着读是一样的。
+        2-5:定义一个函数，传入一个数据，实现获取该数据在数组中出现的次数并返回
+        */
+        function sxh(number) {
+            console.log(number);
+            var geweishu = Math.floor(number % 10);
+            console.log(geweishu);
+            var shiweishu = Math.floor((number % 100) / 10);
+            console.log(shiweishu);
+            var baiweishu = Math.floor((number % 1000) / 100);
+            console.log(baiweishu);
+
+            var total = geweishu * geweishu * geweishu + shiweishu * shiweishu * shiweishu + baiweishu * baiweishu * baiweishu;
+            console.log(total);
+            if (number == total && number > 100 && number < 1000) {
+                document.write("是水仙花数");
+            } else {
+                document.write("不是水仙花数");
+            }
+        }
+
+        function chepai() {
+            var arr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Z", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "O"];
+            var l = arr.length - 1;
+            var str = "川A ";
+            for (var i = 1; i <= 5; i++) {
+                str = str + arr[Math.round(Math.random() * l)];
+            }
+            return str;
+        }
+
+        function isNumber(arr){
+            var flag = true;
+            for(var i = 0;i<=arr.length-1;i++){
+                if(typeof(arr[i])!="number"){
+                    flag = false;
+                }
+            }
+            if(flag == true){
+                return "全部都是数字";
+            }else{
+                return "no";
+            }
+        }
+        
+        function isPalindrome(arr){
+            var flag = true;
+            for(var i = 0;i<=(arr.length-1)/2;i++){
+                if(arr[i]!=arr[arr.length-1-i]){
+                    flag = false;
+                }
+            }
+            if(flag == true){
+                return "是回文";
+            }else{
+                return "不是回文";
+            }
+        }
+
+        function frequency(num,arr){
+            var count = 0;
+            for(var i = 0;i<arr.length;i++){
+                if(arr[i] == num){
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
+
+        
+    </script>
+</body>
+
+</html>
