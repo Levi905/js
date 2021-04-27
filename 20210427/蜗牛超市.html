@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //定义全部商品数据的数组
+        var commodity = [];
+        //定义购物车的数组
+        var shopCar = [];
+        //定义管理员登陆的用户名
+        var administrator = "admin";
+        //定义管理员登陆的密码
+        var password = "admin123";
+        //定义最外层程序流程的循环或者结束标记
+        var flag = true;
+        
+        //程序流程
+        while(flag){
+            //第一层角色登陆：1、管理；2、顾客
+            var login = Number(prompt("请输入数字选择登陆方式：1、管理员登陆；2、顾客登陆；5、退出超市系统；输入其它则会重新选择"));
+            switch(login){
+                case 1:
+                //管理员登陆需要验证用户名和密码
+                var loginUser = prompt("请输入用户名");
+                var loginPsd = prompt("请输入密码");
+                var a = loginf(loginUser,loginPsd);
+                if(a == true){
+                    alert("登录成功");
+                    adminMenu();
+                }else{
+                    alert("登录失败");
+                }
+                    ;break;
+                case 2:
+                //顾客登陆，可以直接进入菜单不用验证
+                
+                    ;break;
+                case 5:
+                flag = false;
+                    ;break;
+                default:
+                alert("输入不合法请重新输入");
+                    break;
+
+            }
+        }
+
+        //登录函数
+        function loginf(user,psd){
+            var f = true;
+            if(user == administrator && psd == password){
+                alert("ok");
+            }else{
+                alert("no");
+                f = false;
+            }
+            return f;
+        }
+
+        //二级菜单-------管理员
+        function adminMenu(){
+            alert("欢迎进入管理员菜单");
+            
+        }
+
+
+        //二级菜单-------顾客
+        function userMenu(){
+            alert("欢迎进入超市");
+
+        }
+    </script>
+</body>
+</html>

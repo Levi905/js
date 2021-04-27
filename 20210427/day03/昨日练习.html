@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. var arr=["顺丰","韵达","圆通","顺丰","韵达","京东","京东","韵达","顺丰","京东"];利用所学api完成以下练习：
+      // 1-1:获取京东快递第一次出现和最后一次出现的下标
+      // 1-2:将数组中的 数据进行输出，每个数据之间以-分割
+      // 1-3:获取最后四个快递并放入到新数组中
+      // 1-4:删除前四个快递并追加1个京东、3个顺丰快递
+      // 1-5:将所有快递进行倒序存放
+      // 1-6:删除第一个和最后一个数据
+      // 1-7:求出快递数量最多的快递公司并输出数量
+      var arr = [
+        "顺丰",
+        "韵达",
+        "圆通",
+        "京东",
+        "顺丰",
+        "韵达",
+        "京东",
+        "京东",
+        "韵达",
+        "顺丰",
+        "京东",
+      ];
+      //1-1
+      //  var first  =arr.indexOf('京东');
+      //  var last  =arr.lastIndexOf('京东');
+      //  document.write(first,last);
+      //1-2 join
+      // document.write(arr.join('-'));
+
+      //1-3 slice
+      // var newArr = arr.slice(arr.length-4,arr.length);
+      // var newArr = arr.slice(arr.length-4);
+      // var newArr = arr.slice(-4);
+      // document.write(newArr);
+      //1-4 splice
+      // arr.splice(0,4,'京东','顺丰','顺丰','顺丰');
+      // document.write(arr.join('-'));
+      //1-5 reverse
+      // arr.reverse();
+      //1-6 slice
+      // var newArr = arr.slice(1,arr.length-1);
+      // 1-7:求出快递数量最多的快递公司并输出数量
+      // document.write(newArr);
+      //用二维数组来保存数量
+      var counts = [
+        ["京东", 0],
+        ["韵达", 0],
+        ["顺丰", 0],
+        ["圆通", 0],
+      ];
+
+      //遍历数组，确定每个快递的数量
+      for (var i = 0; i < arr.length; i++) {
+        switch (arr[i]) {
+          case "京东":
+            counts[0][1] = counts[0][1] + 1;
+            break;
+          case "韵达":
+            counts[1][1]++;
+            break;
+          case "顺丰":
+            counts[2][1]++;
+            break;
+          case "圆通":
+            counts[3][1]++;
+            break;
+        }
+      }
+      // console.log(counts);
+
+      //求counts的数量最多的快递
+      var max = counts[0][1];
+      for (var i = 0; i < counts.length; i++) {
+        if (counts[i][1] > max) {
+          max = counts[i][1];
+        }
+      }
+      // document.write(max);
+
+      //有多个快速数量都是为3，遍历数组，将数量为3的输出出来
+      for (var i = 0; i < counts.length; i++) {
+        if (counts[i][1] == max) {
+          document.write(
+            `${counts[i][0]}的快递数量最多，数量为${counts[i][1]}<br>`
+          );
+        }
+      }
+
+      // 2. 利用函数知识完成以下题目：
+      // 2-1:定义一个函数，传入一个数字，判断该数是否是水仙花数
+      // 2-2:定义一个函数，实现随机一个川A非新能源车牌号，并返回该车牌号
+      // 2-3:定义一个函数，传入一个数组，判断该数组是否全由数字构成
+      // 2-4:定义一个函数，传入一个由数字构成的数组，判断该数组是否是回文数组，比如[1,2,3,2,1]是回文数组，正着读和反着读是一样的。
+      // 2-5:定义一个函数，传入一个数据，实现获取该数据在数组中出现的次数并返回
+
+      //2-1
+      function isFlowerNumber(number) {
+        // 是数字并且是3位数
+        if (typeof number != "number" || isNaN(number)) {
+          return;
+        }
+        if (number < 100 || number > 999) {
+          return;
+        }
+        var count = 0;
+        //判断num是否是水仙花数
+        // 获取它的每位数
+        // 个数
+        var ge = number % 10;
+        // 十位数
+        var shi = ((number - ge) % 100) / 10;
+        //百位数
+        var bai = parseInt(number / 100);
+        //判断
+        if (
+          ge * ge * ge + shi * shi * shi + bai * bai * bai == number &&
+          bai > 0
+        ) {
+          document.write(`该数: ${number}是水仙花数`);
+        } else {
+          document.write(`该数: ${number}不是水仙花数`);
+        }
+      }
+    //   isFlowerNumber(153);
+    //   isFlowerNumber(300);
+
+    function RandomCarNumber(){
+        var arr = [1, 2, 3, 4, 5, "A", "B", "C", "D"];
+      //将生成的字符拼接到一个大字符串里
+      var str = "";
+      for (var i = 1; i <= 5; i++) {
+        var index = parseInt(Math.random() * arr.length);
+        str +=arr[index];//字符串拼接
+      }
+      return "川A"+str;
+    }
+    // var num = RandomCarNumber();
+    // document.write(num)
+
+    //2-3
+    function isArrayNumber(array){
+        var isRight = true;//默认假设全是数字
+        for(var i=0;i<array.length;i++){
+            //不是数字，终止
+            if(typeof array[i] !="number"  || isNaN(array[i])){    
+                isRight=false;
+                break;
+            }
+        }
+        //对开关变量进行判断
+        if(isRight){
+            document.write('该数组全是数字')
+            
+        }else{
+            document.write('该数组有非数字');
+        }
+    }
+    // isArrayNumber([1,2,3,4,5]);
+
+    //2-4
+    function isPalindrome(array){
+        //倒序存放数组，判断两个数组是否一致
+        var copyArr = array.slice(0);//复制数组
+        copyArr.reverse();
+        // 判断数据一致
+        for(var i=0;i<array.length;i++){
+            if(copyArr[i]!=array[i]){
+                document.write('不是回文数组')
+                break;
+            }else{
+                if(array.length-1==i){
+                    document.write('是回文数组')
+                }
+            }
+        }
+
+    }
+    // isPalindrome([2,2,3,2,1])
+
+    //2-5 
+    
+    var data = 2;
+    function getCount(num){
+        var arr = [1,2,3,3,2,1,2,3,1];
+        // 1. 找到所有数据出现过的下标   2. 删除一次，再判断还有，有就继续删  3.获取出现的次数
+        var count = 0;
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]==num){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    var c = getCount(data);
+    document.write(c);
+    </script>
+  </body>
+</html>

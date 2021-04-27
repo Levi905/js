@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr1 =[1,2,3,'c',7,4,'b',9,'a',8,6,5,'z'];
+        //默认排序
+        // arr1.sort();
+        // document.write(arr1);
+
+        var arr2 = [123,432,111,65,4,234,996,332];
+        // arr2.sort();
+        //自定义排序
+        function demo(num1,num2){
+            //表示数组中相邻的两个数据，根据return的结果来进行排序。
+            //如果return的结果大于0，那么num1就排在num2前面
+            //如果return的结果小于0，那么num1就排在num2后面
+            //如果return的结果==0，那么num1num2会挨在一起
+            return  num2 -num1;
+        }
+        //排序
+        // arr2.sort(demo);
+        // arr2.sort(function(num1,num2){
+        //     return num2 -num1;
+        // })
+        
+
+        //打乱顺序
+        arr2.sort(function(num1,num2){return Math.random()-0.5})
+        document.write(arr2);
+    </script>
+</body>
+</html>

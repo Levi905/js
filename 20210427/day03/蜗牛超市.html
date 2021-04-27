@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //所有商品信息
+        var goods =[
+            // 编号 名称 库存 价格  描述  销量
+            ['001','卫龙辣条',900,12,'好吃又不贵',0],
+            ['002','AD钙奶',1000,4,'经典的味道',0],
+            ['003','O泡果奶',100,8,'好喝有点小贵',0],
+            ['004','中华香烟',1200,50,'吸烟有害健康',0]
+        ];
+        //购物车
+        var shopcar = [
+            // 编号  数量 总价
+        //    ['001',2,24]
+        ];
+        //用户
+        var user = ['admin','ad123'];
+
+        //程序流程
+        /*
+        流程 :
+        1. 登录流程，登录成功后进入顾客菜单
+        2. 显示顾客菜单，选择对应功能
+        3. 利用循环重复第二步
+        */
+       var input = prompt('欢迎使用蜗牛超市系统\n 请输入选项： 1. 登录  2.退出');
+       switch (input) {
+           case "1"://登录
+               var result = login();
+               if(result){
+                   alert('登录成功');
+                   //进入二级菜单
+                   meunTwo();
+               }else{
+                   alert('用户名或密码错误');
+               }
+               break;
+            case "2":alert('感谢使用蜗牛超市系统！欢迎再次光临');break;
+       }
+        
+        /*
+        函数： 
+        1. 登录
+        2. 查看购物车
+        3. 购物
+        4. 结账
+        5. 二级菜单
+        */
+       //二级菜单
+       function meunTwo(){
+           var isRun = true;
+           while(isRun){
+                var input = prompt('1. 查看购物车 2. 继续购物 3. 结账 4. 退出超市');
+                switch (input) {
+                    case "1"://查看购物车
+                    showShopCar();
+                    break;
+                    case "2"://继续购物
+                    goShopping();
+                    break;
+                    case "3"://结账
+                    pay();
+                    break;
+                    case "4"://退出超市
+                    isRun =false;
+                    break;
+                }
+           }
+       }
+       // 继续购物 
+       function goShopping(){
+           // 显示所有商品
+           var str = "商品编号    商品名称   商品库存   商品价格   商品描述  商品销量\n";
+           for(var i=0;i<goods.length;i++){
+               //追加每个商品的字符串并添加换行符
+               str += goods[i].join("         ");
+               str += '\n';
+           }
+           str+="请输入你要购物商品的编号: ";
+           //输入商品编号以及数量
+           var id =prompt(str);
+           var num = Number(prompt(`预购买商品编号为:${id},请输入你要购买的数量:`));
+           //加入购物车
+           //需要获得该件商品的总价:数量 *单价
+           //单价
+           var price;
+           //遍历获取单价
+           for(var i=0;i<goods.length;i++){
+               if(goods[i][0]==id){
+                   price = goods[i][3];
+                   break;
+               }
+           }
+           //总价
+           var total = price *num;
+           //生成一维数组，并追加到购物车二维数组中
+           var arr = [id,num,total];
+           shopcar.push(arr);
+           alert('加入购物车成功');
+       }
+
+
+        //登录,将登录的结果通过返回值来返回给函数调用的地方
+        function login(){
+            var result  = false;//假设登录失败
+            //用户输入并利用数组进行判断
+            var userinput = prompt('请输入登录用户名');
+            var passinput = prompt('请输入登录密码');
+            if(userinput ==user[0] && passinput==user[1]){
+                result = true;//登录成功
+            }
+            return  result;
+        }
+
+        // 查看购物车
+        function showShopCar(){
+            var total = 0;//购物车总价
+            // 显示数据
+            var str = "商品编号   商品数量   该商品的总价\n";
+            for(var i=0;i<shopcar.length;i++){
+               //追加每个购物车中一件商品的字符串并添加换行符
+               str += shopcar[i].join("              ");
+               str += '\n';
+               ////当前的购物车总价,获取每件商品的总价进行累加
+               total+=shopcar[i][2];
+            }
+            str+=`当前购物车的总价格为：${total}`;
+            //输出拼接之后的字符串
+            alert(str);
+        }
+        //结账
+        function pay(){
+            //计算总价格
+            var total =0; 
+            for(var i=0;i<shopcar.length;i++){
+               total+=shopcar[i][2];
+            }
+            //用户付款
+            var money = Number(prompt('请输入支付的金额'));
+            //判断款项是否足够，并给出提示
+            if(money>=total){
+                alert(`付款成功，您的找零为${money-total}`);
+                //清空购物车
+                // shopcar.length=0;
+                shopcar=[];
+            }else{
+                alert('金额不足，无法完成支付');
+            }
+        }
+        // 力扣：完成数组的去重。
+        
+
+    </script>
+</body>
+</html>

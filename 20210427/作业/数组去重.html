@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,4,5,23,45,12,34,53,143,4332,43,4,34,45,53,143,143,1,1,12,2,3,4,4,4,5,5,5,12,12,1,12,34,343,43,34];
+        function type(num1,num2){
+            return num1-num2;
+        }
+        arr.sort(type);
+        document.write(arr+"<br>");
+        var newArr = [arr[0]];
+        for(var i = 0;i<arr.length-1;i++){
+            if (arr[i+1]!=arr[i]) {
+                newArr.push(arr[i+1]);
+            }
+        }
+        document.write(newArr);
+    </script>
+</body>
+</html>
