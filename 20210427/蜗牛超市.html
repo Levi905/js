@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <script>
 
         //定义全部商品数据的数组
-        var commodity = [];
+        var commodity = [
+            ['001', '卫龙辣条', 900, 12, '好吃又不贵', 0],
+            ['002', 'AD钙奶', 1000, 4, '经典的味道', 0],
+            ['003', 'O泡果奶', 100, 8, '好喝有点小贵', 0],
+            ['004', '中华香烟', 1200, 50, '吸烟有害健康', 0]
+        ];
         //定义购物车的数组
         var shopCar = [];
         //定义管理员登陆的用户名
@@ -20,44 +27,44 @@
         var password = "admin123";
         //定义最外层程序流程的循环或者结束标记
         var flag = true;
-        
+
         //程序流程
-        while(flag){
+        while (flag) {
             //第一层角色登陆：1、管理；2、顾客
             var login = Number(prompt("请输入数字选择登陆方式：1、管理员登陆；2、顾客登陆；5、退出超市系统；输入其它则会重新选择"));
-            switch(login){
+            switch (login) {
                 case 1:
-                //管理员登陆需要验证用户名和密码
-                var loginUser = prompt("请输入用户名");
-                var loginPsd = prompt("请输入密码");
-                var a = loginf(loginUser,loginPsd);
-                if(a == true){
-                    alert("登录成功");
-                    adminMenu();
-                }else{
-                    alert("登录失败");
-                }
-                    ;break;
+                    //管理员登陆需要验证用户名和密码
+                    var loginUser = prompt("请输入用户名");
+                    var loginPsd = prompt("请输入密码");
+                    var a = loginf(loginUser, loginPsd);
+                    if (a == true) {
+                        alert("登录成功");
+                        adminMenu();
+                    } else {
+                        alert("登录失败");
+                    }
+                    ; break;
                 case 2:
-                //顾客登陆，可以直接进入菜单不用验证
-                
-                    ;break;
+                    //顾客登陆，可以直接进入菜单不用验证
+                    userMenu()
+                        ; break;
                 case 5:
-                flag = false;
-                    ;break;
+                    flag = false;
+                    ; break;
                 default:
-                alert("输入不合法请重新输入");
+                    alert("输入不合法请重新输入");
                     break;
 
             }
         }
 
         //登录函数
-        function loginf(user,psd){
+        function loginf(user, psd) {
             var f = true;
-            if(user == administrator && psd == password){
+            if (user == administrator && psd == password) {
                 alert("ok");
-            }else{
+            } else {
                 alert("no");
                 f = false;
             }
@@ -65,17 +72,97 @@
         }
 
         //二级菜单-------管理员
-        function adminMenu(){
+        function adminMenu() {
             alert("欢迎进入管理员菜单");
-            
+
         }
 
 
         //二级菜单-------顾客
-        function userMenu(){
+        function userMenu() {
             alert("欢迎进入超市");
+            var flagUser = true;
+            while (flagUser) {
+                var u = Number(prompt("请输入数字进行操作：1、查看购物车 2、继续购物 3、结账 4、退出超市"));
+                switch (u) {
+                    case 1:
+                        showShopCar()
+                            ; break;
+                    case 2:
+                        shopping()
+                            ; break;
+                    case 3:
+                        pay()
+                            ; break;
+                    case 4:
+                        flagUser = false;
+                        break;
+                }
+            }
+        }
+        function showShopCar() {
+            var sum = 0;
+            var str = "商品编号   商品数量   该商品的总价\n";
+            for (var i = 0; i < shopCar.length; i++) {
+                str += shopCar[i].join("              ");
+                str += '\n';
+                sum = sum + shopCar[i][2];
+            }
+            str += `当前购物车的总价格为：${sum}`;
+            alert(str);
+        }
 
+        function shopping() {
+            var str = "商品编号    商品名称   商品库存   商品价格   商品描述  商品销量\n";
+            for (var i = 0; i < commodity.length; i++) {
+                str += commodity[i].join("         ");
+                str += '\n';
+            }
+            str += "请输入你要购物商品的编号: ";
+            var id = prompt(str);
+            var num = Number(prompt(`预购买商品编号为:${id},请输入你要购买的数量:`));
+            var price;
+            for (var i = 0; i < commodity.length; i++) {
+                if (commodity[i][0] == id) {
+                    price = commodity[i][3];
+                    break;
+                }
+            }
+            var total = price * num;
+            var arr = [id, num, total];
+            shopCar.push(arr);
+            alert('加入购物车成功');
+        }
+
+        function pay(){
+            var total = 0;
+            for(var i = 0;i<shopCar.length;i++){
+                total = total+shopCar[i][2];
+            }
+            var money = Number(prompt('请输入支付的金额'));
+            if(money>=total){
+                alert(`付款成功，您的找零为${money-total}`);
+                shopCar=[];
+            }else{
+                alert('金额不足，无法完成支付');
+            }
         }
     </script>
+    <script>
+        var arr = [1,4,5,23,45,12,34,53,143,4332,43,4,34,45,53,143,143,1,1,12,2,3,4,4,4,5,5,5,12,12,1,12,34,343,43,34];
+        function type(num1,num2){
+            return num1-num2;
+        }
+        arr.sort(type);
+        document.write(arr+"<br>");
+        var newArr = [arr[0]];
+        for(var i = 0;i<arr.length-1;i++){
+            if (arr[i+1]!=arr[i]) {
+                newArr.push(arr[i+1]);
+            }
+        }
+        document.write(newArr);
+    </script>
 </body>
+
 </html>
