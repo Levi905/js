@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,37 +9,40 @@
 </head>
 
 <style>
-    div{
+    div {
         font-size: 48px;
         line-height: 63px;
         text-align: center;
     }
-    #box{
+
+    #box {
         width: 500px;
         height: 400px;
         display: flex;
         flex-wrap: wrap;
-        
+
     }
-    #result{
+
+    #result {
         width: 500px;
         height: 30px;
 
     }
-    .number{
+
+    .number {
         width: 115px;
         height: 63px;
         border: 5px skyblue solid;
         background-color: salmon;
     }
-
 </style>
+
 <body>
-    
+
     <div id="box">
         <input id="result" type="text" value=" ">
-        <div class="number">AC</div>
-        <div class="number">+/-</div>
+        <div class="number" onclick="oncliceZero()">AC</div>
+        <div class="number" onclick="onclicePN()">+/-</div>
         <div class="number" onclick="onclickSymbol('%')">%</div>
         <div class="number" onclick="onclickSymbol('/')">÷</div>
         <div class="number" onclick="onclickNumber('7')">7</div>
@@ -60,19 +64,42 @@
     </div>
 
     <script>
-        function onclickNumber(num){
-            var input = document.querySelector("#result"); 
+        function onclickNumber(num) {
+            var input = document.querySelector("#result");
             input.value += num;
         }
-        function onclickSymbol(symbol){
-            var input = document.querySelector("#result"); 
-            input.value += symbol;
+        function onclickSymbol(symbol) {
+            var input = document.querySelector("#result");
+            var l = input.value.length;
+            var str = input.value;
+            if (typeof (Number(str[l - 1])) == "number" && !isNaN(Number(str[l - 1]))) {
+                input.value += symbol;
+            } else {
+                alert("no");
+            }
         }
-        function onclickResult(){
-            var input = document.querySelector("#result"); 
+        function onclickResult() {
+            var input = document.querySelector("#result");
             var a = eval(input.value);
             input.value = a;
         }
+        function oncliceZero() {
+            var input = document.querySelector("#result");
+            input.value = " ";
+        }
+        function onclicePN() {
+            var input = document.querySelector("#result");
+            var l = input.value.length;
+            var str = input.value;
+            if (typeof (Number(str[l - 1])) == "number" && !isNaN(Number(str[l - 1]))) {
+                var a = eval(input.value * (-1));
+                input.value = a;
+            }else{
+                alert("no");
+            }
+
+        }
     </script>
 </body>
+
 </html>
