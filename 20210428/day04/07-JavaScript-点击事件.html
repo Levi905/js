@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 点击的时候调用一个函数 -->
+    <button onclick="demo()">登录</button>
+    <button id="reg-btn">注册</button>
+    <script>
+        //1 
+        function demo(){
+            console.log('被点击了');
+            
+        }
+
+        // 2获取HTML标签，并设置点击
+        var button = document.querySelector('#reg-btn');
+        button.onclick = function(){
+            console.log('button被点击了')
+        }
+    </script>
+</body>
+</html>

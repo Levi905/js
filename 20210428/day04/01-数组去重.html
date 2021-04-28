@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+        1.利用嵌套for循环完成对原数组遍历及去重
+        2.对原数组进行排序，设置循环变量j来进行遍历，利用新变量i来记录不重复数据的数量。遍历完后，数组长度减去数组长度-i即可
+        3.新建一个数组，遍历旧的数组，如果旧数组中的数据不在新数组中，就把该数据添加到新数组中
+        4.新建一个数组，对原数组进行排序，排序后遍历原数组判断相邻数据是否存在
+        5.去重最终奥义.set(ES6)
+         */
+        var arr = [2,3,1,1,1,1,3,3,3,6,5,5,6,7,4,8];
+        // 5. set去重
+        //var newArr = [...new Set(arr)];
+        // document.write(newArr);
+        //document.write(arr);
+
+        // 1. 2. 对原数组进行去重操作
+
+        // 2 
+         //由小到大
+        arr.sort(function(num1,num2){
+            return num1- num2;
+        });
+        var i =0;//表示不重复数据的下标
+        for(var j=1;j<arr.length;j++){
+            //让下标为j的数据和下标为i的数据进行对比。
+            //如果不一样，那么i++,并把下标为j的数据赋给下标为1的位置
+            if(arr[j]!=arr[i]){
+                i++;//给数据腾出一个位置
+                arr[i]=arr[j];
+            }
+        }
+        //i其实就是最后一个不重复数据的下标，i后面的位置就可以直接删除
+        // arr.splice(i+1);//删除下标为i+1及后续所有位置的数据
+         arr.length=i+1;
+        document.write(arr);
+        // document.write("<br>"+i);
+
+
+
+
+        //1. 遍历原数组，然后for循环里面遍历其他数据，如果有一样的，那么利用splice删除其中一个即可。
+        // for(var i=0;i<arr.length;i++){
+        //     //再次遍历数组，将其他的数据依次和arr[i]进行对比，有重复的就删除
+        //     // i=1 即数字3去重  第一次删除的下标j=6  删除后j++继续遍历,j=7,对比就漏了一个，所以j--;
+        //     for(var j=i;j<arr.length;j++){
+        //         if(arr[i]==arr[j]&&i!=j){
+        //             arr.splice(j,1);
+        //             j--;
+        //         }
+        //     }
+        // }
+        // document.write(arr);
+
+
+
+        // 新建数组 3 4 
+        //4.
+        //由小到大
+        // arr.sort(function(num1,num2){
+        //     return num1- num2;
+        // });
+        // //遍历原数组，从1开始，和前一个数据进行比较，如果不一样，那么追加新数组中，一样则不管。
+        // var newArr = [arr[0]];
+        // for(var i=1;i<arr.length;i++){
+        //     if(arr[i]!=arr[i-1]){
+        //         newArr.push(arr[i]);
+        //     }
+        // }
+        // document.write(newArr);
+
+        
+
+
+        // 3. 
+        // var newArr =[];
+        // for(var i=0;i<arr.length;i++){
+        //     //判断没有的话加入新数组中
+        //     if(newArr.indexOf(arr[i])==-1){
+        //         newArr.push(arr[i]);
+        //     }
+        // }
+         //document.write(arr);
+        
+    </script>
+</body>
+</html>

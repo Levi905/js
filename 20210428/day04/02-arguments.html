@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //需求 ： 定义一个函数，传入两个字符串，返回拼接后的字符串
+        // 要拼接的字符串数量不定->即实际参数的数量不固定--arguments来解决
+        /*
+        function addStr(str1,str2){
+            return str1 +str2;
+        }
+        var s = addStr('hello','woniu','111','222','333');
+        document.write(s);
+        */
+        //arguments解决不定数量的实际参数的问题
+        //基本使用
+        function demo(){
+            console.log(arguments);
+        }
+        demo("1",'2','3');
+
+        //arguments应用
+        //任意数量的字符串拼接
+        function addStr(){
+            var str = "";
+            for(var i=0;i<arguments.length;i++){
+                str+=arguments[i];
+            }
+            return str;
+        }
+        var s = addStr('hello','woniu','111','222','333','444','55');
+        // document.write(s);
+
+
+        //模拟push
+        var arr =[1,2,3,4];
+        
+        function push(array){
+            //第一个参数必须是数组.length==undefined说明没有length，不是数组。
+            // 同时字符串本身自带一个length,所以要去掉字符串
+            if(array.length ==undefined || typeof array =="string"){
+                return;
+            }
+            //实际参数的第一个指数组，从第二个开始，就是要添加的数据
+            for(var i=1;i<arguments.length;i++){
+                array[array.length]=arguments[i];
+            }
+            return arr;
+        }
+        arr = push(arr,5);
+        arr = push(arr,6,7,8);
+        // document.write(arr);//[1,2,3,4,5,6,7,8]
+
+        // 练习：模拟数组的pop函数，实现删除多个数据
+        var arr2 = [12,34,78,56,12,"78",34];
+        function pop(array){
+            //for是为了遍历获取要删除的数据
+            for(var i=1;i<arguments.length;i++){
+                //删除数组中所有等于arguments[i]的数据
+                while(array.indexOf(arguments[i])!=-1){
+                    array.splice(array.indexOf(arguments[i]),1);
+                }
+            }
+            return array;
+        }
+        arr2 =pop(arr2,12,34,"78");//删除数组里的所有12 和34 和"78"
+        document.write(arr2);
+    </script>
+</body>
+</html>

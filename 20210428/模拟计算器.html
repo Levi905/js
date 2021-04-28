@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    div{
+        font-size: 48px;
+        line-height: 63px;
+        text-align: center;
+    }
+    #box{
+        width: 500px;
+        height: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    #result{
+        width: 500px;
+        height: 30px;
+
+    }
+    .number{
+        width: 115px;
+        height: 63px;
+        border: 5px skyblue solid;
+        background-color: salmon;
+    }
+
+</style>
+<body>
+    
+    <div id="box">
+        <input id="result" type="text" value=" ">
+        <div class="number">AC</div>
+        <div class="number">+/-</div>
+        <div class="number" onclick="onclickSymbol('%')">%</div>
+        <div class="number" onclick="onclickSymbol('/')">÷</div>
+        <div class="number" onclick="onclickNumber('7')">7</div>
+        <div class="number" onclick="onclickNumber('8')">8</div>
+        <div class="number" onclick="onclickNumber('9')">9</div>
+        <div class="number" onclick="onclickSymbol('*')">*</div>
+        <div class="number" onclick="onclickNumber('4')">4</div>
+        <div class="number" onclick="onclickNumber('5')">5</div>
+        <div class="number" onclick="onclickNumber('6')">6</div>
+        <div class="number" onclick="onclickSymbol('+')">+</div>
+        <div class="number" onclick="onclickNumber('1')">1</div>
+        <div class="number" onclick="onclickNumber('2')">2</div>
+        <div class="number" onclick="onclickNumber('3')">3</div>
+        <div class="number" onclick="onclickSymbol('-')">-</div>
+        <div class="number" onclick="onclickNumber('0')">0</div>
+        <div class="number" onclick="onclickNumber('.')">.</div>
+        <div class="number" onclick="onclickNumber('00')">00</div>
+        <div class="number" onclick="onclickResult()">=</div>
+    </div>
+
+    <script>
+        function onclickNumber(num){
+            var input = document.querySelector("#result"); 
+            input.value += num;
+        }
+        function onclickSymbol(symbol){
+            var input = document.querySelector("#result"); 
+            input.value += symbol;
+        }
+        function onclickResult(){
+            var input = document.querySelector("#result"); 
+            var a = eval(input.value);
+            input.value = a;
+        }
+    </script>
+</body>
+</html>

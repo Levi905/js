@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <input type="text" id="demo" value="123">
+    <button class="btn">登录</button>
+    <a href="#">百度一下</a>
+    <div id="box">
+        <p>这是box里的第一个p标签</p>
+        <p>这是box里的第二个p标签</p>
+    </div>
+
+    <script>
+        //获取input标签的内容
+        var input = document.querySelector("#demo");
+        //获取input 内容
+        var text = input.value;
+        //修改input内容
+        input.value = 456;
+        // console.log(text);
+        //获取div里的第一个p标签并获取其内容
+        var p = document.querySelector("#box p");
+        // console.log(p.innerText);
+        //修改p标签内容
+        p.innerText = "内容被js修改了";
+
+        //innerHTML 
+        var div = document.querySelector('#box');
+        // console.log(div.innerHTML);
+        // console.log(div.innerText);
+        //修改div内的内容
+        // div.innerHTML = "<a href='http://www.baidu.com'>百度一下</a>";
+        div.innerText ="<p>div的innerText</p>";
+        
+        
+    </script>
+</body>
+</html>
