@@ -9,12 +9,12 @@
     <h1>学生信息管理系统</h1>
     <h2>学生添加</h2>
     姓名:<input type="text" id="username">
-    年龄: <button >-</button> <input type="number" id="age" value="1" readonly> <button onclick="addAge()">+</button>
+    年龄: <button onclick="deleteAge()">-</button> <input type="number" id="age" value="1" readonly> <button onclick="addAge()">+</button>
     性别: <select name="" id="sex">
         <option value="男" selected>男</option>
         <option value="女">女</option>
     </select>
-    <button >添加</button>
+    <button onclick="addStudent()">添加</button>
     <h2>学生列表</h2>
     <table>
         <thead>
@@ -26,16 +26,36 @@
             </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td>周星星</td>
-            <td>12</td>
-            <td>男</td>
-            <td><button>开除</button></td>
-          </tr> -->
+
         </tbody>
     </table>
-    <script >
-       
+    <script>
+        function deleteAge(){
+            var age = document.querySelector("#age");
+            age.value--;
+        }
+        function addAge(){
+            var age = document.querySelector("#age");
+            age.value++;
+        }
+        function addStudent(){
+            var studentName = document.querySelector("#username").value;
+            var studentAge = document.querySelector("#age").value;
+            var studentSex = document.querySelector("#sex").value;
+            var operation = 'onclick="deleteSelf()"';
+            var newStudent = document.createElement("tr");
+            newStudent.innerHTML = `<th>${studentName}</th>
+                                    <th>${studentAge}</th>
+                                    <th>${studentSex}</th>
+                                    <button ${operation} id="operation">开除</button>`;
+            var f = document.querySelector("tbody");
+            f.appendChild(newStudent);
+        }
+        function deleteSelf(){
+            var del = document.querySelector("#operation").parentElement;
+            var f = document.querySelector("tbody");
+            f.removeChild(del);
+        }
     </script>
 </body>
 </html>
