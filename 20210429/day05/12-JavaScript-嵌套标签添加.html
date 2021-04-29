@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addDiv()">添加一个div </button>
+    <!-- 一个div -->
+    <!-- <div>
+        <button onclick="sub(this)">-</button>
+        年龄:<input type="text" value="1" id="demo2"/>
+        <button onclick="add(this)">+</button>
+    </div> -->
+    <script>
+        //需求：通过按钮新增一个包含button和input的div
+        function addDiv(){
+            var newDiv = document.createElement('div');
+            //设置div的内部标签
+            newDiv.innerHTML=`
+            <button onclick="sub(this)">-</button>
+        年龄:<input type="text" value="1" id="demo2"/>
+        <button onclick="add(this)">+</button>
+            `;
+            //将div放在页面上
+            document.body.appendChild(newDiv);
+        
+        }
+
+    </script>
+</body>
+</html>

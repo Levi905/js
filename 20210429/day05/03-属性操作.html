@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="img/id1.jpg" alt="" id="img" />
+    <a href="http://www.baidu.com">百度一下</a>
+    <button onclick="changeImg()">修改图片</button>
+
+    <script>
+      //var img = document.querySelector("#img");
+      //获取src属性
+      //var src = img.getAttribute("src");
+      //输出
+    //   document.write(src);
+
+      //获取a标签的跳转地址
+      //var a = document.querySelector('a');
+    //   var href = a.getAttribute('href');
+    //   document.write(href);
+
+
+    //设置
+    // 修改图片地址为img/id2.jpg
+    // img.setAttribute('src','img/id2.jpg');
+
+    // 修改超链接地址为qq官网
+   // a.setAttribute("href","http://www.qq.com");
+
+    //点击按钮，实现图片地址切换到img/id3.jpg
+
+    function changeImg(){
+        //1.获取标签
+        var img = document.querySelector('#img');
+        //2 设置属性
+        img.setAttribute('src','img/id3.jpg');
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num"> <button onclick="changeImg()">更改图片</button>
+    <button onclick="randomImg()">随机图片</button> <br>
+    <img src="img/id1.jpg" alt="" id="img">
+    
+    <script>
+        //随机
+        function randomImg(){
+            //随机1-8 
+            var random =1+ parseInt(Math.random()*8);
+            //字符串拼接
+            var src = `img/id${random}.jpg`;
+            //数字放入src中，即更改img的src
+            var img = document.querySelector('#img');
+            img.setAttribute('src',src);
+        }
+        //更改
+        function changeImg(){
+            //图片的地址由input提供
+            // 获取input里的内容
+            // 赋给图片.src 
+            var input = document.querySelector('#num');
+            //字符串拼接
+            var src = `img/${input.value}.jpg`;
+            //修改图片的src
+            var img =document.querySelector('#img');
+            img.setAttribute('src',src);
+        }
+    </script>
+</body>
+</html>

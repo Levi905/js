@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="delImg()">删除一个图片</button>
+    <button onclick="delAllImg()">删除所有图片</button>
+    <img src="img/id1.jpg" alt="">
+    <img src="img/id2.jpg" alt="">
+    <img src="img/id3.jpg" alt="">
+    <img src="img/id4.jpg" alt="">
+
+    <script>
+        //点击一个按钮，实现删除图片操作
+        function delImg(){
+            //1. 找到父标签以及待删除的标签
+            var img = document.querySelector('body > img');
+            document.body.removeChild(img);
+        }
+        //删除所有图片
+        function delAllImg(){
+            //1. 找到所有待删除的图片
+            var imgs = document.querySelectorAll('body >img');
+            //2. 遍历，父标签依次删除
+            for(var i=0;i<imgs.length;i++){
+                document.body.removeChild(imgs[i]);
+            } 
+            
+        }
+    </script>
+</body>
+</html>

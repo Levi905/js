@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addImg()">添加一张图片</button>
+    <button onclick="addImg2()">在开头添加一张图片</button>
+    <button onclick="delOne()">删除第一张图片</button>
+    <button onclick="delAll()">删除所有图片</button>
+    <br>
+    <script>
+        function addImg(){
+            //1. 
+            var newImg = document.createElement('img');
+            //设置新标签的内容或属性
+            //随机 1~8
+            var num =parseInt( Math.random()*8)+1;
+            newImg.setAttribute('src',`img/id${num}.jpg`);
+            //设置onclick属性，实现点击自己，删除本身
+            newImg.setAttribute('onclick','delSelf(this)');
+            //2 
+            document.body.appendChild(newImg);
+        }
+
+        function delOne(){
+            //找到标签
+            var img =document.querySelector('body >img');
+            document.body.removeChild(img);
+        }
+
+        //删除所有
+        function delAll(){
+            var imgs =document.querySelectorAll("body >img");
+            for(var i=0;i<imgs.length;i++){
+                document.body.removeChild(imgs[i]);
+            }
+        }
+        //删除本身
+        function delSelf(img){
+            document.body.removeChild(img);
+        }
+    </script>
+</body>
+</html>

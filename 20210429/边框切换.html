@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 100px;
+        background-color: rosybrown;
+        margin-bottom: 10px;
+        text-align: center;
+        font-size: 48px;
+        line-height: 100px;
+    }
+    .activite{
+        background-color: salmon;
+    }
+
+</style>
+
+<body>
+
+    <div onclick="onclickChange1()" class="">1</div>
+    <div onclick="onclickChange2()" class="">2</div>
+    <div onclick="onclickChange3()" class="">3</div>
+    <div onclick="onclickChange4()" class="">4</div>
+
+    <script>
+        function onclickChange1(){
+            var div = document.querySelectorAll("div");
+            for(var i = 0;i<div.length;i++){
+                if (i == 0) {
+                    div[i].setAttribute("class","activite");
+                }else{
+                    div[i].setAttribute("class","");
+                }
+            }
+        }
+        function onclickChange2(){
+            var div = document.querySelectorAll("div");
+            for(var i = 0;i<div.length;i++){
+                if (i == 1) {
+                    div[i].setAttribute("class","activite");
+                }else{
+                    div[i].setAttribute("class","");
+                }
+            }
+        }
+        function onclickChange3(){
+            var div = document.querySelectorAll("div");
+            for(var i = 0;i<div.length;i++){
+                if (i == 2) {
+                    div[i].setAttribute("class","activite");
+                }else{
+                    div[i].setAttribute("class","");
+                }
+            }
+        }
+        function onclickChange4(){
+            var div = document.querySelectorAll("div");
+            for(var i = 0;i<div.length;i++){
+                if (i == 3) {
+                    div[i].setAttribute("class","activite");
+                }else{
+                    div[i].setAttribute("class","");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

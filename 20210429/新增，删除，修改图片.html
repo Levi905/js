@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="请输入图片编号" id="inputValue">
+    <button onclick="changeImg()">更改图片</button>
+    <button onclick="changeImg2()">随机更改图片</button>
+    <button onclick="insertImg()">在开头添加一张图片图片</button>
+    <button onclick="addImg()">随机添加图片</button>
+    <button onclick="deleteImg()">删除图片</button>
+    <button onclick="deleteAllImg()">删除所有图片</button><br>
+    <img src="./day05/img/id1.jpg" alt="">
+
+    <script>
+        function changeImg(){
+            var i = document.querySelector("#inputValue");
+            var str = i.value;
+            var img = document.querySelector("#img");
+            var src = img.getAttribute("src");
+            img.setAttribute("src",`./day05/img/${str}.jpg`);
+        }
+        function changeImg2(){
+            var str = parseInt(Math.random()*7+1);
+            var img = document.querySelectorAll("img");
+            var R = parseInt(Math.random()*img.length);
+            var src = img[R].getAttribute("src");
+            img[R].setAttribute("src",`./day05/img/id${str}.jpg`);
+        }
+        function insertImg(){
+            var str = parseInt(Math.random()*7+1);
+            var insertImg = document.createElement("img");
+            insertImg.setAttribute("src",`./day05/img/id${str}.jpg`);
+            insertImg.setAttribute("onclick",`delMyself(this)`);
+            var b = document.querySelector("body img");
+            document.body.insertBefore(insertImg,b);
+        }
+        function addImg(){
+            var str = parseInt(Math.random()*7+1);
+            var newImg = document.createElement("img");
+            newImg.setAttribute("src",`./day05/img/id${str}.jpg`);
+            newImg.setAttribute("onclick",`delMyself(this)`);
+            document.body.appendChild(newImg);
+        }
+        function deleteImg(){
+            var delImg = document.querySelector("img");
+            document.body.removeChild(delImg);
+        }
+        function deleteAllImg(){
+            var delAllImg = document.querySelectorAll("img");
+            for(var i = 0;i<delAllImg.length;i++){
+                document.body.removeChild(delAllImg[i]);
+            }
+        }
+        function delMyself(self){
+            document.body.removeChild(self);
+        }
+    </script>
+
+
+</body>
+</html>

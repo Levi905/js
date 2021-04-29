@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="请输入图片编号" id="inputValue">
+    <button onclick="changeImg()">更改图片</button><br>
+    <button onclick="changeImg2()">随机更改图片</button><br>
+    <img src="./day05/img/id1.jpg" alt="" id="img">
+
+    <script>
+        function changeImg(){
+            var i = document.querySelector("#inputValue");
+            var str = i.value;
+            var img = document.querySelector("#img");
+            var src = img.getAttribute("src");
+            img.setAttribute("src",`./day05/img/${str}.jpg`);
+        }
+        function changeImg2(){
+            var str = parseInt(Math.random()*7+1);
+            var img = document.querySelector("#img");
+            var src = img.getAttribute("src");
+            img.setAttribute("src",`./day05/img/id${str}.jpg`);
+        }
+    </script>
+</body>
+</html>

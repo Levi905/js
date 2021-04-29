@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list{
+            width: 1000px;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-content: stretch;
+        }
+        #list div{
+            width: 200px;
+            height: 100px;
+            border:1px solid #ccc;
+            line-height: 100px;
+            font-size: 50px;
+            font-weight: bolder;
+            text-align: center;
+        }
+        #list .active{
+            border:1px solid darkred;
+        }
+    </style>
+</head>
+<body>
+    <div id="list">
+        <div onclick="changeClass(0)">1</div>
+        <div onclick="changeClass(1)">2</div>
+        <div onclick="changeClass(2)">3</div>
+        <div onclick="changeClass(3)">4</div>
+    </div>
+    <script>
+        
+        function changeClass(num){
+            //获取所有的div，给点击的div添加class=active
+            var divs  = document.querySelectorAll('#list div');           
+            //干掉其他div的class
+            for(var i=0;i<divs.length;i++){
+                divs[i].setAttribute('class','');
+            }
+            //再单独设置点击div的class
+
+            divs[num].setAttribute('class','active');
+        }
+    </script>
+    
+</body>
+</html>

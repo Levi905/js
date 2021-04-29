@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border:1px solid darkred;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div>这是一个新的div</div> -->
+    <!-- <div>
+        <p>这是div里的p标签</p>
+    </div> -->
+    <script>
+        //例子：新建div，并作为body标签的最后一个子标签
+        //1.
+        var newDiv = document.createElement('div');
+        //填充新div的内容
+        // newDiv.innerText = "这是一个新的div";
+        newDiv.innerHTML = "<p>这是div里的p标签</p>";
+        //2. 找到body并添加子标签
+        document.body.appendChild(newDiv);
+
+    </script>
+</body>
+</html>

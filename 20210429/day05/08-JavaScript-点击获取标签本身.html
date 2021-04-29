@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--1. this指的是被点击的标签本身,作为实际参数传入到函数中 -->
+    <!-- <button onclick="demo(this)">点击</button> -->
+    <button>点击</button>
+    <script>
+        //1
+        // function demo(elem){
+        //     //形式参数elem指的是被点击的标签本身
+        //     console.log(elem);
+        //     //elem直接使用
+        //     elem.innerText = "被点击了";
+        //     //console.log('被点击了')
+        // }
+
+        //2 在函数里使用this
+        var button =document.querySelector('button');
+        button.onclick = function(){
+            //this指的是被点击的标签本身
+            this.innerText="被点击了";
+        }
+    </script>
+</body>
+</html>
