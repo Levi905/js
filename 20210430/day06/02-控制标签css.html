@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="display: inline-block;"></div>
+    <script>
+        var div = document.querySelector("div");
+        //设置css
+      
+      div.style.backgroundColor = "blue";
+    //   //设置宽高为300 ，50%圆角
+    //   div.style.width ="300px";
+    //   div.style.height ="300px";
+    //   div.style.borderRadius = "50%";
+
+    //获取css样式
+    //console.log(div.style.display);
+    // console.log(div.style.height);
+    var style = getComputedStyle(div,null);
+    console.log(style.width,style.height,style.borderRadius,style.backgroundColor);
+    </script>
+  </body>
+</html>

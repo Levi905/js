@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100px;
+      }
+      input {
+        width: 30px;
+      }
+      td {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button >添加商品</button>
+    <table border="1">
+      <tr>
+        <th>名称</th>
+        <th>图片</th>
+        <th>单价</th>
+        <th>操作</th>
+        <th>总价</th>
+      </tr>
+      <tr>
+        <td>卫龙辣条1</td>
+        <td><img src="img/id1.jpg" alt="" /></td>
+        <td>3.5</td>
+        <td>
+          <button onclick="sub(this)">-</button>
+          <input type="text" value="1" />
+          <button onclick="add(this)">+</button>
+          <button >删除</button>
+        </td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>卫龙辣条2</td>
+        <td><img src="img/id2.jpg" alt="" /></td>
+        <td>4</td>
+        <td>
+          <button onclick="sub(this)">-</button>
+          <input type="text" value="1" />
+          <button onclick="add(this)">+</button>
+          <button >删除</button>
+        </td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>卫龙辣条3</td>
+        <td><img src="img/id3.jpg" alt="" /></td>
+        <td>5</td>
+        <td>
+          <button onclick="sub(this)">-</button>
+          <input type="text" value="1" />
+          <button onclick="add(this)">+</button>
+          <button >删除</button>
+        </td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <!-- 总价格 -->
+        <td colspan="5"></td>
+      </tr>
+    </table>
+    <script>
+
+      function add(btn){
+       var input =  btn.previousElementSibling;
+       input.value++;
+       //调用函数，用于计算单个商品的总价
+       getOneGoodMoney(input);
+       //更新总价格
+       allGoodsTotalMoney();
+          }
+
+      function sub(btn){
+        var input =  btn.nextElementSibling;
+       input.value--;
+       //调用函数，用于计算单个商品的总价
+       getOneGoodMoney(input);
+       //更新总价格
+       allGoodsTotalMoney();
+      }
+
+
+      //计算单个商品的总价
+      function getOneGoodMoney(input){
+        //单价 * 数量
+        //数量
+        var count = input.value;
+        // 单价,input 的父标签(td)的上一个兄弟标签(td)
+        var price = input.parentElement.previousElementSibling.innerText;
+        var total = count *price;
+        // 把总价赋给input的父标签的下一个兄弟标签
+        input.parentElement.nextElementSibling.innerText = total;
+      }
+
+      //总价：获取tbody中的每一行的最后一个td，获取td的内容完成累加操作。
+
+      function allGoodsTotalMoney(){
+        //遍历tbody中的每一行
+        var tbody = document.querySelector('tbody');
+        var trs = tbody.children;
+        var sum = 0;//总价格
+        for(var i=1;i<trs.length-1;i++){
+          //获取每行最后一个td，并累加每个商品的总价
+          var last = trs[i].lastElementChild;
+          //累加
+          sum += Number(last.innerText);
+        }
+        // 累加结束,放入总价格中,找到最后一个tr的td
+        tbody.lastElementChild.firstElementChild.innerText = sum;
+        //console.log(sum);
+      }
+    </script>
+  </body>
+</html>

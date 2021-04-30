@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="pause();">暂停</button>
+    <button onclick="start();">继续</button> <br />
+    <img src="img/dengzq/Frame0.png" alt="" />
+
+    <script>
+      //切换图片 从0 到36
+      var img = document.querySelector("img");
+      // for(var i=0;i<=36;i++){
+      //     img.setAttribute('src',`img/dengzq/Frame${i}.png`);
+      // }
+      //间隔
+      var i = 0;
+      var timer;
+      //var isTimer = true;
+      function pause() {
+        clearInterval(timer);
+        // isTimer=true;
+        timer=undefined;
+      }
+
+      //开始或继续
+      function start() {
+        //if (isTimer == true) {
+        if(timer==undefined){
+          timer = setInterval(function () {
+            img.setAttribute("src", `img/dengzq/Frame${i}.png`);
+            i++;
+            if (i > 36) {
+              i = 0;
+            }
+          }, 100);
+          //isTimer = false;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <button>-</button>
+        <input type="text" >
+        <button>+</button>
+    </div>
+    <script>
+    // 通过div来获取其子标签
+       var div = document.querySelector('#box');
+       var first = div.firstElementChild;
+       var last = div.lastElementChild;
+       console.log(first);//<button>-</button>
+       console.log(last);//<button>+</button>
+       console.log(div.children);   //[button,input,button]    
+    </script>
+</body>
+</html>

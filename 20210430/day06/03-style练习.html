@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move {
+            0%{
+                transform: translate(0px);
+            }
+            100%{
+                transform: translate(100px);
+            }
+        }
+        .startAnimation{
+            animation: move 2s alternate infinite;
+        }
+    </style>
+</head>
+<body>
+    width: <input type="text" id="width">
+    height: <input type="text" id="height">
+    backgroundColor: <input type="text" id="bgColor"> 
+    <button onclick="testStyle()">测试</button>
+    <button onclick="addAnimation()">添加/删除动画</button>
+    <!-- 测试标签 -->
+    <div class=""></div>
+    <script>
+        function testStyle(){
+            // var widthinput = document.querySelector('#width');
+            // var width = widthinput.value;
+            var width = document.querySelector('#width').value;
+            var height = document.querySelector('#height').value;
+            var bgColor= document.querySelector('#bgColor').value;
+            //修改div样式
+            var div = document.querySelector('div');
+            div.style.width = width;
+            div.style.height = height;
+            div.style.backgroundColor = bgColor;
+        }
+        function addAnimation(){
+            var div = document.querySelector('div');
+            // div.setAttribute('class','startAnimation');
+            //删除
+            // div.setAttribute('class','');
+            // 对div的class属性进行判断
+            var classname = div.getAttribute('class');
+            //从动画切换至无动画
+            if(classname=="startAnimation"){
+                div.setAttribute("class",'');
+            }else{
+            //无动画切换至动画
+            div.setAttribute("class",'startAnimation');
+            }
+
+        }
+    </script>
+</body>
+</html>
