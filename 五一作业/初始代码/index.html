@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        //1. 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+        //你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍（难度：★★☆☆☆）
+
+        // function sum(nums,target){
+        //     var newNums=[];//空数组接收
+        //     for(var i= 0;i<nums.length;i++){
+        //         for(var j=0;j<nums.length;j++){
+        //             //判断和是不是相等
+        //             if(nums[i]+nums[j]==target){
+        //                 newNums.push(i);
+        //             }
+        //         }
+        //     }
+        //     return newNums;
+        // }
+        // var result = sum([2,7,9,11],11);
+        // console.log(result);
+
+        //2.指正序（从左向右）给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。回文数是和倒序（从右向左）读都是一样的整数。
+        //例如，121 是回文，而 123 不是（难度：★★☆☆☆）
+
+
+        // var i, j = '';
+        // function huiWen(num) {
+        //     var num1 = num;
+        //     while (num > 0) {
+        //         i = num % 10;//余10取出每次的个位数
+        //         num = parseInt(num / 10);//去掉每次已经去了的个位数
+        //         j += i;
+        //     }
+        //     document.write(j);
+        //     if (Number(j) == Number(num1)) {
+        //         document.write("shi");
+        //     }else{
+        //         document.write("bushi");
+        //     }
+        // }
+        // huiWen(12111);
+
+
+
+
+
+        //3.给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。
+        //如果不存在，则返回  -1 （难度：★★☆☆☆）
+
+        // function ziDu(haystack,needle){
+        //     var start = haystack.indexOf(needle);//获得字符串的开始位置
+        //     var result = haystack.substring(start,start+needle.length);//截取
+        //     return start;
+        // }
+        // var result = ziDu("hello","ll");
+        // document.write(result);
+
+
+
+
+        //4.输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。
+        //比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。输入2，则输出1 2 3 一直到99 ，二位数的最大值。 （难度：★★★☆☆）
+
+        // function max(num){
+        //     var str = "";
+        //     while(num>0){
+        //         str +=9; //判断是几就有几个9;
+        //         num--;
+        //     }
+        //     for(var i=1;i<=Number(str);i++){
+        //         document.write( i+"&nbsp");
+        //     }
+        // }
+        // max(2);
+
+        //5.实现一个函数，把字符串 str 中的每个空格替换成"%20"
+
+        //     function nbsp(str){
+        //         var str1 = [];//xin
+        //         for(var j = 0;j<str.length;j++){
+        //             str1.push(str[j]);
+        //             console.log(str1);
+        //         }
+        //         for(var i =0;i<str1.length;i++){
+        //             if(str1[i]==" "){//找到空格
+        //                 str1[i]="%20";
+        //             }
+        //         }
+        //         document.write(str1.join(''));
+        //     }
+        //    nbsp("hello wo");
+
+        //给你一个整数数组 nums，请你选择数组的两个不同下标 i 和 j，使 (nums[i]-1)*(nums[j]-1) 取得最大值。请你计算并返回该式的最大值。比如 [3,2,3,4]返回12。
+
+        //    function max(nums){
+        //    for(var i=0;i<nums.length-1;i++){
+        //        for(var j=i+1;j<nums.length;j++){
+        //            if(nums[i]>nums[j]){//排序把最大的放到最后两位
+        //                var num = nums[i];
+        //                nums[i]=nums[j];
+        //                nums[j]=num;
+        //            }
+        //        }
+        //    }
+        //   var max= (nums[nums.length-2]-1)*(nums[nums.length-1]-1);//最后两位的乘机
+        //   document.write(max);
+        //    }
+
+        //    max([1,2,3,2,4,2,6,7,3,3,2]);
+
+
+        //7.实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串（难度：★★☆☆☆）
+
+        // function allCaps(str) {
+        //     var arr=[];
+        //     for(var j=0;j<str.length;j++){
+        //         arr.push(str[j]);
+        //     }
+
+        //     for (var i = 0; i < arr.length; i++) {
+        //         var c = str.charCodeAt(i);//获取ascll值
+        //         if (c >= 65 && c <= 90) {
+        //             var num = c + 32;
+        //            arr[i]=String.fromCharCode(num);//将ascll转为字母
+        //         }
+        //     }
+        //    document.write(arr.join(''));
+        // }
+        // allCaps("HEllo")
+
+    //给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。比如[1,2,3,4,5]返回2 。因为只有2和4的位数是偶数
+
+    // function odd(nums){
+    //     var j=0;
+    //     for(var i = 0;i<nums.length;i++){
+    //         if(nums[i]%2==0){//能否被2整除
+    //             j++;
+    //         }
+    //     }
+    //     document.write(j);
+    // }
+
+    // odd([1,2,3,4,6,6,6,6,6])
+    </script>
+
+</body>
+
+</html>

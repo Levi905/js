@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css_whir.css" />
+    <style>
+      #star,
+      .star {
+        background-image: url(image/star_big.png) !important;
+        background-repeat: no-repeat;
+        width: 103px;
+        height: 20px;
+        display: inline-block;
+      }
+      #star ul {
+        width: 103px;
+        height: 20px;
+        display: flex;
+      }
+      #star li {
+        flex-grow: 1;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Comment">
+      <div class="them" id="them">澳门风云 全部评论</div>
+      <dl id="commentList">
+        <dt>
+          <span class="jiao"></span>
+          <div class="Portrait_big"><img src="image/Portrait.jpg" /></div>
+          <div class="Iwant">
+            <div class="point">
+              我要评分：
+              <span id="star">
+                <ul>
+                  <li id="star1" onclick="clickStar(1)" ></li>
+                  <li id="star2" onclick="clickStar(2)"></li>
+                  <li id="star3" onclick="clickStar(3)"></li>
+                  <li id="star4" onclick="clickStar(4)"></li>
+                  <li id="star5" onclick="clickStar(5)"></li>
+                </ul>
+              </span>
+              <b id="star-mark">0.0</b><span id="star-content"></span>
+            </div>
+            <textarea id="new-comment"></textarea>
+          </div>
+          <div class="btn_box">
+            <a href="#" class="face"></a>
+            <span>140字</span><a href="#" class="fb" onclick="commit();">我要发布</a>
+          </div>
+        </dt>
+
+        <!-- 动态生成 -->
+        <dd>
+          <div class="Portrait_small">
+            <img src="image/Portrait_small.jpg" />
+          </div>
+          <div class="pepole">
+            打酱油的<span class="star star4"></span
+            ><em><b>8.0</b> 2014/2/9 22:18:59</em>
+          </div>
+          <div class="nr">好看好笑……</div>
+        </dd>
+        <!-- 动态生成结束,追加到dl中 -->
+      </dl>
+    </div>
+    <script>
+     
+    </script>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>倒计时工具</title>
@@ -10,6 +11,7 @@
             color: #f0f0f0;
             font-family: 微软雅黑;
         }
+
         .top {
             border: solid 1px #ff3300;
             border-radius: 10px;
@@ -18,17 +20,20 @@
             margin: 0 auto;
             padding-top: 20px;
         }
+
         .top .logo {
             float: left;
             width: 300px;
             text-align: center;
         }
+
         .top .text {
             float: left;
             width: 580px;
             text-align: center;
             font-size: 28px;
         }
+
         .main {
             border: solid 1px #f0f0f0;
             border-radius: 10px;
@@ -37,6 +42,7 @@
             margin: 0 auto;
             padding-top: 20px;
         }
+
         #total {
             width: 150px;
             height: 45px;
@@ -45,6 +51,7 @@
             font-size: 32px;
             text-align: center;
         }
+
         .timer-box {
             border: solid 0px #f30;
             width: 620px;
@@ -53,6 +60,7 @@
             text-align: center;
             margin-top: 20px;
         }
+
         .main .count-box {
             width: 550px;
             margin: 0 auto;
@@ -60,18 +68,21 @@
             text-align: center;
             padding-top: 10px;
         }
+
         .main .count {
             float: left;
             width: 200px;
             line-height: 60px;
             padding-top: 10px;
         }
+
         .main .unit {
             float: left;
             width: 120px;
             font-size: 30px;
             line-height: 70px;
         }
+
         .timer-box .dash {
             width: 80px;
             font-size: 100px;
@@ -79,12 +90,14 @@
             text-align: center;
             font-weight: bold;
         }
+
         .timer-box .timer {
             width: 150px;
             font-size: 120px;
             float: left;
             text-align: center;
         }
+
         .button-box {
             border: solid 0px #f30;
             width: 550px;
@@ -92,14 +105,17 @@
             height: 150px;
             text-align: center;
         }
+
         .icon {
             float: left;
             width: 100px;
         }
+
         .icon img:hover {
             opacity: 0.7;
             cursor: pointer;
         }
+
         .bottom {
             border: solid 1px #f0f0f0;
             border-radius: 10px;
@@ -111,67 +127,140 @@
             font-size: 20px;
         }
     </style>
-		
+
 </head>
+
 <body>
 
-<div class="top">
-    <div class="logo">
-        <img src="img/logo.jpg" style="width: 130px;">
-    </div>
-    <div class="text">
-        蜗牛学院-学员活动专用倒计时工具<p/><p/>祝各位参赛选手取得优秀成绩！
-    </div>
-</div>
-
-<p/>
-
-<div class="main">
-    <div class="count-box">
-        <div class="icon">
-            <img src="img/minus.png" width="70" onclick="minus();"/>
+    <div class="top">
+        <div class="logo">
+            <img src="img/logo.jpg" style="width: 130px;">
         </div>
-        <div class="count">
-            <input type="text" id="total" value="10" />
-        </div>
-        <div class="unit">
-            分钟
-        </div>
-        <div class="icon" style="float: left; width: 100px;">
-            <img src="img/plus.png" width="70" onclick="add()"/>
+        <div class="text">
+            蜗牛学院-学员活动专用倒计时工具
+            <p />
+            <p />祝各位参赛选手取得优秀成绩！
         </div>
     </div>
 
-    <div class="timer-box">
-        <div class="timer" id="hour">00</div>
-        <div class="dash">-</div>
-        <div class="timer" id="minute">00</div>
-        <div class="dash">-</div>
-        <div class="timer" id="second">00</div>
+    <p />
+
+    <div class="main">
+        <div class="count-box">
+            <div class="icon">
+                <img src="img/minus.png" width="70" id="img1" onclick="minus();" />
+            </div>
+            <div class="count">
+                <input type="text" id="total" value="10" />
+            </div>
+            <div class="unit">
+                分钟
+            </div>
+            <div class="icon" style="float: left; width: 100px;">
+                <img src="img/plus.png" width="70" id="img2" onclick="add()" />
+            </div>
+        </div>
+
+        <div class="timer-box">
+            <div class="timer" id="hour">00</div>
+            <div class="dash">-</div>
+            <div class="timer" id="minute">00</div>
+            <div class="dash">-</div>
+            <div class="timer" id="second">00</div>
+        </div>
+
+        <div class="button-box">
+            <div class="icon" style="float: left; width: 200px; padding-top: 20px;">
+                <img src="img/pause.png" width="60" onclick="pause();" />
+            </div>
+            <div class="icon" style="float: left; width: 100px;">
+                <img src="img/start.png" width="90" id="start" onclick="start();">
+            </div>
+            <div class="icon" style="float: left; width: 200px; padding-top: 20px;">
+                <img src="img/refresh.png" width="60" onclick="reset()" />
+            </div>
+        </div>
     </div>
 
-    <div class="button-box">
-        <div class="icon" style="float: left; width: 200px; padding-top: 20px;">
-            <img src="img/pause.png" width="60" onclick="pause();" />
-        </div>
-        <div class="icon" style="float: left; width: 100px;">
-            <img src="img/start.png" width="90" onclick="start();">
-        </div>
-        <div class="icon" style="float: left; widsth: 200px; padding-top: 20px;">
-            <img src="img/refresh.png" width="60" onclick="reset()"/>
-        </div>
+    <p />
+
+    <div class="bottom">
+        技术支持：成都蜗牛创想科技有限公司（蜗牛学院），
+        <span style="font-size: 28px;">http://www.woniuxy.com</span>
     </div>
-</div>
 
-<p/>
+    <script>
 
-<div class="bottom">
-    技术支持：成都蜗牛创想科技有限公司（蜗牛学院），
-    <span style="font-size: 28px;">http://www.woniuxy.com</span>
-</div>
 
-<script>
-   
-</script>
+        //减
+        function minus() {
+            var input = document.querySelector("input");
+            input.value--;
+        }
+        function add() {
+            var input = document.querySelector("input");
+            input.value++;
+        }
+
+        //kaishi
+        var timer,total;
+        var flag = true;
+        function start() {
+            // var input = document.querySelector("input").value;
+            // var min = document.querySelector("#minute");
+            // var sec = document.querySelector("#second");
+            // min.innerText = input;
+            // min.innerText--;
+            // if (flag == true) {
+            //     sec.innerText = 59;
+            //     timer = setInterval(function () {
+            //         sec.innerText--;
+            //         //判断是否走完一分钟，走完重置
+            //         if (sec.innerText == 0) {
+            //             sec.innerText = 59;
+            //             min.innerText--;
+            //         }
+            //     }, 1000)
+            // }
+            // flag = false;
+
+
+            if (total == undefined) {
+                total = document.querySelector('#total').value * 60;//总秒数
+            }
+            if (flag==true) {
+                timer = setInterval(function () {
+                    if (total > 0) {
+                        total--;
+                    }
+                    // 转为时分秒
+                    var hours = parseInt(total / 3600);
+                    var minutes = parseInt(total % 3600 / 60);
+                    var seconds = total % 60;
+                    document.getElementById('hour').innerText = hours;
+                    document.getElementById('minute').innerText = minutes;
+                    document.getElementById('second').innerText = seconds;
+                }, 1000);
+            }
+            flag=false;
+        }
+        //zanting
+        function pause() {
+            clearInterval(timer);
+            flag = true;
+        }
+
+        //chongzhi
+        function reset(){
+            var input = document.querySelector("input").value;
+            var min = document.querySelector("#minute");
+            var sec = document.querySelector("#second");
+            min.innerText = input;
+            sec.innerText = 00;
+            clearInterval(timer);
+            flag=true;
+        }
+    </script>
 </body>
+
 </html>

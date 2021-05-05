@@ -35,7 +35,7 @@
           <div class="Iwant">
             <div class="point">
               我要评分：
-              <span id="star">
+              <span id="star" class="">
                 <ul>
                   <li id="star1" onclick="clickStar(1)" ></li>
                   <li id="star2" onclick="clickStar(2)"></li>
@@ -69,7 +69,102 @@
       </dl>
     </div>
     <script>
-     
+      //我要发布
+
+      // function commit(){
+      //   var main = document.querySelector("#new-comment");
+      //   var main1 = main.value;
+      //   var newDd = document.createElement("dd");
+      //   var mark = document.querySelector("#star-mark").innerText;
+      //   var star = document.querySelector("#star");
+      //   var biling = star.getAttribute("class");
+      //   //填入内容
+      //   newDd.innerHTML=`<div class="Portrait_small">
+      //       <img src="image/Portrait_small.jpg" />
+      //     </div>
+      //     <div class="pepole">
+      //       打酱油的<span class="star ${buling}"></span>
+      //       <em><b>${mark}</b> 2014/2/9 22:18:59</em>
+      //     </div>
+      //     <div class="nr">${main1}</div>`;
+      //     var father = document.querySelector("#commentList");
+      //     father.appendChild(newDd);
+      //     main.value="";
+         
+      // }
+      // //星星
+      // function clickStar(num){
+      //   var star = document.querySelector("#star");
+      //   var mark = document.querySelector("#star-mark");
+      //   //p判断标是不是相等，然后获取雪碧图不同为位置，成2 分数。
+      //   if(num==1){
+      //     star.setAttribute("class","star1");
+      //     star.style.backgroundPosition="'10px'+","+'-20px'";
+      //     var star1 = star.getAttribute("class");
+      //     var num1 = star1.substr(4,1);
+      //     var newMark = num1*2;
+      //     mark.innerText=newMark;
+      //     // console.log(num1);
+      //   }else if(num==2){
+      //     star.setAttribute("class","star2");
+      //     star.style.backgroundPosition="'10px'+","+'-40px'";
+      //     var star2 = star.getAttribute("class");
+      //     var num2 = star2.substr(4,1);
+      //     var newMark = num2*2;
+      //     mark.innerText=newMark;
+      //   }else if(num==3){
+      //     star.setAttribute("class","star3");
+      //     star.style.backgroundPosition="'10px'+","+'-60px'";
+      //     var star3 = star.getAttribute("class");
+      //     var num3 = star3.substr(4,1);
+      //     var newMark = num3*2;
+      //     mark.innerText=newMark;
+      //   }else if(num==4){
+      //     star.setAttribute("class","star4");
+      //     star.style.backgroundPosition="'10px'+","+'-80px'";
+      //     var star4 = star.getAttribute("class");
+      //     var num4 = star4.substr(4,1);
+      //     var newMark = num4*2;
+      //     mark.innerText=newMark;
+      //   }
+      //   else if(num==5){
+      //     star.setAttribute("class","star5");
+      //     star.style.backgroundPosition="'10px'+","+'-100px'";
+      //     var star5 = star.getAttribute("class");
+      //     var num5 = star5.substr(4,1);
+      //     var newMark = num5*2;
+      //     mark.innerText=newMark;
+      //   }
+      // }
+
+
+        // 发布
+    function commit() {
+      var text = document.querySelector("#new-comment").value;
+      var newdd = document.createElement("dd");
+      var starput=document.querySelector('#star').getAttribute('class')
+      var numberput=document.querySelector('#star-mark').innerText;
+      newdd.innerHTML = `
+      <div class="Portrait_small">
+            <img src="image/Portrait_small.jpg" />
+          </div>
+          <div class="pepole">
+            打酱油的<span class="star ${starput}"></span
+            ><em><b>${numberput}</b> 2014/2/9 22:18:59</em>
+          </div>
+          <div class="nr">${text}</div>
+      `
+      document.querySelector("#commentList").insertBefore(newdd, document.querySelector("#commentList dd"));
+    }
+
+    //xingxing
+    function clickStar(num) {
+      var star1 = document.querySelector("#star");
+      var number=document.querySelector('#star-mark');
+      star1.setAttribute('class', `star${num}`);
+      number.innerText=`${num*2}.0`; 
+    }
+
     </script>
   </body>
 </html>

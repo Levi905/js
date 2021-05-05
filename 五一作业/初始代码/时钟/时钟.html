@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-   /* 书写css代码 */
+        /* 书写css代码 */
+        #box {
+            display: flex;
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background-image: url("image/clockface.jpg");
+        }
+
+        #hour {
+            width: 4px;
+            height: 80px;
+            background-color: lightblue;
+            position: absolute;
+            top: 220px;
+            left: 300px;
+            transform-origin: bottom center;
+        }
+
+        #minute {
+            width: 3px;
+            height: 120px;
+            background-color: tomato;
+            position: absolute;
+            top: 180px;
+            left: 298px;
+            transform-origin: bottom center;
+        }
+
+        #second {
+            width: 2px;
+            height: 150px;
+            background-color: orange;
+            position: absolute;
+            top: 150px;
+            left: 296px;
+            transform-origin: bottom center;
+            /* animation: move 60s linear infinite; */
+        }
+
+        /* @keyframes move {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    } */
     </style>
 </head>
+
 <body>
     <!-- HTML代码结构 -->
     <div id="box">
@@ -23,10 +72,25 @@
             秒：  60次一圈，一秒6度
             如果需要时针实时。那么可以给时针添加角度,角度为 每过一分钟，就添加0.5deg
         */
-       //当前时分秒,输出看效果
-        var hour = new Date().getHours();
-        var minutes = new Date().getMinutes();
-        var seconds = new Date().getSeconds();
+        //当前时分秒,输出看效果
+        function shijian() {
+            var hour = new Date().getHours();
+            var minutes = new Date().getMinutes();
+            var seconds = new Date().getSeconds();
+            var shi = document.querySelector("#hour");
+            var fen = document.querySelector("#minute");
+            var miao = document.querySelector("#second");
+            //时分秒走的度数
+            shi.style.transform = `rotate( ${hour * 30}deg)`;
+            fen.style.transform = `rotate( ${minutes * 6}deg)`;
+            miao.style.transform = `rotate(${seconds * 6}deg)`;
+        }
+
+        setInterval(function () {
+            shijian();
+
+        }, 1000)
     </script>
 </body>
+
 </html>

@@ -7,25 +7,94 @@
     <title>Document</title>
     <style>
         body{
-            background-color: white;
+            background-color: lightblue;
         }
         
         .active{
             background-color: black;
         }
         /* 书写css代码 */
+        #switch-box{
+            padding-left: 10px;
+            display: flex;
+            width: 150px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            border-radius: 40%;
+            background-color: #fff;
+        }
+        #OnOff{
+            width: 50px;
+            border-radius: 45%;
+            background-color: lightblue;
+        }
+        #circle{
+            display: inline-block;
+            line-height: normal;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            
+        }
+        #info{
+            text-align: right;
+            padding: 0;
+            margin: 0;
+            line-height: 56px;
+        }
+        .circle{
+            animation: move 1s linear;
+            animation-fill-mode:forwards;
+        }
+        .circle1{
+            animation: move 1s linear;
+            animation-fill-mode:forwards;
+        }
+        @keyframes move {
+            0%{
+                transform: translate(0%);
+            }
+            100%{
+                transform: translate(100%);
+            }
+        }
+        @keyframes move1 {
+            0%{
+                transform: translate(100%);
+            }
+            100%{
+                transform: translate(0%);
+            }
+        }
     </style>
 </head>
 <body>
     <!-- html结构，可重写 -->
     <div id="switch-box">
         <p id="OnOff">
-            <span id="circle"></span>
+            <span id="circle" onclick="rightM()" class=""></span>
         </p>
         <p id="info">深色模式</p>
     </div>
     <script>
     //    思路：点击span标签实现向右移动，并改变body背景颜色。
+        function rightM(){
+            var right1 = document.querySelector("#circle");
+            var rightclass=right1.getAttribute("class");
+            if(rightclass=="circle"){
+                right1.setAttribute("class","");
+                document.body.style.backgroundColor="lightblue";
+                right1.parentElement.style.backgroundColor="lightblue";
+            }else{
+                right1.setAttribute("class","circle");
+                document.body.style.backgroundColor="black";
+                right1.parentElement.style.backgroundColor="black";
+            }
+        }
+        
+
     </script>
 </body>
 </html>

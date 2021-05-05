@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   /* 书写css代码 */
+    </style>
+</head>
+<body>
+    <!-- HTML代码结构 -->
+    <div id="box">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        /*
+        思路：根据目前的时分秒得出 对应指针要旋转的角度
+            小时：12个小时，转360deg，一个小时30deg
+            分钟：60分钟一圈， 一分钟6度
+            秒：  60次一圈，一秒6度
+            如果需要时针实时。那么可以给时针添加角度,角度为 每过一分钟，就添加0.5deg
+        */
+       //当前时分秒,输出看效果
+        var hour = new Date().getHours();
+        var minutes = new Date().getMinutes();
+        var seconds = new Date().getSeconds();
+    </script>
+</body>
+</html>

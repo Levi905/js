@@ -1,95 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .center{
+        .center {
             text-align: center;
         }
-        .natural{
 
+        .border {
+            border: 1px solid black;
         }
-        .natural tr:nth-child(odd){
+
+        .natural {}
+
+        .natural tr:nth-child(odd) {
             background-color: greenyellow;
         }
-        .natural tr:nth-child(even){
+
+        .natural tr:nth-child(even) {
             background-color: #ffffff;
         }
 
-        .blue{
+        .blue {}
 
-        }
-        .blue tr:nth-child(odd){
+        .blue tr:nth-child(odd) {
             background-color: skyblue;
         }
-        .blue tr:nth-child(even){
+
+        .blue tr:nth-child(even) {
             background-color: #ffffff;
         }
 
+        .random {
 
+        }
+
+        .random tr:nth-child(odd) {
+          
+        }
+
+        .random tr:nth-child(even) {
+            background-color: #ffffff;
+        }
     </style>
 </head>
+
 <body>
     <button onclick="addBorder();">添加边框</button>
     <button onclick="textCenter()">内容水平居中</button>
     <button onclick="zebraColor()">斑马线1</button>
     <button onclick="zebraColor2()">海洋蓝-斑马线</button>
     <button onclick="randomZebraColor();">随机斑马线效果</button>
-    <button>末尾添加商品</button>
-    <button>开头添加商品</button>
-    <button>删除末尾的商品</button>
-    <button onclick="delFirstGood();">删除第一件商品</button>
-    <button>删除所有商品</button>
+    <button onclick="add()">末尾添加商品</button>
+    <button onclick="add1()">开头添加商品</button>
+    <button onclick="del()">删除末尾的商品</button>
+    <button onclick="del1();">删除第一件商品</button>
+    <button onclick="delAll()">删除所有商品</button>
     <br>
-    <input type="text" id="line-number" placeholder="请输入商品编号">
-    <button>删除指定商品</button>
-    <table id="goods"  >
+    <input type="text" id="line-number" placeholder="请输入商品编号" value="">
+    <button onclick="del2()">删除指定商品</button>
+    <table id="goods" class="">
         <thead>
             <tr class="headline">
-                
+
                 <th>商品编号</th>
                 <th>商品名称</th>
                 <th>商品价格</th>
                 <th>商品描述</th>
-                
+
             </tr>
         </thead>
-        <tbody >
+        <tbody class="">
             <tr>
                 <td>001</td>
                 <td>卫龙辣条</td>
                 <td>9.9</td>
                 <td>好吃实惠</td>
-                
+
             </tr>
             <tr>
                 <td>002</td>
                 <td>天线宝宝ins联名限量款</td>
                 <td>1999</td>
                 <td>送给孩子的最好礼物</td>
-                
+
             </tr>
             <tr>
                 <td>003</td>
                 <td>八佰同款上衣</td>
                 <td>499</td>
                 <td>经典款式</td>
-                
+
             </tr>
             <tr>
                 <td>004</td>
-                <td>air force 1  boost Jordan</td>
+                <td>air force 1 boost Jordan</td>
                 <td>799</td>
                 <td>超轻 又较重</td>
-                
+
             </tr>
         </tbody>
     </table>
     <script>
-     
 
+        //添加边框
+
+        function addBorder() {
+            var border = document.querySelector("table");
+            var bor = border.getAttribute("class")
+            if (bor != "border") {
+                border.setAttribute("class", "border");
+            } else {
+                border.setAttribute("class", "");
+            }
+        }
+
+        //内容居中
+
+        function textCenter() {
+            var center = document.querySelector("tbody");
+            var cen = center.getAttribute("class")
+            if (cen != "center") {
+                center.setAttribute("class", "center");
+            } else {
+                center.setAttribute("class", "");
+            }
+        }
+
+        //斑马线1
+
+        function zebraColor() {
+            var color = document.querySelector("tbody");
+            var color1 = color.getAttribute("class")
+            if (color1 != "natural") {
+                color.setAttribute("class", "natural");
+            } else {
+                color.setAttribute("class", "");
+            }
+        }
+
+        //斑马线2
+
+        function zebraColor2() {
+            var color = document.querySelector("tbody");
+            var color1 = color.getAttribute("class")
+            if (color1 != "blue") {
+                color.setAttribute("class", "blue");
+            } else {
+                color.setAttribute("class", "");
+            }
+        }
+
+        //随机
+        function randomZebraColor(){
+            var color = document.querySelector("tbody");
+            var color1 = color.getAttribute("class");
+            if(color1!="random"){
+                color.setAttribute("class","random");
+                color.style.backgroundColor = `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255},${Math.random()})`;
+            }else{
+                color.setAttribute("class","");
+            }
+        }
+
+        //添加商品
+        function add(){
+            var newTr = document.createElement("tr");
+            newTr.innerHTML=`<td>004</td>
+                <td>air force 1 boost Jordan</td>
+                <td>799</td>
+                <td>超轻 又较重</td>`;
+            var tbody1 = document.querySelector("tbody");
+            tbody1.appendChild(newTr);
+        }
+
+        function add1(){
+            var newTr = document.createElement("tr");
+            newTr.innerHTML=`<td>004</td>
+                <td>air force 1 boost Jordan</td>
+                <td>799</td>
+                <td>超轻 又较重</td>`;
+            var tbody1 = document.querySelector("tbody tr");
+            // console.log(tbody1);
+            document.querySelector("tbody").insertBefore(newTr,tbody1);
+        }
+
+        //删除末尾商品
+
+        function del(){
+            var del=document.querySelector("tbody tr:last-child");
+            // console.log(del);
+            document.querySelector("tbody").removeChild(del);
+        }
+
+        function del1(){
+            var del=document.querySelector("tbody tr:first-child");
+            // console.log(del);
+            document.querySelector("tbody").removeChild(del);
+        }
+
+        function delAll(){
+            var del=document.querySelectorAll("tbody tr");
+            // console.log(del);
+            for(var i = 0;i<del.length;i++){
+                document.querySelector("tbody").removeChild(del[i]);
+            }
+        }
+        function del2(){
+            var del=document.querySelectorAll("tbody tr");
+            var input = document.querySelector("#line-number").value;
+            console.log(input);
+            for(var i = 0;i<del.length;i++){
+                    var child = del[i].firstElementChild.innerText
+                    // console.log(child);
+                    if(input==child){
+                   document.querySelector("tbody").removeChild(del[i]);
+               }
+            
+                
+            }
+        }
     </script>
 </body>
+
 </html>
