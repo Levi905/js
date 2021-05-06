@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("img/snow-night.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      body img {
+        position: fixed;
+        width: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="addSnow()">新增</button>
+    <button onclick="start()">开始</button>
+    <button onclick="pause()">暂停</button>
+    <button onclick="delAll()">删除</button>
+    <div id="snowUp"></div>
+    <!-- 音乐 -->
+    <audio src="圣诞.wav" id="music" ></audio>
+    <script>
+      var timer = -1; //保存定时器标识符
+      //新建
+      function addSnow() {
+        var newImg = document.createElement("img");
+        newImg.setAttribute("src", "img/snow-white.png");
+        //修改样式  高：940  宽度：1600
+        newImg.style.top = parseInt(Math.random() * 940) + "px";
+        newImg.style.left = parseInt(Math.random() * 1600) + "px";
+        // newImg.parentElement.appendChild(newImg);
+        document.body.appendChild(newImg);
+      }
+
+      //开始
+      function start() {
+        //定时器
+        if (timer == -1) {
+          timer = setInterval(function () {
+            //思路：改变雪花的top属性,是在top的原来基础之上进行修改
+            var imgs = document.querySelectorAll("body img");
+            for (var i = 0; i < imgs.length; i++) {
+              var img = imgs[i];
+              //先获取旧的top属性
+              var style = getComputedStyle(img, null);
+              var oldTop = style.top;
+              oldTop = Number(oldTop.substr(0, oldTop.length - 2));
+              //设置
+
+              // 对雪花位置进行判断,如果下落到最底部，那么雪花重新从页面顶部处开始下落
+              if (oldTop < 940) {
+                img.style.top = oldTop + 5 + "px";
+              } else {
+                img.style.top = "-40px";
+              }
+            }
+          }, 50);
+        }
+
+        //播放
+        var music = document.querySelector("#music");
+        music.play();
+      }
+
+      //暂停
+      function pause() {
+        clearInterval(timer);
+        timer=-1;//重置定时器
+        //暂停音乐
+        var music = document.querySelector("#music");
+        music.pause();
+      }
+
+      //删除
+      function delAll(){
+          //找到所有雪花并删除
+          var imgs = document.querySelectorAll('body img');
+          for(var i=0;i<imgs.length;i++){
+              imgs[i].parentElement.removeChild(imgs[i]);
+          }
+      }
+    </script>
+  </body>
+</html>

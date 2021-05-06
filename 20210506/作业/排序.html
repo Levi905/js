@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = [13,311,42,14,5,12];
+        var b = [2,3,3,12,2,13,45];
+        var c = a.concat(b);
+        // c.sort((num1,num2)=>num1-num2);
+        // document.write(c);
+
+        var temp=0;
+        for(var i = 0;i<c.length;i++){
+            for(var j = 0;j<c.length-1-i;j++){
+                if (c[j]>c[j+1]) {
+                    temp = c[j];
+                    c[j] = c[j+1];
+                    c[j+1] = temp;
+                }
+            }
+        }
+        document.write(c);
+    </script>
+</body>
+</html>

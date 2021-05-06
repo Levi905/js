@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("雪花素材/snow-night.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .ram {
+        position: absolute;
+
+    }
+</style>
+
+<body>
+    <button onclick="remove()">开始</button>
+    <script>
+        var img = document.querySelector('#white');
+        var r = parseInt(10 + Math.random() * 20);
+        for (var i = 0; i <= r; i++) {
+            var a = document.createElement("img");
+            a.setAttribute("src", "./雪花素材/snow-white.png");
+            a.setAttribute("class", "ram");
+            var wh = Math.random() * 30;
+            a.style.width = `${wh}px`;
+            a.style.height = `${wh}px`;
+            a.style.top = `${Math.random() * 700}px`;
+            a.style.left = `${Math.random() * 1300}px`;
+            document.body.appendChild(a);
+        }
+        function remove() {
+            setInterval(function () {
+                var imgs = document.querySelectorAll('.ram');
+                for (var i = 0; i <= imgs.length - 1; i++) {
+                    var oldTop = Number(getComputedStyle(imgs[i], null).top.substr(0, getComputedStyle(imgs[i], null).top.length - 2));
+                    if (oldTop < 600) {
+                        imgs[i].style.top = oldTop + 3 + "px";
+                    } else {
+                        imgs[i].style.top = "-30px";
+                    }
+                }
+            }, 50);
+        }
+    </script>
+</body>
+
+</html>

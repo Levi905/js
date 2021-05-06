@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html{
+            height: 100%;
+        }
+        body{
+            background-color: aliceblue;
+            height: 2000px;
+            transition: all 0.5s;
+        }
+        #switch-box{
+            position: fixed;
+            width: 110px;
+            height: 30px;
+            right: 15px;
+            top: 30px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 0 5px #aaa;
+            line-height: 35px;
+            padding:0 5px;
+            box-sizing: border-box;
+        }
+        #switch-box p{
+            display: inline-block;
+            height: 20px;
+            margin: 0;
+            
+        }
+        #info{
+            font-size: 12px;
+            
+        }
+        #switch-box #OnOff{
+            width: 40px;
+            height: 20px;
+            background-color:#ddd;
+            border-radius: 10px;
+            padding:1px;
+            box-sizing: border-box;
+            position: relative;
+            transition: all 0.5s;
+        }
+        #circle{
+            width:16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: inline-block;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: all .5s;
+        }
+        #switch-box #OnOff.active{
+            background-color:#000;
+        }
+        #switch-box  #OnOff.active  #circle{
+            left: 21px;
+        }
+        .deepTheme{
+            background-color: black;
+        }
+        #OnOff:checked{
+            background-color:red;
+        }
+        body.active{
+            background-color: #000;            
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="switch-box">
+       
+        <p id="OnOff" >
+            <span id="circle"></span>
+        </p>
+        <p id="info">深色模式</p>
+    </div>
+    <script>
+        //p标签设置样式
+        document.querySelector('#OnOff').onclick = function(){
+            //this 指的被点击的标签本身
+            // this.style.backgroundColor="#000";
+            // document.querySelector('#circle').style.transform = "translate(21px)";
+            // 判断本身的class
+            var classname = this.getAttribute('class');
+            if(classname=="active"){
+                this.setAttribute('class','');
+                // document.body.style.backgroundColor="aliceblue";
+                document.body.setAttribute('class',"");
+            }else{
+                this.setAttribute('class','active');
+                document.body.setAttribute('class',"active");
+                // document.body.style.backgroundColor="#000";
+            }
+        }
+    </script>
+</body>
+</html>

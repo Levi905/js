@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>倒计时工具</title>
+    <style>
+        body {
+            background-image: url('img/background.jpg');
+            margin-top: 20px;
+            color: #f0f0f0;
+            font-family: 微软雅黑;
+        }
+        .top {
+            border: solid 1px #ff3300;
+            border-radius: 10px;
+            width: 900px;
+            height: 150px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .top .logo {
+            float: left;
+            width: 300px;
+            text-align: center;
+        }
+        .top .text {
+            float: left;
+            width: 580px;
+            text-align: center;
+            font-size: 28px;
+        }
+        .main {
+            border: solid 1px #f0f0f0;
+            border-radius: 10px;
+            width: 900px;
+            height: 390px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        #total {
+            width: 150px;
+            height: 45px;
+            border: solid 1px #f0f0f0;
+            border-radius: 8px;
+            font-size: 32px;
+            text-align: center;
+        }
+        .timer-box {
+            border: solid 0px #f30;
+            width: 620px;
+            margin: 0 auto;
+            height: 170px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .main .count-box {
+            width: 550px;
+            margin: 0 auto;
+            height: 70px;
+            text-align: center;
+            padding-top: 10px;
+        }
+        .main .count {
+            float: left;
+            width: 200px;
+            line-height: 60px;
+            padding-top: 10px;
+        }
+        .main .unit {
+            float: left;
+            width: 120px;
+            font-size: 30px;
+            line-height: 70px;
+        }
+        .timer-box .dash {
+            width: 80px;
+            font-size: 100px;
+            float: left;
+            text-align: center;
+            font-weight: bold;
+        }
+        .timer-box .timer {
+            width: 150px;
+            font-size: 120px;
+            float: left;
+            text-align: center;
+        }
+        .button-box {
+            border: solid 0px #f30;
+            width: 550px;
+            margin: 0 auto;
+            height: 150px;
+            text-align: center;
+        }
+        .icon {
+            float: left;
+            width: 100px;
+        }
+        .icon img:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        .bottom {
+            border: solid 1px #f0f0f0;
+            border-radius: 10px;
+            width: 900px;
+            height: 55px;
+            margin: 0 auto;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 20px;
+        }
+    </style>
+		
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <img src="img/logo.jpg" style="width: 130px;">
+    </div>
+    <div class="text">
+        蜗牛学院-学员活动专用倒计时工具<p/><p/>祝各位参赛选手取得优秀成绩！
+    </div>
+</div>
+
+<p/>
+
+<div class="main">
+    <div class="count-box">
+        <div class="icon">
+            <img src="img/minus.png" width="70" onclick="sub();"/>
+        </div>
+        <div class="count">
+            <input type="text" id="total" value="10" />
+        </div>
+        <div class="unit">
+            分钟
+        </div>
+        <div class="icon" style="float: left; width: 100px;">
+            <img src="img/plus.png" width="70" onclick="add()"/>
+        </div>
+    </div>
+
+    <div class="timer-box">
+        <div class="timer" id="hour">00</div>
+        <div class="dash">-</div>
+        <div class="timer" id="minute">00</div>
+        <div class="dash">-</div>
+        <div class="timer" id="second">00</div>
+    </div>
+
+    <div class="button-box">
+        <div class="icon" style="float: left; width: 200px; padding-top: 20px;">
+            <img src="img/pause.png" width="60" onclick="pause();" />
+        </div>
+        <div class="icon" style="float: left; width: 100px;">
+            <img src="img/start.png" width="90" onclick="start();">
+        </div>
+        <div class="icon" style="float: left; widsth: 200px; padding-top: 20px;">
+            <img src="img/refresh.png" width="60" onclick="reset()"/>
+        </div>
+    </div>
+</div>
+
+<p/>
+
+<div class="bottom">
+    技术支持：成都蜗牛创想科技有限公司（蜗牛学院），
+    <span style="font-size: 28px;">http://www.woniuxy.com</span>
+</div>
+
+<script>
+   /*
+   功能需求：
+   1. 点击+ 或- 图片，实现input数值++ 或-- 
+   2. 点击开始按钮实现倒计时功能
+      1. 思路：获取input里的分钟数，并转为总秒数， 在定时器中 实现每秒总秒数减1，之后将
+              总秒数转为对应的时分秒，并显示在页面上。
+   3. 点击暂停按钮实现倒计时暂停
+   4. 点击重置，实现倒计时清零操作
+   5. 点击暂停后再点击开始按钮实现继续倒计时功能
+   */
+   var isRun = false;//表示当前是否有定时器，默认没有，false
+   var timer ; //保存定时器的标识符
+   var total = 0;//总秒数
+
+   //加
+   function add(){
+       var input = document.querySelector('#total');
+       input.value++;
+   }
+   //减 
+   function sub(){
+    var input = document.querySelector('#total');
+    if(input.value>0){
+        input.value--;
+    }
+   }
+
+
+     //获取倒计时
+
+   // 开始
+   function start(){
+    var input = document.querySelector('#total');
+    //等于0时才设置，即在开始 时才获取总秒数
+    if(total==0){
+        total = input.value*60;
+    }
+
+    //当isRun为false时，说明没有定时器在执行，所以可以设置
+    if(!isRun){
+
+        timer = setInterval(function(){
+            total--;//自减1
+            //转为时分秒
+            var hour = parseInt(total/3600);
+            var minutes = parseInt(total%3600/60);
+            var seconds = total%60;
+            //放在页面上
+            document.querySelector('#hour').innerText = hour;
+            document.querySelector('#minute').innerText = minutes;
+            document.querySelector('#second').innerText = seconds;
+            //倒计时结束判断
+            if(total <=0){
+                clearInterval(timer);
+                isRun = false;
+            }
+        },1000);
+    //设置定时器在执行
+    isRun = true;
+    }
+   }
+
+   // 暂停
+   function pause(){
+       clearInterval(timer);
+       //可以重新开启定时器
+       isRun = false;
+   }
+
+   //重置 
+   function reset(){
+       clearInterval(timer);
+       document.querySelector('#hour').innerText = "00";
+       document.querySelector('#minute').innerText = "00";
+       document.querySelector('#second').innerText = "00";
+       //可以启动
+       isRun = false;
+       //总秒数清零
+       total =0;
+   }
+</script>
+</body>
+</html>

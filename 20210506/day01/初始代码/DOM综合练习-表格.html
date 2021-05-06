@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center{
+            text-align: center;
+        }
+        .natural{
+
+        }
+        .natural tr:nth-child(odd){
+            background-color: greenyellow;
+        }
+        .natural tr:nth-child(even){
+            background-color: #ffffff;
+        }
+
+        .blue{
+
+        }
+        .blue tr:nth-child(odd){
+            background-color: skyblue;
+        }
+        .blue tr:nth-child(even){
+            background-color: #ffffff;
+        }
+
+
+    </style>
+</head>
+<body>
+    <button onclick="addBorder();">添加边框</button>
+    <button onclick="textCenter()">内容水平居中</button>
+    <button onclick="zebraColor()">斑马线1</button>
+    <button onclick="zebraColor2()">海洋蓝-斑马线</button>
+    <button onclick="randomZebraColor();">随机斑马线效果</button>
+    <button>末尾添加商品</button>
+    <button>开头添加商品</button>
+    <button>删除末尾的商品</button>
+    <button onclick="delFirstGood();">删除第一件商品</button>
+    <button>删除所有商品</button>
+    <br>
+    <input type="text" id="line-number" placeholder="请输入商品编号">
+    <button>删除指定商品</button>
+    <table id="goods"  >
+        <thead>
+            <tr class="headline">
+                
+                <th>商品编号</th>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>商品描述</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td>001</td>
+                <td>卫龙辣条</td>
+                <td>9.9</td>
+                <td>好吃实惠</td>
+                
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>天线宝宝ins联名限量款</td>
+                <td>1999</td>
+                <td>送给孩子的最好礼物</td>
+                
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>八佰同款上衣</td>
+                <td>499</td>
+                <td>经典款式</td>
+                
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>air force 1  boost Jordan</td>
+                <td>799</td>
+                <td>超轻 又较重</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <script>
+     
+
+    </script>
+</body>
+</html>
