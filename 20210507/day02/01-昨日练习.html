@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1. 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组，比如num1 =[1,2,3,6] .nums2=[2,3,4,5],合并后为[1,2,2,3,3,4,5,6]
+  要求用两种方式做，两种都可以用新数组。一种用sort函数，一种不能用sort函数
+        */
+       var nums1 = [1,2,4,7];
+       var nums2 = [3,4,5,5,6];
+       var newArr =[];//新数组
+
+       //1. 利用concat以及sort 
+       //newArr =nums1.concat(nums2);
+        //    newArr.sort(function(a,b){
+        //        return a-b;
+        //    })
+        //newArr.sort((a,b)=>a-b);
+        //console.log(newArr);
+
+        // 2 思路：设置两个下标变量i和j分别用于遍历nums1和nums2，同时遍历两个数组，两个数组里的数据依次进行对比，如果谁小谁就先加入到新数组中，其中
+        //一个数组遍历完后，再将另一个还没遍历完的数据追加到新数组中
+
+        var i = 0;//用于遍历nums1
+        var j = 0//用于遍历nums2
+        var newArr = [];//新数组
+        //其中一个数组遍历完就结束,从小到大
+        while(i<nums1.length && j <nums2.length){
+            //当前下标谁小谁就放入新数组中，
+            if(nums1[i]<nums2[j]){
+                newArr.push(nums1[i]);
+                i++;//
+            }else{
+                newArr.push(nums2[j]);
+                j++;//
+            }
+        }
+        console.log(newArr,i,j);
+        //把另一个没有遍历完的数组 的剩余数据追加到新数组中
+        if(i<nums1.length){
+            for(;i<nums1.length;i++){
+                newArr.push(nums1[i]);
+            }
+        }else{
+            for(;j<nums2.length;j++){
+                newArr.push(nums2[j]);
+            }
+        }
+        console.log(newArr);
+
+    </script>
+</body>
+</html>

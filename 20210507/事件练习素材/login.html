@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <style>
+        #box {
+
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            /* box-shadow: 0 0 10px #000000; */
+            border: 1px solid #ccc;
+        }
+
+        #box div {
+            width: 350px;
+            height: fit-content;
+
+            margin: 0 auto;
+            margin-bottom: 20px;
+
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            margin-left: 26px;
+        }
+
+        input {
+            width: 320px;
+            height: 50px;
+            padding: 0px;
+            border: none;
+            padding-left: 30px;
+            font-size: 20px;
+            color: #666666;
+            background-repeat: no-repeat;
+            background-position: 0px center;
+            border: 1px solid #cccccc;
+            /* border-radius: 5px; */
+        }
+
+        #user {
+            background-image: url(image/user.png);
+            /*吧重复的或者公有的样式通过标签选择器书写，有区别的就单独设置*/
+            /* background-repeat:  no-repeat;
+            background-position: 0px center;      */
+        }
+
+        #pass {
+            background-image: url(image/pass.png);
+        }
+
+        #login-btn {
+            width: 350px;
+            height: 50px;
+            background-color: #4452d5;
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid blue;
+
+        }
+
+        #login-btn:active {
+            margin-top: 1px;
+            box-shadow: inset 0 0 5px #000000;
+            background-color: rgba(46, 62, 214, 0.8);
+
+        }
+
+        a {
+            text-decoration: none;
+            color: #7b9bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .forget {
+            margin-left: 110px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #user-msg,
+        #pass-msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h1>用户登录</h1>
+        <div>
+            <input type="text" placeholder="用户名或邮箱" id="user" onblur="checkUser()">
+            <p id="user-msg"></p>
+        </div>
+        <div>
+            <input type="password" name="" id="pass" onkeyup="checkPass()">
+            <p id="pass-msg"></p>
+        </div>
+        <div>
+            <button id="login-btn">登录</button>
+        </div>
+        <div>
+            <a href="#">还没有账号？注册账号</a>
+            <a href="#" class="forget">忘记密码</a>
+
+        </div>
+    </div>
+
+    <script>
+        /*
+        用户名：6~16位 失去焦点时进行判断
+        用户密码：6~16位，首字母大写，带有密码强度检测(弱:6~9  中：10~13 强：14~16  可以通过背景色或边框色)
+        */
+        function checkUser() {
+            var input = document.querySelector("#user");
+            var text = input.value;
+            if (text.length < 6 || text.length > 16) {
+                //不合法，给用户提示
+                document.querySelector('#user-msg').innerText = "输入长度为6~16位";
+            } else {
+                //正确 
+                document.querySelector('#user-msg').innerText = "";
+            }
+        }
+
+        function checkPass() {
+            var input = document.querySelector('#pass').value;
+            if (input.charCodeAt(0) < 65 || input.charCodeAt(0) > 90) {
+                document.querySelector('#pass-msg').innerText = "首字母需要大写";
+            } else {
+                document.querySelector('#pass-msg').innerText = " ";
+            }
+            var l = input.length;
+            var c = document.querySelector('#pass');
+            if (l <= 6) {
+                c.style.backgroundColor = "red";
+            } else if (l > 6 && l <= 13) {
+                c.style.backgroundColor = "blue";
+            } else if (l > 13 && l <= 16) {
+                c.style.backgroundColor = "green";
+            }
+        }
+    </script>
+</body>
+
+</html>

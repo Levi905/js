@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="touchEvent.js"></script>
+    <style>
+      diV {
+        width: 100%;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+    <script>
+      //页面加载后触发
+      window.onload = function () {
+        var div = document.querySelector("#box");
+        // div.addEventListener("touchstart", function () {
+        //     console.log('触摸点击')
+        // });
+        // div.addEventListener("touchend", function () {
+        //     console.log('手指离开')
+        // });
+        // div.addEventListener("touchmove", function () {
+        //     console.log('手指在触摸屏上移动')
+        // });
+        //touchEvent.js示例
+        touch(div,"slideDown",function(){
+               console.log('下滑')
+        })
+        touch(div,"slideUp",function(){
+               console.log('上滑')
+        })
+        touch(div,"slideLeft",function(){
+               console.log('左滑')
+        })
+        touch(div,"slideRight",function(){
+               console.log('右滑')
+        })
+        touch(div,"press",function(){
+               console.log('长按')
+        })
+      };
+    </script>
+  </head>
+  <body>
+    <div id="box">这是一个div</div>
+  </body>
+</html>

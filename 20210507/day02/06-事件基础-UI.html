@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        diV{
+            width: 100%;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        //ui
+        window.onload = function(){
+            console.log('页面加载完毕');
+            //页面还没有加载完HTML结构，
+            var div = document.querySelector('#box');
+            // console.log(div.innerHTML);
+            //div设置resize事件,普通标签无效
+            div.onresize =function(){
+                console.log('div尺寸发生了变化')
+            }
+        }
+        //报错：页面还没有加载div标签
+        // var div = document.querySelector('#box');
+        //     console.log(div.innerHTML);
+        window.onresize= function(){
+            console.log('发生了变化');
+        }
+    </script>
+</head>
+<body>
+    <div id="box">这是一个div</div>
+    
+
+</body>
+</html>

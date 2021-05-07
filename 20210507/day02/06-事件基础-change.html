@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            outline: none;
+        }
+    </style>
+    <script>
+       window.onload = function(){
+          var select = document.querySelector('select');
+          select.onchange= function(){
+              console.log(this.value);
+          }
+       }
+       
+    </script>
+</head>
+<body>
+   <select name="" id="">
+       <option value="china">中国</option>
+       <option value="USA">美国</option>
+       <option value="Japan">日本</option>
+   </select>
+   <select name="" id="">
+       <option value="china">请选择省份</option>
+       <option value="USA">美国</option>
+       <option value="Japan">日本</option>
+   </select>
+   <select name="" id="">
+       <option value="china">请选择城市</option>
+       <option value="USA">美国</option>
+       <option value="Japan">日本</option>
+   </select>
+</body>
+</html>

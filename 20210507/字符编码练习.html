@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var input = prompt("请输入一串字符");
+        for(var i = 0;i<input.length;i++){
+            var code = input.charCodeAt(i);
+            if (code>=48 && code<=57) {
+                document.write(`输入的字符中第${i+1}个字符是数字<br>`);
+            }else if (code>=97 && code<=122) {
+                document.write(`输入的字符中第${i+1}个字符是小写字母<br>`);
+            }else if (code>=65 && code<=90) {
+                document.write(`输入的字符中第${i+1}个字符是大写字母<br>`);
+            }else{
+                document.write(`输入的字符中第${i+1}个字符是特殊字符<br>`);
+            }
+        }
+    </script>
+</body>
+</html>

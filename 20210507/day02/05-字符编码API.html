@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+              charCodeAt
+              String.fromCharCode(ASCII码)
+              */
+      var str = "1bc";
+      var code = str.charCodeAt(0);
+      //   console.log(code); ///输出 97
+
+      var str = String.fromCharCode(50);
+      //   console.log(str); //输出
+
+      //练习：用户输入一个字符，判断是一个数字，还是一个大写字母、小写字母或其他符号
+      //获取字符的ASCII码并进行判断
+      //   var input = prompt('请输入一个字符');
+      //   var code = input.charCodeAt(0);
+      //   //判断
+      //   if(code >=48 &&code <=57){
+      //       document.write(`${input}是一个数字`);
+      //   }else if(code >=97 &&code <=122){
+      //     document.write(`${input}是一个小写字母`);
+      //   }else if(code >=65 && code <=90){
+      //     document.write(`${input}是一个大写字母`);
+      //   }else{
+      //     document.write(`${input}是其他符号`);
+      //   }
+
+      // 练习；用户输入一串字符，判断有几个数字、小写字母、大写字母或其他符号
+      var input = prompt("请输入字符串");
+      var number = 0;
+      var xiao = 0;
+      var da = 0;
+      var other = 0;
+      for (var i = 0; i < input.length; i++) {
+        //获取ASCII码并判断
+        var code = input.charCodeAt(i);
+        if (code >= 48 && code <= 57) {
+          number++;
+        } else if (code >= 97 && code <= 122) {
+          xiao++;
+        } else if (code >= 65 && code <= 90) {
+          da++;
+        } else {
+          other++;
+        }
+      }
+
+      document.write(`数字的数量是${number}, 大写字母的数量为${da},小写字母的数量为${xiao},其他符号的数量为${other}`)
+    </script>
+  </body>
+</html>

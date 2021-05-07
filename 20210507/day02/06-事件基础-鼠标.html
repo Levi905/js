@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="touchEvent.js"></script>
+    <style>
+        diV{
+            width: 100%;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        //页面加载后触发
+       window.onload = function(){
+           var div =document.querySelector("#box");
+           div.onmousemove = function(){
+               console.log('标签内部移动');
+           }
+           div.ondblclick = function(){
+               console.log('标签内部双击');
+           }
+           div.onmouseenter = function(){
+               console.log('进入标签内部');
+           }
+           div.onmouseleave = function(){
+               console.log('离开标签内部');
+           }
+
+           
+       }
+    </script>
+</head>
+<body>
+    <div id="box">这是一个div</div>
+    
+
+</body>
+</html>

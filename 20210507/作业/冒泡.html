@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    div {
+        margin: 0 auto;
+
+        font-size: 18px;
+    }
+
+    .box-5 {
+        width: 150px;
+        height: 150px;
+        border: 1px solid #78506e;
+    }
+
+    .box-4 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #8c3c78;
+    }
+
+    .box-3 {
+        width: 250px;
+        height: 250px;
+        border: 1px solid #a02882;
+    }
+
+    .box-2 {
+        width: 300px;
+        height: 300px;
+        border: 1px solid #b4148c;
+    }
+
+    .box-1 {
+        width: 350px;
+        height: 350px;
+        border: 1px solid #c80096;
+    }
+</style>
+
+<body>
+    <div class="box-1">div-1
+        <div class="box-2">div-2
+            <div class="box-3">div-3
+                <div class="box-4">div-4
+                    <div class="box-5">div-5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    /*
+        实现点击嵌套div实现隔一段时间后背景颜色按冒泡顺序依次切换。
+        比如点击box-3 那么 box-3 一秒后设置背景颜色。再一秒后box-2设置背景颜色，
+        再隔一秒后box-1设置背景颜色。整体是由具体子标签到父标签。
+
+    力扣题：
+    给定一个未经排序的整数数组，找到最长且 连续增长的子序列，并返回该序列的长度。
+    比如 [2,3,2,4,5,6,3]  中符合条件的是[4,5,6],程序返回3
+    */
+    window.onload = function () {
+        // var div5 = document.querySelector('.box-5');
+        // var div4 = document.querySelector('.box-4');
+        // var div3 = document.querySelector('.box-3');
+        // var div2 = document.querySelector('.box-2');
+        // var div1 = document.querySelector('.box-1');
+        // div5.onclick = function () {
+        //     div5.style.backgroundColor = "lightblue";
+        // }
+        // div4.onclick = function () {
+        //     div4.style.backgroundColor = "lightcyan";
+        // }
+        // div3.onclick = function () {
+        //     div3.style.backgroundColor = "lightpink";
+        // }
+        // div2.onclick = function () {
+        //     div2.style.backgroundColor = "lightseagreen";
+        // }
+        // div1.onclick = function () {
+        //     div1.style.backgroundColor = "lightcoral";
+        // }
+
+        setInterval(function (){
+            for(var i = 5;i>=1;i--){
+                var div = document.querySelector(`.box-${i}`);
+                div.onclick = function(){
+                    div.style.backgroundColor = "lightblue";
+                }
+            }
+        },3000);
+
+    }
+</script>
+
+</html>
