@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1.给定一个未经排序的整数数组，找到最长且 连续增长的子序列，并返回该序列的长度比如 [2,3,2,4,5,6,3]  中符合条件的是[2,4,5,6],程序返回4
+        思路：
+        如果一个序列是递增的，当后一个数据小于前一个，序列就结束。
+        如果遇见后面一个和当前对比如果是减小则说明当前序列已结束，和当前保存的子序列长度进行对比，保存较大值
+        第一个序列：first =0   当i-1 = 1时结束  序列长度  i-first 
+        */
+       var arr = [2,3,2,4,3,1,7,4,10,23,3];
+       var max =0;//保存序列的长度。
+       var first = 0;//序列的开始下标
+       for(var i=1;i<arr.length;i++){
+           // 如果遇见后面一个和当前对比如果是减小则说明当前序列已结束，和当前保存的子序列长度进行对比，保存较大值
+           if(arr[i]<=arr[i-1]){
+               //满足该条件说明i下标已经是第二个子序列的开头,上一个子序列的最大下标为i-1长度为 i-first
+               if(max <i-first){
+                   max = i -first;
+               }
+            //max = Math.max(max,i-first);
+               //当前下标作为新序列的下标赋给first，
+               first=i;
+           }
+       }
+       console.log(max);
+    </script>
+</body>
+</html>

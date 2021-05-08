@@ -90,15 +90,23 @@
         //     div1.style.backgroundColor = "lightcoral";
         // }
 
-        setInterval(function (){
-            for(var i = 5;i>=1;i--){
-                var div = document.querySelector(`.box-${i}`);
-                div.onclick = function(){
-                    div.style.backgroundColor = "lightblue";
-                }
-            }
-        },3000);
+        // setInterval(function () {
+        //     for (let i = 5; i >= 1; i--) {
+        //         let div = document.querySelector(`.box-${i}`);
+        //         div.onclick = function () {
+        //             div.style.backgroundColor = "lightblue";
+        //         }
+        //     }
+        // }, 3000);
 
+        for (let i = 5; i >= 1; i--) {
+            let div = document.querySelector(`.box-${i}`);
+            div.onclick = function () {
+                setInterval(function () {
+                    div.style.border = "5px solid lightblue";
+                }, 6000-1000*i);
+            }
+        }
     }
 </script>
 

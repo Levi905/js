@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+      body,html{
+          height: 3000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <form action="success.html">
+        用户名: <input type="text">
+        密码：<input type="text">
+        <button id="login-btn">登录</button>
+    </form>
+    <a href="http://www.baidu.com">百度一下</a>
+    <script>
+      var div = document.querySelector("div");
+      div.addEventListener("click", function (event) {
+        //event参数就保存了该对象
+        // console.log(event.target);
+        // console.log(event.currentTarget);//div
+        // console.log(event.type)
+        //鼠标的位置
+        // console.log(event.clientX,event.clientY);
+        //取消进一步的冒泡
+        //event.stopPropagation();
+      });
+      document.body.addEventListener('click',function(e){
+        // console.log(event.target);
+        // console.log(e.currentTarget);//body
+        // console.log(e.type)
+        console.log(e.clientX,e.clientY);
+        console.log(e.pageX,e.pageY);
+        //取消进一步的冒泡
+        //event.stopPropagation();
+      })
+      //html
+      document.documentElement.addEventListener('click',function(e){
+        // console.log(e.target);//div
+        // console.log(e.currentTarget);//html
+        console.log(e.type)
+      })
+
+      //登录
+      document.querySelector('#login-btn').addEventListener('click',function(e){
+          //取消按钮的默认提交行为
+          e.preventDefault();
+      })
+      //超连接
+      document.querySelector('a').addEventListener('click',function(e){
+          //取消按钮的默认提交行为
+          e.preventDefault();
+      })
+    </script>
+  </body>
+</html>

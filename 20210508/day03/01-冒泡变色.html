@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+div {
+  margin:0 auto;
+  box-sizing: border-box;
+  font-size: 18px;
+  background-color: #fff;
+}
+.box-5 {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #78506e;
+}
+.box-4 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #8c3c78;
+}
+.box-3 {
+  width: 250px;
+  height: 250px;
+  border: 1px solid #a02882;
+}
+.box-2 {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #b4148c;
+}
+.box-1 {
+  width: 350px;
+  height: 350px;
+  border: 1px solid #c80096;
+}
+
+    </style>
+    <script>
+        var time =0;
+        window.onload = function(){
+            //单独书写
+            var div1 = document.querySelector('.box-1');
+            var div2 = document.querySelector('.box-2');
+            var div3 = document.querySelector('.box-3');
+            var div4 = document.querySelector('.box-4');
+            var div5 = document.querySelector('.box-5');
+            
+            //点击其中一个div，让该div背景颜色变色，其父标签按照冒泡顺序每隔1秒依次变色
+
+            //需求：根据具体触发事件的标签来控制延时定时器的时间->event对象.target
+            // 思路：外面定义了一个变量time用于控制定时器事件，当点击某个标签时，将time重置为0，
+            //其因为冒泡而触发事件的父标签，time会依次递增，达到定时器时间递增的效果
+            
+            div5.addEventListener('click',function(e){
+                if(e.target==this){
+                    time=0;
+                }else{
+                    time++;
+                }
+                setTimeout(() => {
+                //清理所有div的颜色
+                    clearColor();
+                    this.style.backgroundColor='red';
+                }, time*1000);
+            });
+            div4.addEventListener('click',function(e){
+                if(e.target==this){
+                    time=0;
+                }else{
+                    time++;
+                }
+                setTimeout(() => {
+                //清理所有div的颜色
+                    clearColor();
+                    this.style.backgroundColor='red';
+                }, time*1000);
+            });
+            div3.addEventListener('click',function(e){
+                if(e.target==this){
+                    time=0;
+                }else{
+                    time++;
+                }
+                setTimeout(() => {
+                //清理所有div的颜色
+                    clearColor();
+                    this.style.backgroundColor='red';
+                }, time*1000);
+            });
+            div2.addEventListener('click',function(e){
+                if(e.target==this){
+                    time=0;
+                }else{
+                    time++;
+                }
+                setTimeout(() => {
+                //清理所有div的颜色
+                    clearColor();
+                    this.style.backgroundColor='red';
+                }, time*1000);
+            });
+            div1.addEventListener('click',function(e){
+                if(e.target==this){
+                    time=0;
+                }else{
+                    time++;
+                }
+                setTimeout(() => {
+                //清理所有div的颜色
+                    clearColor();
+                    this.style.backgroundColor='red';
+                }, time*1000);
+            });
+            
+
+            //利用for循环
+            // var divs = document.querySelectorAll('body div');
+            // console.log(divs);
+            // for(let i=divs.length-1;i>=0;i--){
+            //     // 5 4 3 2 1 
+            //     divs[i].onclick = function(){
+            //         setTimeout(() => {
+            //         clearColor();
+            //         this.style.backgroundColor='yellowgreen';
+            //     },(4-i)*1000 );
+            //     }
+            // }
+        }
+
+        function clearColor(){
+             //清理所有div的颜色
+             var divs = document.querySelectorAll('body div');
+                for(var i=0;i<divs.length;i++){
+                    divs[i].style.backgroundColor = "white";
+                }
+        }
+    </script>
+</head>
+<body>
+    <div class="box-1">div-1
+        <div class="box-2">div-2
+            <div class="box-3">div-3
+                <div class="box-4">div-4
+                    <div class="box-5">div-5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

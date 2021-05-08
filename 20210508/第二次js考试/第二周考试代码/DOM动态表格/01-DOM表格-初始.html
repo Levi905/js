@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .blue{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="changeSex()">性别切换</button>
+    <button onclick="skyBlue()">斑马线-天空蓝(skyblue)</button>
+    <button onclick="addOnFirst()">开头添加一行(复制第一行)</button>
+    <button onclick="addOnLast()">末尾添加一行(复制最后一行)</button>
+    <button onclick="delFirst()">删除第一行数据</button>
+    <button onclick="delLast()">删除最后一行</button>
+    <button onclick="delAll()">删除所有数据行，只保留标题行</button>
+    <button onclick="delAllMan()">删除所有男生</button>
+    <button onclick="delAllWoman()">删除所有女生</button>
+    <button onclick="bigName()">名字加粗</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>周星星</td>
+                <td>23</td>
+                <td class="sex">男</td>
+            </tr>
+            <tr>
+                <td>达叔</td>
+                <td>34</td>
+                <td class="sex">男</td>
+            </tr>
+            <tr>
+                <td>总警司</td>
+                <td>35</td>
+                <td class="sex">女</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        function changeSex(){
+            var sexs = document.querySelectorAll('.sex');
+            for(var i =0;i<sexs.length;i++){
+                if (sexs[i].innerHTML == "男") {
+                    sexs[i].innerHTML = "女";
+                }else{
+                    sexs[i].innerHTML = "男";
+                }
+            }
+        }
+        function skyBlue(){
+            var color = document.querySelector('tbody').getAttribute("class");
+            if (color != "blue") {
+                document.querySelector('tbody').setAttribute("class","blue");
+            }else{
+                document.querySelector('tbody').setAttribute("class"," ");
+            }
+        }
+        function addOnFirst(){
+            var arr = document.querySelectorAll("tbody tr");
+            var str = arr[0].innerHTML;
+            var f = document.querySelector("tbody");
+            var newChild = document.createElement("tr");
+            newChild.innerHTML = str;
+            f.insertBefore(newChild,arr[0]);
+        }
+        function addOnLast(){
+            var arr = document.querySelectorAll("tbody tr");
+            var str = arr[arr.length-1].innerHTML;
+            var f = document.querySelector("tbody");
+            var newChild = document.createElement("tr");
+            newChild.innerHTML = str;
+            f.insertBefore(newChild,arr[arr.length-1]);
+        }
+        function delFirst(){
+            var del=document.querySelector("tbody tr:first-child");
+            document.querySelector("tbody").removeChild(del);
+        }
+        function delLast(){
+            var del=document.querySelector("tbody tr:last-child");
+            document.querySelector("tbody").removeChild(del);
+        }
+        function delAll(){
+            var del=document.querySelectorAll("tbody tr");
+            for(var i = 0;i<del.length;i++){
+                document.querySelector("tbody").removeChild(del[i]);
+            }
+        }
+        function delAllMan(){
+            var del=document.querySelectorAll(".sex");
+            for(var i = 0;i<del.length;i++){
+                if (del[i].innerHTML == "男") {
+                    document.querySelector("tbody").removeChild(del[i].parentElement);
+                }
+            }
+        }
+        function delAllWoman(){
+            var del=document.querySelectorAll(".sex");
+            for(var i = 0;i<del.length;i++){
+                if (del[i].innerHTML == "女") {
+                    document.querySelector("tbody").removeChild(del[i].parentElement);
+                }
+            }
+        }
+        function bigName(){
+            var arr = document.querySelectorAll("tbody tr");
+            for(var i = 0;i<arr.length;i++){
+                var name = arr[i].firstElementChild;
+                console.log(name);
+                name.style.fontWeight = "bolder";
+            }
+        }
+    </script>
+</body>
+</html>

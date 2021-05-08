@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            display: inline-block;
+        }
+        #box img{
+            width: 100%;
+        }
+        #big{
+            background: url("img/id1.jpg") no-repeat;
+            width: 300px;
+            height: 300px;
+            /* position: absolute;
+            right: -300px;
+            top: 0px; */
+            display: inline-block;
+            transition: opacity 0.3s;
+            opacity: 0;
+            background-size: 200%;
+            background-position: 0px 0px;
+        }
+        #grass{
+            width: 150px;
+            height: 150px;
+            background-color: rgba(216, 165, 24,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            font-size: 30px;
+            line-height: 150px;
+            text-align: center;
+            color: #666666;
+
+        }
+        .active{
+            border:2px solid orange ;
+        }
+        #imglist{
+            width: 300px;
+            height: 60px;
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: space-evenly;
+            flex-wrap: nowrap;
+        }
+        #imglist li{
+            width: 60px;
+            height: 100%;
+            box-sizing: border-box;
+            /* transition: all 0.5s; */
+            outline: none;
+            
+        }
+        #imglist li img{
+            width: 100%;
+        }
+
+    </style>
+    <script src="jquery.1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="box">
+        
+        <img src="img/id1.jpg" alt="" id="img">
+        
+    </div>
+    <div id="big"></div>
+    <!-- 图片列表 -->
+    <ul id="imglist">
+        <li class="item active" onclick="changePhoto(this)"><img src="img/id1.jpg" alt=""></li>
+        <li class="item" onclick="changePhoto(this)"><img src="img/id2.jpg" alt=""></li>
+        <li class="item" onclick="changePhoto(this)"><img src="img/id3.jpg" alt=""></li>
+        <li class="item" onclick="changePhoto(this)"><img src="img/id4.jpg" alt=""></li>
+        <li class="item" onclick="changePhoto(this)"><img src="img/id5.jpg" alt=""></li>
+    </ul>
+
+    <script>
+        function changePhoto(a){
+            var arr = document.querySelectorAll("li");
+            for(var i = 0;i<arr.length;i++){
+                arr[i].setAttribute("class","item");
+            }
+            a.setAttribute("class","item active");
+            var str = a.firstElementChild.getAttribute("src");
+            console.log(str);
+            document.querySelector("#box img").setAttribute("src",str);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/百度.css">
+</head>
+<body>
+    <div id="box">
+        <div class="input-box" id="logo">用户名账号登录</div>
+        <div class="input-box">
+            <input type="text" placeholder="手机/邮箱" id="user" onblur="userCheck()">
+            <p id="user-msg"></p>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="密码" id="pass" onblur="passCheck()">
+            <p id="pass-msg"></p>
+        </div>
+        <div class="item-box"><input type="checkbox" checked>下次自动登录</div>
+        <div class="input-box">
+            <button>登录</button>
+        </div>
+        <div class="a-box">
+            <a href="#">忘记密码?</a>
+            <a href="#" class="right-a">短信快捷登录</a>
+        </div>
+        <div id="oper-box">
+            <a href="#" class="code">扫码登录</a>|
+            <a href="#"><img src="image/qq.png" alt=""></a>
+            <a href="#"><img src="image/微博.png" alt=""></a>
+            <a href="#" class="register">立即注册</a>
+        </div>
+    </div>
+    <script>
+        /*
+        实现 判断用户名和密码输入正确后才能进行登录，登录到success.html 该页面自己书写
+        用户名:6~16位，只包含数字和字母
+        密码： 6~16位，以大写开头
+        如果用户输错，将提示写在对应的p标签中，给用户一个提示
+        */
+       
+
+     
+    </script>
+</body>
+</html>
