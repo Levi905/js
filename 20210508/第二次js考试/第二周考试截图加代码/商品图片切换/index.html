@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            display: inline-block;
+        }
+        #box img{
+            width: 100%;
+        }
+        #big{
+            background: url("img/id1.jpg") no-repeat;
+            width: 300px;
+            height: 300px;
+            /* position: absolute;
+            right: -300px;
+            top: 0px; */
+            display: inline-block;
+            transition: opacity 0.3s;
+            opacity: 0;
+            background-size: 200%;
+            background-position: 0px 0px;
+        }
+        #grass{
+            width: 150px;
+            height: 150px;
+            background-color: rgba(216, 165, 24,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            font-size: 30px;
+            line-height: 150px;
+            text-align: center;
+            color: #666666;
+
+        }
+        .active{
+            border:2px solid orange ;
+        }
+        #imglist{
+            width: 300px;
+            height: 60px;
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: space-evenly;
+            flex-wrap: nowrap;
+        }
+        #imglist li{
+            width: 60px;
+            height: 100%;
+            box-sizing: border-box;
+            /* transition: all 0.5s; */
+            outline: none;
+            
+        }
+        #imglist li img{
+            width: 100%;
+        }
+        .fadeIn{
+            animation: fade 1s forwards;
+        }
+
+        @keyframes fade {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+    </style>
+   
+</head>
+<body>
+    <div id="box">
+        
+        <img src="img/id1.jpg" alt="" id="img">
+        
+    </div>
+    <div id="big"></div>
+    <!-- 图片列表 -->
+    <ul id="imglist">
+        <li class="item active"><img src="img/id1.jpg" alt=""></li>
+        <li class="item"><img src="img/id2.jpg" alt=""></li>
+        <li class="item"><img src="img/id3.jpg" alt=""></li>
+        <li class="item"><img src="img/id4.jpg" alt=""></li>
+        <li class="item"><img src="img/id5.jpg" alt=""></li>
+    </ul>
+    <script>
+        //图片切换
+        var imgs = document.querySelectorAll('#imglist li img');
+        //遍历所有li中的图片添加点击事件
+        for(let i=0;i<imgs.length;i++){
+            imgs[i].addEventListener('click',function(){
+                //清除li边框颜色 以及清除大图的class设置样式
+                clearBorder();
+                var bigImg =document.querySelector('#img');
+                bigImg.setAttribute('class','');//清除fadein
+                bigImg.style.opacity=0;
+                this.parentElement.setAttribute('class','item active');
+                //设置src
+                var src = this.getAttribute('src');
+                
+                bigImg.setAttribute('src',src);
+
+                //添加淡入动画
+                fadeIn(bigImg);
+            });
+        }
+
+        //清除边框,利用了已定义的class=active 
+        function clearBorder(){
+            //找到有active的那个li
+            var li = document.querySelector('#imglist .active');
+            li.setAttribute('class','item');//保留item 去掉active
+        }
+
+        //利用定时器实现淡入动画：不断增加opacity来实现动画
+        function fadeIn(elem){
+            elem.style.opacity=0;
+            var timer  = setInterval(() => {
+                //获取当前的opacity,
+                var oldOpacity = Number(getComputedStyle(elem,null).opacity); 
+                if(oldOpacity<1){
+                    elem.style.opacity=oldOpacity+0.02;
+                }else{
+                    clearInterval(timer);
+                }
+            }, 10);
+        }
+    </script>
+</body>
+</html>

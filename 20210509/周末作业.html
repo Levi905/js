@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        作业:
+            力扣题： 
+            1. 动态和：给你一个数组nums ,求出对应的动态和数组。
+            数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i]).比如[1,2,3,4],返回[1,1+2,1+2+3,1+2+3+4]为[1,3,6,10]
+
+            2. [选做]早餐组合：
+            小扣在秋日市集选择了一家早餐摊位，一维整型数组staple 中记录了每种主食的价格，一维整型数组 drinks 中记录了每种饮料的价格。
+            小扣的计划选择一份主食和一款饮料，且花费不超过 x 元。
+            请返回小扣共有多少种购买方案。比如主食 = [10,20,5], drinks = [5,5,2], 花费 = 15 ，组合数为6
+
+            DOM题： 
+
+            1. 利用JavaScript完成轮播图（不借助css3的动画），图片随意
+
+            2. [选做]：在第1题基础上添加前一个和后一个按钮(样式可以参考bootstrap 轮播图插件)，
+            利用JavaScript dom 实现点击前一个或后一个实现前后轮播图切换。
+        */
+
+
+        //力扣1
+        var arr = [1,4,5,6,7,8,9];
+        var sumArr = [];
+
+        for(var i = 0;i<arr.length;i++){
+            let sum = 0;
+            for(var j = 0;j<=i;j++){
+                sum = sum+arr[j];
+            }
+            sumArr.push(sum);
+        }
+        document.write("第一题结果："+sumArr+"<br>");
+
+        //力扣2
+        var food = [5,6,7,8,9,10];
+        var drink = [2,3,4,5,6];
+        var money = 10;
+        var count = 0;
+        for(var f = 0;f<food.length;f++){
+            for(var d = 0;d<drink.length;d++){
+                if(food[f]+drink[d]<=money){
+                    count++;
+                }
+            }
+        }
+        document.write("第二题结果一共有："+count+"种购买方案");
+
+        //轮播图
+        
+    </script>
+</body>
+</html>
