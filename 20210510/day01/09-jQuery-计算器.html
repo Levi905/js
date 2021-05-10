@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>在线计算器CSS+DIV实现</title>
+    <style type="text/css">
+        #outer {
+            width: 450px;
+            height: 540px;
+            background-color: gray;
+            margin: 0 auto;
+            border-radius: 20px;    /* 设置最外层父窗口的圆角 */
+        }
+        #top {
+            width: 200px;
+            padding-left: 20px;     /* 让小圆点距离左边20像素 */
+            height: 50px;
+            margin: 0 auto;
+            display: table-cell;    /* 以单元格方式处理DIV，便于实现垂直居中 */
+            vertical-align: middle;  /* 让三个小圆点都垂直居中 */
+        }
+        .point {
+            width: 20px;            /* 要实现圆形，必须是一个正方形  */
+            height: 20px;
+            float: left;
+            margin-left: 10px;
+            border-radius: 50%;     /* 设置小圆点的圆角半径为宽度的一半，这样可以实现一个圆 */
+        }
+        .bg-blue {
+            background-color: dodgerblue;
+        }
+        .bg-green {
+            background-color: darkgreen;
+        }
+        .bg-red {
+            background-color: orangered;
+        }
+        #result-box {
+            width: 97%;
+            height: 50px;
+            background-color: white;
+            margin: 0 auto;
+            border: solid 2px orangered;
+        }
+        #result {
+            width: 99%;
+            height: 48px;
+            border: 0;
+            font-size: 30px;
+            text-align: right;
+            font-family: 微软雅黑;
+        }
+        #button {
+            width: 99%;
+            height: 420px;
+            margin: 10px auto;
+        }
+        #button div {
+            width: 24%;
+            height: 80px;
+            margin: 2px;
+            background-color: #7fffd4;
+            float: left;
+            font-size: 30px;
+            text-align: center;
+            line-height: 80px;
+            font-family: 微软雅黑;
+        }
+        #button div:hover {
+            background-color: orangered;   /* 针对所有按钮实现鼠标悬停效果 */
+        }
+    </style>
+
+ 
+
+</head>
+<body >
+    <div id="outer">
+        <div id="top">
+            <div class="point bg-red"></div>
+            <div class="point bg-blue"></div>
+            <div class="point bg-green"></div>
+        </div>
+
+        <div id="result-box">
+            <input type="text" id="result" readonly="readonly" maxlength="10"/>
+        </div>
+
+        <div id="button">
+            <div >AC</div>
+            <div >+/-</div>    
+            <div >%</div>
+            <div >/</div>
+            <div >7</div>
+            <div >8</div>
+            <div >9</div>
+            <div >*</div>
+            <div >4</div>
+            <div >5</div>
+            <div >6</div>
+            <div >-</div>
+            <div >1</div>
+            <div >2</div>
+            <div >3</div>
+            <div >+</div>
+            <div >0</div>
+            <div ><-</div>
+            <div >.</div>
+            <div >=</div>
+        </div>
+    </div>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script >
+        //jquery 
+        //对数字进行点击
+        $('#button').on('click',' div',function(e){
+            //获取标签的文本进行判断
+            var $elem  = $(this);
+            var text = $elem.text();
+            var code = text.charCodeAt(0);
+            var old = $('#result').val();//输入框当前的内容
+            if(code >=48 &&code <=57){
+                //数字
+                $('#result').val(old+text);
+            }else if(text=='+/-'){
+                //正负
+            }else if(code ==37 || code ==42 ||code ==43 ||code==45 ||code ==47){
+                //运算符 
+                // 上一个是数字才能加 
+                var last = old.substr(old.length-1);
+                var lastcode = last.charCodeAt(0);
+                //如果上一个是数字然后就追加到input里
+                if(lastcode >=48 &&lastcode <=57){
+                    $('#result').val(old+text);
+                }
+                //=
+            }else if(code==61){
+                var result =  eval(old);
+                $('#result').val(result);
+            }else if(text=="AC"){
+                //清零
+                $('#result').val("");
+            }
+        });
+
+
+
+
+
+
+        /*
+        计算器功能
+        1. input中追加数字和运算符
+          1-1:给数字的 标签设置点击事件
+          1-2:将被点击的数字追加到input的内容里
+
+        */
+
+        //1 
+        // function clickNumber(num){
+        //     //把传进来的数字赋给input->更改了input的内容-value
+        //     var input = document.querySelector('#result');
+        //     //修改内容
+        //     input.value +=num;
+        // }
+        // function clickSymbol(symbol){
+        //     //把传进来的数字赋给input->更改了input的内容-value
+        //     var input = document.querySelector('#result');
+        //     //修改内容
+        //     input.value +=symbol;
+        // }
+        // //计算
+        // function calc(){
+        //     // 把input里的value放入eval并执行，并把执行的结果重新赋给input
+        //     var input = document.querySelector('#result');
+        //     var text = input.value;
+        //     //放入eval中,并把结果赋给input
+        //     input.value =eval(text);
+        // }
+
+        // //清理
+        // function clearAll(){
+        //     //清空input里的数据
+        //     var input= document.querySelector('#result');
+        //     input.value="";
+        // }
+        // //回退
+        // function back(){
+        //     //获取input里的value，去掉最后一个，并放入input中
+        //     var input= document.querySelector('#result');
+        //     var text = input.value;
+        //     var str =text.substr(0,text.length-1);
+        //     //吧str重新赋给input
+        //     input.value = str;
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+      
+       //作业： 
+       /*
+       3. 正负
+       4. bug:运算符重复
+        只能是数字后面才能跟一个运算符
+        // 规则：只能在数字后面输入运算符
+       5. [扩展]小数点
+        规则:
+        1. 必须在数字之后输入
+        2. 两个小数点之间要有运算符
+        解题思路:每个条件都用一个变量去控制，当都满足时才能够输入小数点
+       */
+    </script>
+</body>
+</html>

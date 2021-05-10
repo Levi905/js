@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+div {
+  margin:0 auto;
+  box-sizing: border-box;
+  font-size: 18px;
+  background-color: #fff;
+}
+.box-5 {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #78506e;
+}
+.box-4 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #8c3c78;
+}
+.box-3 {
+  width: 250px;
+  height: 250px;
+  border: 1px solid #a02882;
+}
+.box-2 {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #b4148c;
+}
+.box-1 {
+  width: 350px;
+  height: 350px;
+  border: 1px solid #c80096;
+}
+
+    </style>
+    <script>
+        var time =0;
+        window.onload = function(){
+            //旧代码
+            // var div1 = document.querySelector('.box-1');
+            // var div2 = document.querySelector('.box-2');
+            // var div3 = document.querySelector('.box-3');
+            // var div4 = document.querySelector('.box-4');
+            // var div5 = document.querySelector('.box-5');
+            
+            // div1.addEventListener('click',function(){
+            //     setTimeout(() => {
+            //         clearColor();
+            //         this.style.backgroundColor="yellow";
+            //     }, 4000);
+            // });
+            // div2.addEventListener('click',function(){
+            //     setTimeout(() => {
+            //         clearColor()
+            //         this.style.backgroundColor="green";
+            //     }, 3000);
+            // });
+            // div3.addEventListener('click',function(){
+                // setTimeout(() => {
+                //     clearColor()
+                //     this.style.backgroundColor="pink";
+                // }, 2000);
+            // });
+            // div4.addEventListener('click',function(){
+            //     setTimeout(() => {
+            //         clearColor()
+            //         this.style.backgroundColor="darkred";
+            //     }, 1000);
+            // });
+            // div5.addEventListener('click',function(){
+            //     setTimeout(() => {
+            //         clearColor()
+            //         this.style.backgroundColor="orange";
+            //     }, 0);
+            // });
+
+            //事件委托
+            document.body.addEventListener('click',function(e){
+                var elem = e.target;
+                //class有规律 ，通过判断class来间接判断是哪个子标签触发了事件
+                var classname = elem.getAttribute('class');
+                //box-数字
+                var number  = classname.substr(4);
+                setTimeout(() => {
+                        clearColor()
+                        elem.style.backgroundColor="pink";
+                }, (5-number)*1000);
+
+                // if(number==5){
+                //     setTimeout(() => {
+                //         clearColor()
+                //         elem.style.backgroundColor="pink";
+                //     }, 0);
+                // }else if(number==4){
+                //     setTimeout(() => {
+                //         clearColor()
+                //         elem.style.backgroundColor="pink";
+                //     }, 1000);
+                // }else if(number==3){
+                //     setTimeout(() => {
+                //         clearColor()
+                //         elem.style.backgroundColor="pink";
+                //     }, 2000);
+                // }else if(number==2){
+                //     setTimeout(() => {
+                //         clearColor()
+                //         elem.style.backgroundColor="pink";
+                //     }, 3000);
+                // }else if(number==1){
+                //     setTimeout(() => {
+                //         clearColor()
+                //         elem.style.backgroundColor="pink";
+                //     }, 4000);
+                // }
+               
+            })
+
+        }
+        //清理颜色
+        function clearColor (){
+            var divs = document.querySelectorAll('div');
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.backgroundColor='#fff';
+            } 
+        }
+    </script>
+</head>
+<body>
+    <div class="box-1">div-1
+        <div class="box-2">div-2
+            <div class="box-3">div-3
+                <div class="box-4">div-4
+                    <div class="box-5">div-5</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

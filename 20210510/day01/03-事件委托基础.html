@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+        .box2{
+            background-color: green;
+        }
+        .box1{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <script>
+        // document.querySelector('.box1').addEventListener('click',function(e){
+        //     console.log(e.target);
+        // })
+        // document.querySelector('.box2').addEventListener('click',function(e){
+        //     console.log(e.target);
+        // })
+
+        //事件委托
+        document.body.addEventListener('click',function(e){
+            //区分：class id nodeName
+            var classname = e.target.getAttribute('class');
+            if(classname=='box1'){
+                //点击了box1 div
+                //执行box1的点击事件代码
+                console.log('点击了box1')
+            }else if(classname=='box2'){
+                //点击了box1 div
+                //执行box1的点击事件代码
+                console.log('点击了box2')
+            }
+        });
+
+        
+    </script>
+</body>
+</html>

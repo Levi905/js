@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.slider{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 4800px;
+				height: 300px;
+				
+			}
+			.slider li{
+				float: left;
+				width: 960px;
+				height: 300px;
+			}
+			.slider li  img{
+				width: 100%;
+			}
+			#box{
+				width: 960px;
+				height: 300px;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.buttons{
+				position: absolute;
+				
+				left: 50%;
+				list-style: none;
+				width: 100px;
+				bottom: 10px;
+				margin: 0;
+				padding: 0;
+				margin-left: -50px;
+			}
+			.buttons li{
+				float: left;
+				width: 25%;
+				text-align: center; 
+				color: white;
+				font-size: 24px;
+			
+			}
+			
+			#box a{
+				position: absolute;
+				height: 100%;
+				width: 100px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 30px;
+				opacity: 0.5;
+			}
+			#box .prev{
+				left: 0px;
+				top: 0;
+				background-image: url("images/prev.png");
+			}
+			#box .next{
+				top: 0;
+				right: 0;
+				background-image: url("images/next.png");
+			}
+			#box a:hover{
+				background-color: rgba(255,255,255,0.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul class="slider">
+				<li ><img src="images/1.jpg" alt=""></li>
+				<li><img src="images/2.jpg" alt=""></li>
+				<li><img src="images/3.jpg" alt=""></li>
+				<li><img src="images/1.jpg" alt=""></li>
+			</ul>
+			
+		</div>
+
+		<script>
+			var curIndex = 0;//当前轮播的图片下标
+			//移动一张
+			function slideOne(){
+				var ul = document.querySelector('.slider');//获取ul
+				var distance = 960;//一张图片的宽度，也是移动的距离
+				var old =parseInt(getComputedStyle(ul,null).marginLeft);//当前移动的距离,为上一次移动后的距离
+				//改变ul的translate
+				var timer = setInterval(() => {
+					//获取当前的移动距离
+					var now = parseInt(getComputedStyle(ul,null).marginLeft);
+					// console.log(now);
+					//如果还没走完，就继续走
+					if(now > old - distance){
+						ul.style.marginLeft = `${now-3}px`;
+					}else{
+						clearInterval(timer);
+						//避免出现误差
+						ul.style.marginLeft = `${old-distance}px`;
+						//轮播图下标++
+						curIndex++;
+					}
+				}, 5);
+			}
+
+			//轮播图
+			var lisLength = document.querySelectorAll('.slider li').length
+			var timer = setInterval(() => {
+				if(curIndex<lisLength-1){
+					//执行一次动画
+					slideOne();
+				}else{
+					//curIndex=0;
+					document.querySelector('.slider').style.marginLeft='0px';//获取ul
+					curIndex=0;
+				}
+			}, 3000);
+			
+		</script>
+	</body>
+</html>

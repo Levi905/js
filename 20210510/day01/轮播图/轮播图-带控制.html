@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.slider {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 4800px;
+			height: 300px;
+
+		}
+
+		.slider li {
+			float: left;
+			width: 960px;
+			height: 300px;
+		}
+
+		.slider li img {
+			width: 100%;
+		}
+
+		#box {
+			width: 960px;
+			height: 300px;
+			overflow: hidden;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.buttons {
+			position: absolute;
+
+			left: 50%;
+			list-style: none;
+			width: 100px;
+			bottom: 10px;
+			margin: 0;
+			padding: 0;
+			margin-left: -50px;
+		}
+
+		.buttons li {
+			float: left;
+			width: 25%;
+			text-align: center;
+			color: white;
+			font-size: 24px;
+
+		}
+
+		#box a {
+			position: absolute;
+			height: 100%;
+			width: 100px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 30px;
+			opacity: 0.5;
+		}
+
+		#box .prev {
+			left: 0px;
+			top: 0;
+			background-image: url("images/prev.png");
+		}
+
+		#box .next {
+			top: 0;
+			right: 0;
+			background-image: url("images/next.png");
+		}
+
+		#box a:hover {
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="box">
+		<ul class="slider">
+			<li><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/1.jpg" alt=""></li>
+		</ul>
+		<ul class="buttons">
+			<li class="circle1">●</li>
+			<li class="circle2">●</li>
+			<li class="circle3">●</li>
+			<li class="circle4">●</li>
+		</ul>
+		<a href="#" class="prev"></a>
+		<a href="#" class="next"></a>
+	</div>
+
+	<script>
+		/*需求添加了左右控制：上一张和下一张
+		前提：是在不带控制的基础之上实现的。
+		思路：改造了slideOne，添加了两个参数symbol和callback.
+		     symbol是为了控制图片移动的方向，1是正常向左， 为-1是向右移动。  
+			 callback是为了保证在上一张或下一张功能执行后继续自动轮播
+		*/
+		var curIndex = 0; //当前遍历下
+		//移动一张图片,即一次动画过程
+		function slideOne(symbol,callback) {
+			var ul = document.querySelector('.slider'); //获取ul
+			var distance = 960; //一张图片的宽度，也是移动的距离
+			var old = parseInt(getComputedStyle(ul, null).marginLeft); //当前移动的距离,为上一次移动后的距离
+			//改变ul的translate
+			var id = setInterval(() => {
+				//获取当前的移动距离
+				var now = parseInt(getComputedStyle(ul, null).marginLeft);
+				// console.log(now);
+				//如果当前还没走完，就继续走
+				if (symbol == 1 && now > old - distance) {
+					ul.style.marginLeft = `${now-3}px`;
+				} else if (symbol == -1 && now < old + distance) {
+					ul.style.marginLeft = `${now+3}px`;
+				} else {
+					clearInterval(id);
+					//避免出现误差
+					ul.style.marginLeft = `${old-distance*symbol}px`;
+					//轮播图下标根据方向++或--
+					curIndex += symbol;
+
+
+					// 如果有回调函数，那么执行，继续自动轮播
+					if(callback){//如果传了第二个参数，就执行
+						callback();
+					}
+					
+					
+				}
+			}, 5);
+		}
+
+
+		var timer; //用于控制轮播图的运行
+		//轮播图
+		function start() {
+			var lisLength = document.querySelectorAll('.slider li').length
+			timer = setInterval(() => {
+				if (curIndex < lisLength - 1) {
+					//执行一次动画
+					slideOne(1);
+				} else {
+					//curIndex=0;
+					document.querySelector('.slider').style.marginLeft = '0px'; //获取ul
+					curIndex = 0;
+				}
+			}, 3000);
+		}
+
+		//开启轮播图
+		start();
+
+
+		//前进或后退
+		document.querySelector('.prev').addEventListener('click', function () {
+			//先暂停当前定时器，等该次执行后再开启轮播图定时器
+			clearInterval(timer);
+			if (curIndex > 0) {
+				slideOne(-1,start);
+			}
+		})
+		document.querySelector('.next').addEventListener('click', function () {
+			//先暂停当前定时器，等该次执行后再开启轮播图定时器
+			clearInterval(timer);
+			var lis = document.querySelectorAll('.slider li'); //获取lis
+			if (curIndex < lis.length-1) {
+				slideOne(1,start);
+			}
+		})
+	</script>
+</body>
+
+</html>

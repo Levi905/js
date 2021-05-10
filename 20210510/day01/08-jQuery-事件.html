@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+     //事件处理
+    //  $('body').on('click','#box',function(e){
+    //   //  console.log(this);//原生dom元素
+    //    console.log($(this));
+    //  });
+
+     //快速方法：但对动态添加的标签无效
+     $('#box').click(function(){
+       //  console.log(this);//原生dom元素
+       console.log($(this));
+     });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        小扣在秋日市集选择了一家早餐摊位，一维整型数组 staple 中记录了每种主食的价格，
+        一维整型数组 drinks 中记录了每种饮料的价格。
+        小扣的计划选择一份主食和一款饮料，且花费不超过 x 元。请返回小扣共有多少种购买方案.
+        思路：对两个数组进行排序。遍历主食数组，找到当前主食条件下最大 的饮料价格。
+        */
+       var staple =[18,15,12,21,20];//主食的价格 [12,15,18,20,21]
+       var drinks =[3,5,2,1,4];//饮料的价格  [1,2,3,4,5]
+       var x = 20;//所有财产
+       var count = 0;//可选方案的个数
+       // 排序
+       staple.sort((a,b)=>a-b);//升序
+       drinks.sort((a,b)=>a-b);//升序
+       //遍历主食
+       var j = drinks.length-1;//饮料的最大下标
+       for(var i=0;i<staple.length&&j>0;){
+           //每次遍历找到当前主食下的最大饮料价格
+           if(staple[i]+drinks[j]<=x){
+               //满足,也就是说 j之前的数据也都满足，找出当前主食的可选方案个数：j+1
+               i++;
+               count+=j+1;
+           }else{
+               //不满足,说明饮料价格大了          
+               j--;         
+           }
+       }
+       document.write(count);
+    </script>
+</body>
+</html>

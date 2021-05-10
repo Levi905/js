@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*2.给你一个数组 nums ,求出对应的动态和数组。
+        数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i]).比如[1,2,3,4],返回[1,1+2,1+2+3,1+2+3+4]为[1,3,6,10]*/
+        var newArr = [];
+        var nums = [1,2,3,4];
+        var number = 0;//前n项的累加和
+        for(var i=0;i<nums.length;i++){
+            number+=nums[i];
+            //加入新数组
+            newArr.push(number);
+        }
+        document.write(newArr);
+    </script>
+</body>
+</html>

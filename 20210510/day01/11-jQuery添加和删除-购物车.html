@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100px;
+      }
+      input {
+        width: 30px;
+      }
+      td {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="add-first">在第一行添加商品</button>
+    <button id="add-last">在最后一行添加商品</button>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>图片</th>
+          <th>单价</th>
+          <th>操作</th>
+          <th>总价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>卫龙辣条1</td>
+          <td><img src="img/id1.jpg" alt="" /></td>
+          <td>3.5</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>卫龙辣条2</td>
+          <td><img src="img/id2.jpg" alt="" /></td>
+          <td>4</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>卫龙辣条3</td>
+          <td><img src="img/id3.jpg" alt="" /></td>
+          <td>5</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <!-- 总价格 -->
+          <td colspan="5">0</td>
+        </tr>
+      </tbody>
+     
+    </table>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+      //添加和删除
+      var newTr = `<tr>
+        <td>卫龙辣条3</td>
+        <td><img src="img/id3.jpg" alt="" /></td>
+        <td>5</td>
+        <td>
+          <button >-</button>
+          <input type="text" value="1" />
+          <button >+</button>
+          <button >删除</button>
+        </td>
+        <td>0</td>
+      </tr>`;
+      // 1. 生成一个新商品tr作为tbody的最后一个子标签
+      
+      //$('tbody').append(newTr);
+      // 2.插入到总价tr之前  before 
+      //$('tbody tr:last-child').before(newTr);
+      //3. 作为tbody的第一个商品 
+     // $('tbody tr:first-child').before(newTr);
+      // 4作为tbody的第二个商品:after 
+      //$('tbody tr:first-child').after(newTr);
+
+      //删除除了总价行以外的所有的商品
+      $('tbody tr:not(:last-child)').remove();
+    </script>
+  </body>
+</html>

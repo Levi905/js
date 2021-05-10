@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+        //jquery 选择器
+        //var $box  = $('#box');//找到id为box的div
+        //var $divs = $('#box div');
+        // console.log($box);
+        // console.log($divs);
+        //console.log($divs.eq(0).text());//输出标签的内容
+        //原生dom
+        //var box = document.querySelector('#box');
+        // console.log(box);
+
+        // jQuery 和原生dom的切换
+        
+        //把jquery 转为原生 DOM 标签
+            //var $box  = $('#box');
+            // var box = $box.get(0);
+            // console.log($box)
+            // console.log(box);
+        // 原生dom转jQuery
+        var box = document.querySelector('#box');
+        var $box = $(box);
+        console.log($box);
+
+
+    </script>
+</body>
+</html>

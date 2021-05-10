@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<style>
+    #box {
+        display: flex;
+    }
+
+    #box div {
+        position: absolute
+    }
+</style>
+
 <body>
+
+    <div id="box">
+        <p id="left" onclick="change()"></p>
+        <div><img src="img/id1.jpg" alt=""></div>
+        <div><img src="img/id2.jpg" alt=""></div>
+        <div><img src="img/id3.jpg" alt=""></div>
+        <p id="right"></p>
+    </div>
+
+
     <script>
         /*
         作业:
@@ -29,34 +51,47 @@
 
 
         //力扣1
-        var arr = [1,4,5,6,7,8,9];
+        var arr = [1, 4, 5, 6, 7, 8, 9];
         var sumArr = [];
 
-        for(var i = 0;i<arr.length;i++){
+        for (var i = 0; i < arr.length; i++) {
             let sum = 0;
-            for(var j = 0;j<=i;j++){
-                sum = sum+arr[j];
+            for (var j = 0; j <= i; j++) {
+                sum = sum + arr[j];
             }
             sumArr.push(sum);
         }
-        document.write("第一题结果："+sumArr+"<br>");
+        document.write("第一题结果：" + sumArr + "<br>");
 
         //力扣2
-        var food = [5,6,7,8,9,10];
-        var drink = [2,3,4,5,6];
+        var food = [5, 6, 7, 8, 9, 10];
+        var drink = [2, 3, 4, 5, 6];
         var money = 10;
         var count = 0;
-        for(var f = 0;f<food.length;f++){
-            for(var d = 0;d<drink.length;d++){
-                if(food[f]+drink[d]<=money){
+        for (var f = 0; f < food.length; f++) {
+            for (var d = 0; d < drink.length; d++) {
+                if (food[f] + drink[d] <= money) {
                     count++;
                 }
             }
         }
-        document.write("第二题结果一共有："+count+"种购买方案");
+        document.write("第二题结果一共有：" + count + "种购买方案");
 
         //轮播图
-        
+         //1. 利用JavaScript完成轮播图（不借助css3的动画），图片随意
+        // var n = 0;
+        // var divs = document.querySelectorAll("#box div");
+        // setInterval(function () {
+        //     for (var i = 0; i < divs.length; i++) {
+        //         divs[i].style.display = "none";
+        //     }
+        //     divs[n].style.display = "block";
+        //     n++;
+        //     if (n >= divs.length) {
+        //         n = 0;
+        //     }
+        // }, 3000)
     </script>
 </body>
+
 </html>
