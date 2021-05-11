@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+      <button onclick="assignDemo()">assign</button>
+      <button onclick="replaceDemo()">replace</button>
+      <button onclick="hrefDemo()">href</button>
+      <button onclick="location.reload();">刷新</button>
+      <!-- 数据共享 -->
+      <form action="success.html">
+          用户名： <input type="text" name="user">
+          密码： <input type="text" name="pass">
+          <button>提交</button>
+      </form>
+    <script>
+      // console.log(location)
+      //
+    //   console.log(location.host);
+    //   console.log(location.port);
+    //   console.log(location.protocol);
+    //   console.log(location.hostname);
+    //   console.log(location.search);
+    //   console.log(location.href);
+
+    //跳转
+    function assignDemo(){
+        location.assign("http://www.baidu.com");
+    }
+    function replaceDemo(){
+        location.replace("http://www.baidu.com");
+    }
+    function hrefDemo(){
+        location.href  = "http://www.baidu.com";
+    }
+    </script>
+  </body>
+</html>

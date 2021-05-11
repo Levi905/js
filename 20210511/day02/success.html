@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>提交成功</h1>
+    <script>
+        //获取数据,通过 indexOf以及substring/substr完成对数据的解析
+        // name age 
+        var username;
+        var pass;
+        //获取并解析
+        var dataStr = location.search;
+        //去掉?
+        dataStr = dataStr.substr(1);
+        // 找到&的下标
+        var index = dataStr.indexOf('&');
+        var usernameStr  =dataStr.substring(0,index);
+        var passStr = dataStr.substring(index+1);
+
+        //获取用户名
+        var user_index = usernameStr.indexOf('=');
+        //找到nam属性的值
+        username = usernameStr.substr(user_index+1);
+
+        //获取密码
+        var pass_index = usernameStr.indexOf('=');
+        pass = passStr.substr(pass_index+1);
+        console.log(pass);
+
+        //进行验证
+        if(username=="admin" && pass=='ad123'){
+            document.querySelector('h1').innerText="登录成功";
+        }else{
+            document.querySelector('h1').innerText="用户名或密码错误";
+        }
+        //当登录失败的时候，3秒后返回登录页面
+        
+    </script>
+</body>
+</html>

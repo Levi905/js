@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+    <script src="jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <button onclick="slidedown()">下拉</button>
+    <button onclick="slideup()">上滑</button>
+    <button onclick="divIn()">淡入</button>
+    <button onclick="divOut()">淡出</button>
+    <button onclick="diy()">自定义动画</button>
+    <!-- 动画标签 -->
+    <div></div>
+    <script>
+      // 实现div的下拉和上滑
+
+      function slidedown() {
+        $("div").slideDown(2000);
+      }
+      function slideup() {
+        // $('div').slideUp();
+        $("div").slideUp(3000);
+      }
+      function divIn() {
+        // $('div').slideUp();
+        $("div").fadeIn(3000);
+      }
+      function divOut() {
+        // $('div').slideUp();
+        $("div").fadeOut(3000);
+      }
+      function diy() {
+        // $("div").animate(
+        //   {
+        //     width: "300px",
+        //     height: "300px",
+        //   },
+        //   2000
+        // );
+
+        //2s内向右移动300px后向下移动300px
+        // $('div').animate({
+        //     "margin-left":"300px",
+        // },2000);
+        // $('div').animate({
+        //     "margin-top":"300px"
+        // },2000);
+        //2s先淡入后再2s内向右移动300px
+        // $('div').fadeIn(2000);
+        // $('div').animate({
+        //     "margin-left":"300px"
+        // },2000)
+
+        // 先2s内淡入，再改变div的内容为123
+        // $("div").fadeIn(2000, function () {
+        //   $(this).text("123");
+        // });
+        //2. 2s内淡入，再3s向右移动300px后改变div背景颜色为蓝色
+        $("div").fadeIn(2000);
+        $('div').animate(
+          {
+            "margin-left": "300px",
+          },
+          3000,
+          function () {
+            $(this).css("background-color", "blue");
+          }
+        );
+      }
+    </script>
+  </body>
+</html>

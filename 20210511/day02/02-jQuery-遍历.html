@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+    <script >
+        //box下的所有div 内容+1 
+        var $items = $('.item');
+        // var old = $items.text();
+        // $items.text(old+1);
+        //for 遍历
+        // for(var i=0;i<$items.length;i++){
+        //     $items.eq(i);
+        // }
+
+        // each 
+        $items.each(function(index,elem){
+            //index是当前遍历下标,elem就是指的this，可选
+            // console.log($(this));
+            var old = Number($(this).text());
+            $(this).text(old +1);
+        });
+
+        //获取这些div的中的第一个和最后一个
+        console.log($items.first(),$items.last())
+    </script>
+</body>
+</html>

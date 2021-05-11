@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      background-image: url("雪花素材/snow-night.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    body img {
+      position: fixed;
+      width: 40px;
+    }
+
+    #snowUp {
+      position: fixed;
+      width: 100%;
+      top: 770px;
+    }
+
+    #snowUp img {
+      width: 100%;
+
+    }
+  </style>
+</head>
+
+<body>
+  <button>新增</button>
+  <button>开始</button>
+  <button>暂停</button>
+  <button>删除</button>
+  <div id="snowUp">
+    <!-- <img src="雪花素材/堆雪.png" alt=""> -->
+  </div>
+  <!-- 音乐 -->
+  <audio src="圣诞.wav" id="music"></audio>
+
+  <script src="../jquery-1.11.3.min.js"></script>
+
+  <script>
+
+
+
+    $('body').on('click', 'button', function (e) {
+      var $elem = $(this);
+      var text = $elem.text();
+      var timer;
+      var flag = true;
+      if (text == "新增") {
+        var newImg = ` <img src="雪花素材/snow-white.png" alt=""> `
+        var $img = $(newImg);
+        $img.css({
+          'top': parseInt(Math.random() * 800) + "px",
+          'left': parseInt(Math.random() * 1600) + "px",
+        })
+        $('body').append($img);
+      } else if (text == "开始") {
+        if (flag == true) {
+          timer = setInterval(function () {
+            var $imgs = $('body img');
+            for (var i = 0; i < $imgs.length; i++) {
+              var $img = $imgs.eq(i);
+              var top = $img.css('top');
+              top = Number(top.substr(0, top.length - 2));
+              if (top < 800) {
+                $img.css({
+                  'top': top + 5 + "px",
+                })
+                flag = false;
+              } else {
+                $img.css({
+                  'top': -40 + 'px',
+                })
+              }
+            }
+            flag = false;
+          }, 100);
+        }
+      } else if (text == '暂停') {
+        clearInterval(timer);
+        flag = true;
+      } else if (text == '删除') {
+        $('body img').remove();
+      }
+
+    })
+
+
+
+
+
+      // //新建
+
+      // function addSnow(){
+      //     var newImg = document.createElement("img");
+      //     newImg.setAttribute("src","雪花素材/snow-white.png");
+      //     newImg.style.top = parseInt(Math.random()*800) + "px";
+      //     newImg.style.left = parseInt(Math.random()*1600) + "px";
+      //     document.body.appendChild(newImg);
+      // }
+
+
+      // //开始
+
+
+      // var timer;
+      // function start(){
+      //     if(timer==undefined){
+      //         timer=setInterval(function() {
+      //           var imgs = document.querySelectorAll("body img");
+      //           for(var i=0;i<imgs.length;i++){
+      //               var img = imgs[i];
+      //               var style = getComputedStyle(img,null);
+      //               var top =style.top;
+      //               top = Number(top.substr(0,top.length-2));
+      //               if(top<600){
+      //                   img.style.top = top + 5 + "px";
+      //               }else{
+      //                   img.style.top="-40px"
+      //               }
+      //           } 
+      //         }, 100);
+      //     }
+      //    setInterval(function(){
+      //           var dui = document.querySelector("#snowUp");
+      //           var style1 = getComputedStyle(dui, null);
+      //           var top1 = style1.top;
+      //           top1 = Number(top1.substr(0, top1.length - 2));
+      //           dui.style.top = top1 - 2 + "px";
+      //     },1000)
+      // }
+
+      // //暂停
+      // function pause(){
+      //     clearInterval(timer);
+      //     timer=undefined;
+      // }
+
+      // //删除
+      // function delAll(){
+      //     var imgs = document.querySelectorAll("body img");
+      //     for(var i=0;i<imgs.length;i++){
+      //         imgs[i].parentElement.removeChild(imgs[i]);
+      //     }
+      // }
+
+  </script>
+</body>
+
+</html>

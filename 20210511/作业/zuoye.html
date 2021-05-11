@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .redli {
+        color: red;
+        text-decoration: line-through;
+    }
+
+    .noa {
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <input type="text">
+    <button>addTODO</button>
+    <ul>
+        <li>js</li>
+        <li>html</li>
+        <li>css</li>
+        <li>jquery</li>
+        <li>h5</li>
+    </ul>
+    <a href="#">ALL</a>
+    <a href="#">RUN</a>
+    <a href="#">DONE</a>
+    <script src="../../jquery-1.11.3.min.js"></script>
+    <script>
+        $('body').on('click', 'button', function (e) {
+            var $inputValue = $('input').val();
+            var $newLi = $('<li></li>');
+            $newLi.text($inputValue);
+            $('ul li:first-child').before($newLi);
+        })
+        $('body').on('click', 'li', function (e) {
+            if ($(this).attr('class') != 'redli') {
+                $(this).addClass('redli');
+            } else {
+                $(this).removeClass('redli');
+            }
+        })
+        $('body').on('click', 'a', function (e) {
+            var $as = $('a');
+                $as.each(function(i,elem){
+                    $(this).removeClass('noa');
+                })
+                $(this).addClass('noa');
+            if ($(this).text() == 'ALL') {
+                var $lis = $('li');
+                $lis.each(function (i, elem) {
+                    $(this).show();
+                })
+            } else if ($(this).text() == 'RUN') {
+                var $lis = $('li');
+                $lis.each(function (i, elem) {
+                    $(this).show();
+                })
+                var $lis2 = $('.redli');
+                $lis2.each(function (i, elem) {
+                    $(this).hide();
+                })
+            } else if ($(this).text() == 'DONE') {
+                var $lis = $('li');
+                $lis.each(function (i, elem) {
+                    $(this).hide();
+                })
+                var $lis2 = $('.redli');
+                $lis2.each(function (i, elem) {
+                    $(this).show();
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
