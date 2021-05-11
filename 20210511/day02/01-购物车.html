@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100px;
+      }
+      input {
+        width: 30px;
+      }
+      td {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="add-first">在第一行添加商品</button>
+    <button id="add-last">在最后一行添加商品</button>
+    <table border="1">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名称</th>
+          <th>图片</th>
+          <th>单价</th>
+          <th>操作</th>
+          <th>总价</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>卫龙辣条1</td>
+          <td><img src="img/id1.jpg" alt="" /></td>
+          <td>3.5</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>卫龙辣条2</td>
+          <td><img src="img/id2.jpg" alt="" /></td>
+          <td>4</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>卫龙辣条3</td>
+          <td><img src="img/id3.jpg" alt="" /></td>
+          <td>5</td>
+          <td>
+            <button>-</button>
+            <input type="text" value="1" />
+            <button>+</button>
+            <button>删除</button>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <!-- 总价格 -->
+          <td><input type="checkbox" class="chooseAll"> <button >删除所选</button></td>
+          <td colspan="5">0</td>
+        </tr>
+      </tbody>
+     
+    </table>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script>
+     /*
+     删除所选： 点击时需要判断哪些标签需要删除,根据每个商品是否被选中
+     思路：遍历所有的商品tr，判断是否被选中(checked)
+     */
+    $('body').on('click','button',function(e){
+      var text = $(this).text();
+      if(text=='删除所选'){
+        delChoose();
+      }
+    });
+
+    $(".chooseAll").click(function(){
+      var $checkboxs =$('tbody tr:not(:last-child) td [type=checkbox]');
+      if($(this).prop('checked')==true){
+        //其他多选框都要选上
+        $checkboxs.prop('checked',true);
+      }else{
+        //其他多选框都要取消
+        $checkboxs.prop('checked',false);
+      }
+    });
+    /**
+     * 删除所选
+     */
+    function delChoose(){
+      var $checkboxs =$('tbody tr:not(:last-child) td [type=checkbox]');
+      //遍历判断
+      for(var i=0;i<$checkboxs.length;i++){
+        var $c = $checkboxs.eq(i);
+        if($c.prop('checked')==true){
+          //被选中，删除tr
+          $c.parents('tr').remove();
+        }
+      }
+    }
+    </script>
+  </body>
+</html>

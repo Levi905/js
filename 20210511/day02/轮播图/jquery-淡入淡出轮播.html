@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 1440px;
+        height: 500px;
+        margin: auto;
+        overflow: hidden;
+      }
+      #box ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+      #box ul li {
+        position: absolute;
+        height: 100%;
+        width: 1440px;
+      }
+    </style>
+    <script src="../jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li><img src="images/1.jpg" alt="" /></li>
+        <li><img src="images/3.jpg" alt="" /></li>
+        <li><img src="images/2.jpg" alt="" /></li>
+        
+      </ul>
+    </div>
+    <script>
+      //练习：淡入淡出轮播图
+      // 思路：每次把表面的那张图片淡出之后，将淡出的图片位置放在图片中的开头
+      //（因绝对定位原因，图片的显示顺序和代码顺序是想法 ），然后不断重复以上过程即可
+      setInterval(function () {
+        //表面一张进行淡出，淡出后将自己放在淡出队列的末尾，即作为li标签的的第一个,之后将自己显示出来，准备下一次的轮播
+          $("ul li").last().fadeOut(1000, function () {
+          $("ul li").first().before($(this));
+          $(this).show();
+        });
+      },3000);
+    </script>
+  </body>
+</html>

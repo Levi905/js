@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    img {
+      width: 100px;
+    }
+
+    input {
+      width: 30px;
+    }
+
+    td {
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="addTr()">添加商品</button>
+  <table border="1">
+    <tr>
+      <th>名称</th>
+      <th>图片</th>
+      <th>单价</th>
+      <th>操作</th>
+      <th>总价</th>
+    </tr>
+    <tr>
+      <td><input type="checkbox" class="check">
+      <td>卫龙辣条1</td>
+      <td><img src="img/id1.jpg" alt="" /></td>
+      <td>3.5</td>
+      <td>
+        <button>-</button>
+        <input type="text" value="0"/>
+        <button >+</button>
+        <button >删除</button>
+      </td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" class="check">
+      <td>卫龙辣条2</td>
+      <td><img src="img/id2.jpg" alt="" /></td>
+      <td>4</td>
+      <td>
+        <button >-</button>
+        <input type="text" value="0" />
+        <button >+</button>
+        <button >删除</button>
+      </td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td> <input type="checkbox" class="check">
+      <td>卫龙辣条3</td>
+      <td><img src="img/id3.jpg" alt="" /></td>
+      <td>5</td>
+      <td>
+        <button >-</button>
+        <input type="text" value="0" />
+        <button >+</button>
+        <button >删除</button>
+      </td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td> 选择：<input type="checkbox"id="all" >
+      <button>全部删除</button></td>
+      <!-- 总价格 -->
+      <td colspan="4">0</td>
+    </tr>
+  </table>
+
+  <script src="jquery-1.11.3.min.js"></script>
+  <script>
+
+    $('body').on('click','button',function(e){
+        var $elem = $(this);
+        console.log($elem);
+        var text = $elem.text();
+        if(text=="-"){
+          var next = $elem.next().val();
+          if(next>0){
+            next--;
+            $elem.next().val(next);
+
+          var count = Number($elem.next().val());
+          var price = Number($elem.parent().prev().text());
+          // console.log(price)
+          var onePrice=$elem.parent().next().text(count*price);
+          var sum =Number($('tbody tr:last-child td:last-child').text());
+          var all= $('tbody tr:last-child td:last-child').text(sum-price);
+          }
+
+        }else if(text=="+"){
+          var prev = $elem.prev().val();
+          prev++;
+          $elem.prev().val(prev);
+          var count =   Number($elem.prev().val());
+          var price = Number($elem.parent().prev().text());
+          // console.log(price)
+          var onePrice=$elem.parent().next().text(count*price);
+          var sum =Number($('tbody tr:last-child td:last-child').text());
+          var all= $('tbody tr:last-child td:last-child').text(sum+price);
+
+        }else if(text=="删除"){
+          $elem.parents('tr').remove('tr');
+        }else if(text=="添加商品"){
+          var newTr = `<tr>
+        <td>卫龙辣条3</td>
+        <td><img src="img/id3.jpg" alt="" /></td>
+        <td>5</td>
+        <td>
+          <button >-</button>
+          <input type="text" value="1" />
+          <button >+</button>
+          <button >删除</button>
+        </td>
+        <td>0</td>
+      </tr>`;
+      $('tbody tr:last-child').before(newTr);
+        }else if(text=="全部删除"){
+          if($('#all').prop('checked')==true){
+            // if($('.check').prop('checked')==true){
+              $('tbody tr:not(:last-child)').remove();
+          
+          }
+        }
+    })
+
+
+
+    
+    
+  </script>
+</body>
+
+</html>
