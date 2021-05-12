@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 例子：把所有人名提取出来，放入数组中
+      //   var str = "张三@李四$王五#赵六@@@田七&&王八";
+      //   var newArr = str.split(/[@$#&]+/);
+      //   var str = "?name=zs&age=12";
+      //   var newArr = str.split(/[?&=]+/);
+      //   console.log(newArr);
+
+      //match
+    //   var str = "张三：18325678901 李四：18325678902 王五：18325678903";
+    //   var reg = /1[3-9]\d{9}/g;
+    //   var phone = str.match(reg);
+    //   console.log(phone); //18325678901
+
+    // 找到所有的英文名字
+    var str  ="张三james bond  李四 mary 王五 tony 赵六 jobs";
+    var reg = /[a-zA-Z]+[ ]*[a-zA-Z]*/g;
+    console.log(str.match(reg));
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        /*
+        2.实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.
+        则经过替换之后的字符串为We%20Are%20Happy replace
+3.字符串解析,现有一字符串,"卡巴斯基#杀毒软件#免费版#俄罗斯#",解析出每个元素
+4."那车水马龙的人世间,那样地来 那样地去,太匆忙"最后一次和第一次出现"那"的位置
+5.判断输入的字符串是否是 .java 结束
+6.某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，加密规则如下：
+         每位数字都加上5,然后用和除以10的余数代替该数字，再将第一位和第四位交换，第二位和第三位交换
+ 7.定义一个函数，传入一个字符串，用于删除最后一位,并返回删除后的字符串 substr
+8.给定一个字符串,判断该字符串中是否包含某个子串.如果包含,求出子串的所有出现位置.如:"abcbcbabcb34bcbd"中,"bcb"子串的出现位置为: 1,3,7,12.字符串和子串均由用户输入
+9.模拟和trim功能一致的函数。用于去除字符串两端的空白
+1.用户输入一串数字，设法在每个数字之间插入[2个随机字母(大小写)，并输出整个字符串   1792     1yu7gk9jk2     
+        */
+    var num = "1234";
+    //转为数组之后利用字符串拼接
+    var arr = num.split('');
+    var newStr = "";
+    for(var i=0;i<arr.length-1;i++){
+        newStr+=arr[i];
+        var random1 = randomLetter();
+        var random2 = randomLetter();
+        newStr = newStr +random1 +random2;
+    }
+    newStr+=arr[arr.length-1];
+    console.log(newStr)
+
+
+    //生成一个随机字母
+    function randomLetter(){
+        // 第二种 生成随机字母的ASCII码来获取字符  小写: 97-122 大写：65-90
+        do{
+            var num = parseInt(Math.random()*123);
+        }while(num <65 || (num >90 &&num<97));
+        return String.fromCharCode(num);
+    }
+    
+        // 9 
+        // 思路1：设置两个下标i和j，i从开头进行遍历，j从末尾进行遍历，直到遍历到i和j指向第一个非空的字符
+        // var str = "  hello  ";
+
+        // var i =0;
+        // var j =str.length-1;
+
+        // while((str[i]==' ' || str[j]==' ') && i!=j){
+        //     if(str[i]==' '){
+        //         i++;
+        //     }
+        //     if(str[j]==' '){
+        //         j--;
+        //     }
+        // }
+        // 循环结束后 i和j分别指向第一个不为空的字符以及最后一个不为空的字符
+        //console.log(str.slice(i,j+1));
+
+        //8
+        // var str = "abcbcbabcb34bcbd";
+        // var data = 'bcb';
+        // var newArr = [];//把出现的下标添加到数组中
+        // //先判断是否包含该子串
+        // var index = str.indexOf(data);
+        // if(index ==-1){
+        //     console.log('不包含该子串');
+        // }else{
+        //     newArr.push(index);//把第一次出现的下标加入数组中
+        //     while(str.indexOf(data,index+1)!=-1){
+        //         index = str.indexOf(data,index+1);
+        //         newArr.push(index);
+        //     }
+        // }
+
+        // console.log(newArr);
+
+
+
+
+        // 7 截取字符串
+        function strPop(str){
+            var newStr = str.substr(0,str.length-1);
+            return newStr;
+        }
+        //console.log(strPop('12345'))
+
+
+
+       //6 
+    //    var num  ='1234';
+    //    // 获取每位数，+5%10
+    //    var arr = num.split('');
+    //    console.log(arr);
+    //    for(var i=0;i<arr.length;i++){
+    //        arr[i] = Number(arr[i])+5;
+    //        arr[i] %=10; // arr[i] =arr[i] %10
+    //    }
+    //    console.log(arr.reverse().join(''));
+
+
+
+       //5
+    //    var str = prompt('请输入字符串');
+    //    console.log(str.endsWith('.java'));
+
+
+       //4
+       //var str = "那车水马龙的人世间,那样地来 那样地去,太匆忙";
+       //console.log(str.indexOf('那'),str.lastIndexOf('那'))
+
+
+       //3  split
+    //    var newArr = "卡巴斯基#杀毒软件#免费版#俄罗斯#".split("#");
+    //    if(newArr[newArr.length-1]==""){
+    //        newArr.pop();
+    //    }
+    //    console.log(newArr)
+
+
+
+
+
+       //2 
+       function demo2(str){
+           return str.replaceAll(' ','%20');
+       }
+    //    console.log(demo2("We Are Happy"));
+    </script>
+</body>
+</html>

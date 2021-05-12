@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //正则表达式示例：
+    //   var str = "5"; //要判断的数据
+    //   var reg = /[0-9]/; //正则表达式
+    //   console.log(reg.test(str)); //false
+
+    /*
+    1. 判断用户输入的字符串是否包含连续的3个数字  /[0-9][0-9][0-9]/
+    2. 判断用户输入的字符串是否包含连续的10个数字  /[0-9]{10}/
+    3. 判断用户输入的字符串是否包含至少连续的5个数字/[0-9]{5，}/
+    4. 判断用户输入的字符串是否包含至少连续的5个小写字母 /[a-z]{5}/
+    5. 判断用户输入的字符串是否包含至少5个最多10个连续的字母或数字  /[a-zA-Z0-9]{5,10}/
+    6. 判断用户输入的字符串是否以数字开头  /^[0-9]/ 
+    7. 判断用户输入的字符串是否以大写字母开头 /^[A-Z]/
+    8. 判断用户输入的字符串是否以小写字母结尾 /[a-z]$/
+    9. 判断用户输入的字符串是否以小写字母结尾 /[a-z]$/
+    10. 判断整个字符串是否是大写字母加一个数字 /^[A-Z][0-9]$/
+    11. 判断整个字符串是否是11位数字 /^[0-9]{11}$/
+    12. 判断整个字符串是否是james bond /^james bond$/
+    13. 判断整个字符串是否是JavaScript或TypeScript中的一个 /(Java|Type)Script/ 
+    14. 判断整个字符串是否是 HTML 或 CSS 或JavaScript中的一个 /(HTML|CSS|JavaScript)/
+    */
+//    var str = prompt('请输入字符串');
+//     var reg =/^(HTML|CSS|JavaScript)$/ ;
+//    console.log(reg.test(str));
+/*
+练习：
+1. 判断QQ号： 5~10位数字
+2. 手机号：  11位数字，1开头，第二位至少为3
+3. 邮箱：  以字母开头，后续跟1~10的字母或数字或_，后续跟@,@后跟2~3个字母或数字，后跟.,后跟com或cn或net
+*/
+var str =prompt('请输入字符串');
+// var QQ = /^[0-9]{5,10}$/;
+//var Phone =/^1[3-9][0-9]{9}$/;
+var email =/^[a-zA-Z][a-zA-Z0-9_]{1,10}@[a-zA-Z0-9]{2,3}.(com|cn|net)$/;
+console.log(email.test(str));
+    </script>
+  </body>
+</html>

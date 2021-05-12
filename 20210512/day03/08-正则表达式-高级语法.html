@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //转义
+        //1. 匹配一个数字跟+跟一个数字
+        //2. 匹配15位或18位身份证
+
+        var str =prompt('请输入字符串');
+        // var reg = /^[0-9]\+[0-9]$/;
+        var reg = /^(\d{15}|\d{18})$/;
+        console.log(reg.test(str));
+    </script>
+</body>
+</html>

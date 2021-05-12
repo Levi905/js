@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.11.3.min.js"></script>
+    <style>
+        .run{
+            color: black;
+        }
+        .done{
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"><button class="add-btn">add</button> 
+    <ul>
+        <li class="run">HTML</li>
+        <li class="run">CSS</li>
+        <li class="run">JavaScript</li>
+    </ul>
+
+    <a href="#">ALL</a>
+    <a href="#">Run</a>
+    <a href="#">Done</a>
+
+    <script >
+        // 添加
+        $('body').on('click','.add-btn',function(){
+            var $input = $(this).prev();
+            //新增标签
+            $('ul').append(`<li>${$input.val()}</li>`);
+        });
+        // 切换run或done状态
+        $('body').on('click','ul li',function(){
+            var className = $(this).prop('class');
+            if(className=="run"){
+                $(this).prop('class','done');
+            }else{
+                $(this).prop('class','run');
+            }
+        });
+
+        //3 点击a标签实现显示对应状态的列表项li
+        $('body').on('click','a',function(e){
+            //取消默认行为,防止跳转或刷新
+            e.preventDefault();
+            var text = $(this).text();
+            switch (text) {
+                case "ALL": liShow(text);break;
+                case "Run": liShow(text);break;
+                case "Done": liShow(text);break;
+            }
+        });
+
+        function liShow(text){
+            if(text=="ALL"){
+                $('ul li').show();
+                
+            }else if(text=="Run"){
+                $('ul .run').show();
+                $('ul .done').hide();
+            }else{
+                $('ul .done').show();
+                $('ul .run').hide();
+            }
+            //去掉点击的 a标签的href属性
+            $('a').each(function(){
+                if($(this).text()==text){
+                    $(this).removeAttr('href');
+                }else{
+                    $(this).prop('href','#');
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
