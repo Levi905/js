@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div>验证中</div>
     <script src="../../../jquery-1.11.3.min.js"></script>
     <script>
-        var a = window.location.href;
-        console.log(a);
+        setTimeout(() => {
+            var str = location.search;
+            var arr = ["13666666666", "A123456", "11111"];
+            var arrCanshu = str.split(/[?&]+/);
+            arrCanshu.splice(0, 1);
+            for (var i = 0; i < arrCanshu.length; i++) {
+                var index = arrCanshu[i].indexOf("=");
+                arrCanshu[i] = arrCanshu[i].slice(index + 1);
+            }
+            if (arrCanshu[0] == arr[0] && arrCanshu[1] == arr[1] && arrCanshu[2] == arr[2]) {
+                window.location = "success.html";
+            } else {
+                window.location = "fail.html";
+            }
+        }, 3000);
     </script>
 </body>
+
 </html>

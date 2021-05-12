@@ -16,15 +16,15 @@
         <div id="box">
             <div class="input-box" id="logo">用户名账号登录</div>
             <div class="input-box">
-                <input type="text" placeholder="手机/邮箱" id="user" onkeyup="checkUserName()">
+                <input type="text" placeholder="手机/邮箱" id="user" name="user" onkeyup="checkUserName()">
                 <p id="user-msg"></p>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="密码" id="pass" onkeyup="checkPass()">
+                <input type="password" placeholder="密码" id="pass" name="pass" onkeyup="checkPass()">
                 <p id="pass-msg"></p>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="请输入验证码" style="width: 100px;" id="yan" onkeyup="checkYan()">
+                <input type="text" placeholder="请输入验证码" style="width: 100px;" id="yan" name="yan" onkeyup="checkYan()">
                 <img src="image/code.jpg" alt="" style="position: relative;top:15px;">
                 <p id="yan-msg"></p>
             </div>
