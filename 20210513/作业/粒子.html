@@ -10,7 +10,7 @@
 <style>
     body {
         overflow: hidden;
-        background-color: black;
+        /* background-color: black; */
     }
 </style>
 
@@ -25,7 +25,7 @@
         //设置粒子数量
         var particleCount = 100;
         //设置粒子的半径
-        var particleRadius = 2;
+        var particleRadius = 5;
         //定义一个存放粒子对象的数组
         var particles = [];
         //设置画布大小
@@ -68,11 +68,20 @@
             //清理画布
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (var i = 0; i < particles.length; i++) {
-                if (particles[i].x >= 0 && particles[i].x <= canvas.width && particles[i].y >= 0 && particles[i].y <= canvas.height) {
-                    particles[i].x -= particles[i].speedX;
-                    particles[i].y -= particles[i].speedY;
+                if(particles[i].x>0 && particles[i].x<canvas.width){
+                    particles[i].speedX  = particles[i].speedX;
+                    
+                }else{
+                    particles[i].speedX  = -particles[i].speedX;
                 }
-
+                if(particles[i].y>0 && particles[i].y<canvas.height){
+                    particles[i].speedY = particles[i].speedY;
+                }else{
+                    particles[i].speedY = -particles[i].speedY;
+                }
+                
+                particles[i].x += particles[i].speedX;
+                particles[i].y += particles[i].speedY;
                 //重新画粒子
                 ctx.beginPath();
                 ctx.arc(particles[i].x, particles[i].y, particleRadius, 0, Math.PI * 2);
@@ -80,8 +89,48 @@
                 ctx.fillStyle = particles[i].color;
                 ctx.fill();
             }
+            Connection(particles);
         }, 10);
 
+        //创建鼠标移动连线事件
+        canvas.addEventListener('mousemove',function(event){
+            var mouseX = event.clientX;
+            var mouseY = event.clientY;
+            var dis2 = 200;
+            var mousexy = 0;
+            var mouseArr = [];
+            for(var i = 0;i<particles.length;i++){
+                mousexy = dis(mouseX-particles[i].x,mouseY-particles[i].y);
+                if(mousexy<dis2){
+                    mouseArr.push(particles[i]);
+                }
+            }
+            ctx.beginPath();
+            // ctx.moveTo(mouseX,mouseY);
+            ctx.moveTo(mouseArr[0].x,mouseArr[0].y);
+            for(var i = 1;i<mouseArr.length;i++){
+                ctx.lineTo(mouseArr[i].x,mouseArr[i].y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        })
+        //自动连线函数
+        function Connection(arr){
+            var distance = 100;
+            var xy = 0;
+            for(var i = 0;i<arr.length;i++){
+                for(var j = i+1;j<arr.length;j++){
+                    xy = dis(arr[i].x-arr[j].x,arr[i].y-arr[j].y);
+                    if(xy<distance){
+                        ctx.beginPath();
+                        ctx.moveTo(arr[i].x,arr[i].y);
+                        ctx.lineTo(arr[j].x,arr[j].y);
+                        ctx.closePath();
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
 
         //随机颜色函数
         function randomColor() {
@@ -90,6 +139,11 @@
             this.b = Math.floor(Math.random() * 255);
             this.color = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',0.8)';
             return this.color;
+        }
+
+        //距离函数
+        function dis(x,y){
+            return Math.sqrt(Math.pow(x,2)+Math.pow(y,2));
         }
     </script>
 </body>
