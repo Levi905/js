@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var shop1 = {
+            name: "卫龙辣条",
+            价格: 12,
+            库存: 1000,
+            销量: 20
+        }
+        var shop2 = {
+            name: "渣渣辉ins风秋裤",
+            价格: 300,
+            库存: 100,
+            销量: 1
+        }
+        var shop3 = {
+            name: "特斯拉12",
+            价格: 120000,
+            库存: 100,
+            销量: 30
+        }
+        var arr = [shop1,shop2,shop3];
+        var arrxiaoliang=[];
+        for(var i = 0;i<arr.length;i++){
+            console.log(arr[i].name); 
+        }
+
+        for(var i = 0;i<arr.length;i++){
+            arr[i].价格 = arr[i].价格*0.9;
+        }
+
+        for(var i = 0;i<arr.length;i++){
+            arrxiaoliang.push(arr[i].销量);
+        }
+        arr.sort((a,b)=>b.销量-a.销量);
+        console.log(arr);
+        arrxiaoliang.sort((a,b)=>a-b);
+        console.log(arrxiaoliang);
+    </script>
+</body>
+
+</html>

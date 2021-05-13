@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000" height="300" id="demo"></canvas>
+
+    <script>
+        //获取画布和画笔
+        //画布
+        var canvas = document.querySelector('#demo');
+        //画笔
+        var ctx = canvas.getContext('2d');
+        // 开始绘制：
+        //开启一条新的路径
+        ctx.beginPath(); 
+        //绘制子路径:确定绘制的起点(100,200)
+        ctx.moveTo(100,200);
+        //勾勒子路径1
+        ctx.lineTo(200,200);
+        //勾勒子路径2 
+        ctx.lineTo(100,100);
+        // 闭合子路径
+        ctx.closePath();
+        //绘制子路径
+        ctx.stroke();
+    </script>
+</body>
+</html>

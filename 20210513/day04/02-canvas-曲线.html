@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000" height="300" id="demo"></canvas>
+
+    <script>
+        //获取画布和画笔
+        //画布
+        var canvas = document.querySelector('#demo');
+        //画笔
+        var ctx = canvas.getContext('2d');
+       
+        // 勾勒一段曲线
+        
+        //例子：以100,100 半径为5生成4分之1圆，从0度到90度
+        // ctx.arc(100,100,50,0,Math.PI/2);//默认顺时针
+        //例子：生成半径为100的圆，圆心是200,200
+        ctx.beginPath();
+        ctx.arc(200,200,100,0,Math.PI*2);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(600,200,100,0,Math.PI*2);
+        ctx.closePath();
+        // ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <h1>正在验证中...</h1>
+    <script >
+        
+        var users = [
+            ['13888888888','B123456'],
+            ['13999999999','A123456'],
+            ['qq@qq.com',"A123456"]
+        ];
+        //对数据进行解析
+        var dataStr   =decodeURIComponent(location.search);
+        // 去掉? 
+        dataStr = dataStr.replace('?','');
+        //利用split 
+        var arr = dataStr.split(/[=&]+/);// ["user", "13999999999", "pass", "A123456", "code", "78934"]
+        //判断
+        for(var i=0;i<users.length;i++){
+            var user = users[i];
+            if(user[0] == arr[1] && user[1]==arr[3]){
+                $('h1').text('验证成功，即将跳转');
+                // setTimeout(() => {
+                //     location.assign('success.html');
+                // }, 1000);
+                break;
+            }else{
+                if(i==users.length-1){
+                    //登录失败
+                    $('h1').text('验证失败，即将跳转到登录页面');
+                // setTimeout(() => {
+                //     location.assign('百度登录框.html');
+                // }, 1000);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

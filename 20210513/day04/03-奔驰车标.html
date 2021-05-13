@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="1000" height="300" id="demo"></canvas>
+
+    <script>
+        //获取画布和画笔
+        //画布
+        var canvas = document.querySelector('#demo');
+        //画笔
+        var ctx = canvas.getContext('2d');
+       //画圆 : 圆心 100,100 半径100 
+       ctx.arc(100,100,100,0,Math.PI*2);
+       
+       //移动到圆心，勾勒子路径
+       ctx.moveTo(100,100);
+       //上
+       ctx.lineTo(100,0)
+       //回到圆心
+       ctx.moveTo(100,100);
+       ctx.lineTo(25,165);
+       //回到圆心
+       ctx.moveTo(100,100);
+       ctx.lineTo(175,165);
+       ctx.stroke();
+
+    </script>
+</body>
+</html>

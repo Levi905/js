@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        overflow: hidden;
+        background-color: black;
+    }
+</style>
+
+<body>
+    <canvas id="particle"></canvas>
+
+    <script>
+        //获取画布
+        var canvas = document.querySelector('#particle');
+        //获取画笔
+        var ctx = canvas.getContext("2d");
+        //设置粒子数量
+        var particleCount = 100;
+        //设置粒子的半径
+        var particleRadius = 2;
+        //定义一个存放粒子对象的数组
+        var particles = [];
+        //设置画布大小
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+
+        //利用for循环画100个粒子
+        for (var i = 0; i < particleCount; i++) {
+            //开始绘制一条路径
+            ctx.beginPath();
+            //给定每一个粒子一个随机的坐标
+            var random_x = Math.random() * canvas.width;
+            var random_y = Math.random() * canvas.height;
+            //画粒子
+            ctx.arc(random_x, random_y, particleRadius, 0, Math.PI * 2);
+            //闭合路径
+            ctx.closePath();
+            //设置填充颜色
+            ctx.fillStyle = randomColor();
+            //填充
+            ctx.fill();
+
+            //定义粒子的随机速度
+            random_speedX = Math.random() * 2 - 1;
+            random_speedY = Math.random() * 2 - 1;
+            //定义粒子对象
+            var particle = {
+                x: random_x,
+                y: random_y,
+                speedX: random_speedX,
+                speedY: random_speedY,
+                color: ctx.fillStyle
+            }
+            //放入数组
+            particles.push(particle);
+        }
+
+        //利用间隔定时器实现粒子随机移动
+        setInterval(() => {
+            //清理画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0; i < particles.length; i++) {
+                if (particles[i].x >= 0 && particles[i].x <= canvas.width && particles[i].y >= 0 && particles[i].y <= canvas.height) {
+                    particles[i].x -= particles[i].speedX;
+                    particles[i].y -= particles[i].speedY;
+                }
+
+                //重新画粒子
+                ctx.beginPath();
+                ctx.arc(particles[i].x, particles[i].y, particleRadius, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fillStyle = particles[i].color;
+                ctx.fill();
+            }
+        }, 10);
+
+
+        //随机颜色函数
+        function randomColor() {
+            this.r = Math.floor(Math.random() * 255);
+            this.g = Math.floor(Math.random() * 255);
+            this.b = Math.floor(Math.random() * 255);
+            this.color = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',0.8)';
+            return this.color;
+        }
+    </script>
+</body>
+
+</html>

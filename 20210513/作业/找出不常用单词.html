@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "this apple is sweet";
+        var str2 = "this apple is sour";
+        var arrStr = str.split(" ");
+        var arrStr2 = str2.split(" ");
+        var arr = arrStr.concat(arrStr2);
+        var finalArr = [];
+        for(var i = 0;i<arr.length;i++){
+            if (arr.indexOf(arr[i]) == arr.lastIndexOf(arr[i])) {
+                finalArr.push(arr[i]);
+            }
+        }
+        document.write(finalArr);
+    </script>
+</body>
+</html>
