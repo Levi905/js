@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #box>div {
+      width: 200px;
+      height: 119px;
+      text-align: center;
+      color: white;
+      float: left;
+      /* background-color: lightblue; */
+      border: 1px solid white;
+      box-sizing: border-box;
+    }
+
+    #box {
+      width: 606px;
+      height: 358px;
+      margin: 100px auto;
+      border: 1px solid #000000;
+    }
+
+    #box .white {
+      background-color: white;
+      width: 202px;
+      height: 119px;
+    }
+
+    #box>img {
+      width: 200px;
+      height: 112px;
+    }
+
+    #box div {
+      background-size: cover;
+    }
+
+    #img-1 {
+      background: url("img/1.jpg") no-repeat;
+    }
+
+    #img-2 {
+      background: url("img/2.jpg") no-repeat;
+    }
+
+    #img-3 {
+      background: url("img/3.jpg") no-repeat;
+    }
+
+    #img-4 {
+      background: url("img/4.jpg") no-repeat;
+    }
+
+    #img-5 {
+      background: url("img/5.jpg") no-repeat;
+    }
+
+    #img-6 {
+      background: url("img/6.jpg") no-repeat;
+    }
+
+    #img-7 {
+      background: url("img/7.jpg") no-repeat;
+    }
+
+    #img-8 {
+      background: url("img/8.jpg") no-repeat;
+    }
+
+    #info {
+      margin: 0 auto;
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+  <script src="jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    <div id="img-1"></div>
+    <div id="img-2"></div>
+    <div id="img-3"></div>
+    <div id="img-4"></div>
+    <div id="img-5"></div>
+    <div id="img-6"></div>
+    <div id="img-7"></div>
+    <div id="img-8"></div>
+    <div id="img-9" class="white"></div>
+  </div>
+  <div id="info">
+    <button onclick="randomArr();">随机顺序</button>
+    <button onclick="start()">开始游戏</button>
+    <h3>当前步数：第<span id="step">0</span>步</h3>
+  </div>
+
+  <script>
+    /*
+      1. 打乱顺序
+      思路：定义一个数组保存当前顺序的div的所有id
+      2. 拖拽
+        1-8是拖拽元素，白色是放置元素。按照拖拽基本流程即可。
+        问题：如何实现游戏规则，即白色只能跟周围的div进行拖拽处理
+      */
+    var count = 0; //表示步数
+    var curIndex = []; //当前顺序
+    //把id加入数组
+    for (var i = 1; i <= 9; i++) {
+      curIndex.push(`img-${i}`);
+    }
+
+    // 1
+    function randomArr() {
+      //数组打乱
+      curIndex.sort(() => Math.random() - 0.5);
+      //按照数组顺序，对div进行重新渲染
+      curIndex.forEach((i) => {
+        var $div = $(`#${i}`);
+        $("#box").append($div);
+      });
+    }
+    //randomArr();
+    //drop
+    function interval() {
+      var dropIndex = curIndex.indexOf("img-9"); //找到放置元素id在数组中的下标
+      //拖拽下标必须符合游戏规则
+      var dragIndex = getRandomIndex(dropIndex);
+
+      //交换位置
+      var temp = curIndex[dragIndex];
+      curIndex[dragIndex] = curIndex[dropIndex];
+      curIndex[dropIndex] = temp;
+
+      //按照数组顺序重新渲染
+      curIndex.forEach((i) => {
+        var $div = $(`#${i}`);
+        $("#box").append($div);
+      });
+
+      //步数加1 
+      count++;
+      $('#step').text(count);
+      //判断当前数组的顺序是否跟正确顺序一致，一致就说明游戏结束。
+      var result = true; //游戏是否结束，默认true表示结束
+      for (var i = 1; i <= 9; i++) {
+        if (curIndex[i - 1] != `img-${i}`) {
+          //游戏不结束
+          result = false;
+          break;
+        }
+      }
+      if (result) {
+        alert('游戏结束,恭喜过关');
+        count = 0; //清空
+      }
+
+    };
+    // 3
+
+    //判断拖拽元素的下标是否可以拖拽
+    function getRandomIndex(dropIndex) {
+      var dropArr = []; //可以拖拽的下标数组
+      //对白色的下标进行判断
+      switch (dropIndex) {
+        case 0:
+          dropArr = [1, 3];
+          break;
+        case 1:
+          dropArr = [2, 4, 0];
+          break;
+        case 2:
+          dropArr = [1, 5];
+          break;
+        case 3:
+          dropArr = [0, 4, 6];
+          break;
+        case 4:
+          dropArr = [1, 3, 5, 7];
+          break;
+        case 5:
+          dropArr = [2, 4, 8];
+          break;
+        case 6:
+          dropArr = [7, 3];
+          break;
+        case 7:
+          dropArr = [4, 6, 8];
+          break;
+        case 8:
+          dropArr = [5, 7];
+          break;
+      }
+      //返回布尔型，true表示该下标可以拖拽
+      return dropArr[parseInt(Math.random() * dropArr.length)];
+    }
+
+    function start() {
+      setInterval(() => {
+        interval();
+      }, 10)
+    }
+  </script>
+</body>
+
+</html>

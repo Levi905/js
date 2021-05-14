@@ -25,7 +25,7 @@
         //设置粒子数量
         var particleCount = 100;
         //设置粒子的半径
-        var particleRadius = 5;
+        var particleRadius = 0;
         //定义一个存放粒子对象的数组
         var particles = [];
         //设置画布大小
@@ -40,7 +40,8 @@
             var random_x = Math.random() * canvas.width;
             var random_y = Math.random() * canvas.height;
             //画粒子
-            ctx.arc(random_x, random_y, particleRadius, 0, Math.PI * 2);
+            var particleRadius = parseInt(Math.random()*4+5);
+            ctx.arc(random_x, random_y,particleRadius, 0, Math.PI * 2);
             //闭合路径
             ctx.closePath();
             //设置填充颜色
@@ -57,7 +58,8 @@
                 y: random_y,
                 speedX: random_speedX,
                 speedY: random_speedY,
-                color: ctx.fillStyle
+                color: ctx.fillStyle,
+                radius:particleRadius
             }
             //放入数组
             particles.push(particle);
@@ -84,7 +86,7 @@
                 particles[i].y += particles[i].speedY;
                 //重新画粒子
                 ctx.beginPath();
-                ctx.arc(particles[i].x, particles[i].y, particleRadius, 0, Math.PI * 2);
+                ctx.arc(particles[i].x, particles[i].y, particles[i].radius, 0, Math.PI * 2);
                 ctx.closePath();
                 ctx.fillStyle = particles[i].color;
                 ctx.fill();

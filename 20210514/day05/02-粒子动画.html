@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="dotCanvas"></canvas>
+    <script>
+      //1. 获取画布和画笔
+      var canvas = document.querySelector("#dotCanvas");
+      //2
+      var ctx = canvas.getContext("2d");
+      //定义保存点的数组
+      var dots = [];
+      //配置粒子动画的参数
+      var dotCount = 100;//屏幕粒子的数量
+      var dotRadius = 5;//粒子的半径
+      var lineDistance = 200;//两点连线的最大距离
+      //保存鼠标的位置
+      var mouseX;
+      var mouseY;
+      var mouseR = 300;//鼠标圆的半径
+      //快捷设置宽高
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+
+     
+
+
+     /* 运行代码*/
+     //1 .生成点
+      for(var i=0;i<dotCount;i++){
+        createOneDot();
+      }
+
+      // 2:随机移动
+      //利用定时器不断的改变
+      setInterval(() => {
+        //清理
+        ctx.clearRect(0,0,canvas.width,canvas.height);  
+        for(var i=0;i<dots.length;i++){
+          var d = dots[i];
+          //改变圆心坐标，实现移动，固定速度
+          move(d);
+          //绘制当前遍历点
+          drawDot(d);
+          //两点连线
+          drawLine(d);
+        }
+      }, 16.7);
+
+      //设置鼠标移动事件
+      document.body.addEventListener('mousemove',function(e){
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      })
+
+
+
+
+
+       /*
+      功能区域
+      */
+     // 1. 生成一个点，并放入数组中
+     function createOneDot(dot){
+       //随机的圆心的坐标
+        var random_x = parseInt(Math.random() * canvas.width);
+        var random_y = parseInt(Math.random() * canvas.height);
+        //随机点的速度，随机-1 1 x和y轴速度独立。
+        var randomArr = [1,-1];
+        var random_speedX = randomArr[parseInt(Math.random()*2)];
+        var random_speedY = randomArr[parseInt(Math.random()*2)];
+        //随机半径:1~10
+        var random_r= 1+parseInt(Math.random()*10);
+        var random_color = `rgb(${parseInt(Math.random()*256)},${parseInt(Math.random()*256)},${parseInt(Math.random()*256)})`
+        //把点的信息保存到对象，并把对象放入数组中
+        var dot = {
+            //随机圆心坐标
+            x:random_x,
+            y:random_y,
+            //随机速度
+            speedX:random_speedX,
+            speedY:random_speedY,
+            //随机半径和颜色
+            r:random_r,
+            color:random_color
+        };
+        //放入数组中
+        dots.push(dot);
+     }
+
+     // 2 绘制某个点
+     function drawDot(dot){
+       //需要把新的圆心坐标更新到画布中，重新绘制点
+         ctx.beginPath();
+         ctx.arc(dot.x,dot.y, dot.r, 0, Math.PI * 2);
+         ctx.closePath();
+         ctx.fillStyle = dot.color;
+        
+         ctx.fill();
+         ctx.stroke();
+     }
+     // 3 改变某个点的圆心坐标,实现移动
+     function move(dot){
+       //先判断是否出界，如果出界，则速度取反
+       if(dot.x <=dotRadius ||dot.y <=dotRadius || dot.x >=canvas.width -dotRadius || dot.y >=canvas.height -dotRadius){
+         //速度取反
+         dot.speedX *=-1;
+         dot.speedY *=-1;
+       }
+       //移动
+       dot.x +=dot.speedX;
+       dot.y +=dot.speedY;
+
+
+         
+     }
+
+     // 4 用于绘制两点之间的 线条
+     function drawLine(dot){
+       //获取其他的所有点，依次判断两点距离是否指定值，小于则根据两地的圆心来绘制线条
+       for(var i=0;i<dots.length;i++){
+         var d = dots[i];
+        // 两点距离
+        var num = getDistance(dot,d);
+        //两个点，并且距离满足条件，就进行连线
+         if(dots[i]!=dot && num <lineDistance && isInside(d,dot)){
+           ctx.beginPath();
+           ctx.moveTo(dot.x,dot.y);
+           ctx.lineTo(d.x,d.y);
+           ctx.strokeStyle = d.color;
+           ctx.closePath();
+           ctx.stroke();
+         }
+       }
+     }
+     // 5返回两个点之间的距离 
+     function getDistance(dot1,dot2){
+        var x1 = dot1.x;
+        var y1 = dot1.y;
+        var x2 = dot2.x;
+        var y2 = dot2.y;
+        var num = Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+        //返回获取的距离
+        return num;
+     }
+    
+     //6 判断两个点是否在指定圆内
+     function isInside(dot1,dot2){
+       //两个点都要与鼠标圆心的距离小于鼠标圆的半径
+       var mouse = {
+         x:mouseX,
+         y:mouseY
+       }
+       var num1 = getDistance(dot1,mouse);
+       var num2 = getDistance(dot2,mouse);
+       if(num1 <mouseR && num2 <mouseR){
+         return true;
+       }else{
+         return false;
+       }
+      
+     }
+
+    </script>
+  </body>
+</html>

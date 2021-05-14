@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>注册</h1>
+    用户名:<input type="text" id="name"> 
+    密码；<input type="text" id="pass">
+    <button onclick="save();">保存</button>
+    已有账号？立即<a href="本地存储-登录.html">登录</a>
+    <script>
+        // 用户名之间以&分割
+        //思路：定义一个数组，将原来的数据通过分割成用户数组，操作之后再吧数组转为字符串保存到本地。
+        function save(){
+            var users =localStorage.getItem('username');
+            var pass= localStorage.getItem('userpass');
+
+            var username = document.getElementById('name').value;
+            var userpass = document.getElementById('pass').value;
+            if(users==null ||pass==null){
+                users = [];
+                pass =[];
+            }else{
+                //转为数组
+                users = users.split(',');
+                pass = pass.split(',');
+            }
+            //将新用户保存到数组中
+            users.push(username);
+            pass.push(userpass);
+            //console.log(users,pass);
+            
+            
+            
+             var userStr = localStorage.setItem('username',users.join(','));
+             var passStr = localStorage.setItem('userpass',pass.join(','));
+        }
+    </script>
+</body>
+</html>

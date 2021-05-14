@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+1.两句话的不常见单词：
+给定两个句子 A 和 B 。 （句子是一串由空格分隔的单词。每个单词仅由小写字母组成。）
+如果一个单词在其中一个句子中只出现一次，在另一个句子中却没有出现，那么这个单词就是不常见的。
+返回由所有不常用单词构成的数组。您可以按任何顺序返回列表
+如：
+输入：A = "this apple is sweet", B = "this apple is sour"
+输出：["sweet","sour"]
+思路：将两句进行拼接，转为数组，对数组进行遍历，判断该遍历数据是否有第二次出现的下标。如果没有，可以说明出现了一次。
+
+        */
+var str1 = "this apple is sweet";
+var str2 = "this apple is sour";
+// 拼接 
+var str = str1.concat(' ',str2);
+//转为数组
+var arr = str.split(' ');
+var newArr =[];
+//遍历
+for(var i=0;i<arr.length;i++){
+    //找到第二次出现的下标
+    if(arr.lastIndexOf(arr[i])==arr.indexOf(arr[i])){
+        //只出现了一次
+        newArr.push(arr[i]);
+
+    }
+}
+console.log(newArr)
+    </script>
+</body>
+</html>

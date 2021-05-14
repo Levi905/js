@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="name"> 
+    密码；<input type="text" id="pass">;
+    <button onclick="login();">登录</button>
+    没有账号？立即<a href="本地存储-注册.html">注册</a>
+    <script>
+        // localstorage
+        function login(){
+            var username = document.getElementById('name').value;
+            var userpass = document.getElementById('pass').value;
+            
+            var user = localStorage.getItem('username');
+            var pass = localStorage.getItem('userpass');
+            if(username==user &&userpass==pass){
+                alert("登录成功")
+            }else{
+                alert("登录失败")
+            }
+        }
+        
+    </script>
+</body>
+</html>

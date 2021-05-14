@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 1000px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        #box > div{
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 20px;
+            float: left;  
+        }
+        .item1{
+            background-color:blue;
+        }
+        .item2{
+            background-color:green;
+        }
+        .item3{
+            background-color:yellow;
+        }
+        .remove{
+            width: 500px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            color: black;
+            border:1px solid black;
+            margin:100px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 拖放功能 -->
+    <div id="box" >
+        <div class="item1" draggable="true" ondragstart="setData(event)" ondragover="allow(event)" ondrop="dropHTML(event)">blue</div>
+        <div class="item2" draggable="true" ondragover="allow(event)" ondragstart="setData(event)" ondrop="dropHTML(event)">green</div>
+        <div class="item3" draggable="true" ondragover="allow(event)" ondragstart="setData(event)" ondrop="dropHTML(event)" >yellow</div>
+    </div>
+
+    <div class="remove" ondragover="allow(event)" ondrop="delHTML(event)">删除</div>
+    <script>
+
+       
+       //1. 设置放置元素取消不可放置的限制
+       function allow(e){
+           e.preventDefault();
+       }
+       //2 拖拽元素设置dragstart事件，保存拖拽元素的class，方便放置元素获取
+       function setData(e){
+           //保存数据
+           e.dataTransfer.setData('class',e.target.getAttribute('class'));
+           //jquery 
+           //e.originEvent.dataTransfer
+       }
+
+       // 给放置元素设置drop事件
+       function dropHTML(e){
+        //    alert('放置元素为'+e.target.getAttribute('class'));
+        var drophtml = e.target;//放置元素
+        //拖拽元素
+        var className = e.dataTransfer.getData('class');//item1
+        var draghtml = document.querySelector(`.${className}`);
+        //改变位置,
+        //1. 如果是放在了放置元素的后半部分，就放在放置元素后面:
+            //判断放置元素是否有下一个兄弟标签，如果有则insertBefore，没有则appendChild
+        //2. 如果是放在了放置元素的前半部分，就放在放置元素前面:
+        var width = getComputedStyle(drophtml,null).width;//234px
+        width =Number( width.substr(0,width.length-2));//去掉px
+        if(e.offsetX > width/2){
+            //放在放置元素后面
+            var dropNext = drophtml.nextElementSibling;
+            if(dropNext ==null){
+                //没有下一个，所以直接将拖拽标签作为放置标签其父标签的最后一个子标签
+                drophtml.parentElement.appendChild(draghtml);
+            }else{
+                drophtml.parentElement.insertBefore(draghtml,dropNext);
+            }
+        }else{
+            //放在放置元素前面
+            drophtml.parentElement.insertBefore(draghtml,drophtml);
+        }
+        
+       
+
+
+       }
+       //删除拖拽标签
+       function delHTML(e){
+           //获取拖拽元素
+            //拖拽元素
+        var className = e.dataTransfer.getData('class');//item1
+        var draghtml = document.querySelector(`.${className}`);
+        draghtml.parentElement.removeChild(draghtml);
+       }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input type="text"> <button onclick="save()">保存</button>
+    <button onclick="show()">输出数据</button>
+    <button onclick="del()">删除数据</button>
+    <script>
+        //点击保存按钮，将input里的数据保存到本地
+        function save(){
+            var data = document.querySelector('input').value;
+            //保存
+            localStorage.setItem('input',data);
+        }
+        //输出
+        function show(){
+            alert(localStorage.getItem('input'));
+        }
+        //删除
+        function del(){
+            localStorage.removeItem('input');
+        }
+    </script>
+</body>
+</html>
