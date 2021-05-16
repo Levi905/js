@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+        5.最大数量气球：给你一个字符串 text，你需要使用 text 中的字母来拼凑尽可能多的单词 "balloon"（气球）。
+        字符串 text 中的每个字母最多只能被使用一次。请你返回最多可以拼凑出多少个单词 "balloon"。
+            如：输入：text = "loonbalxballpoon"   输出：2
+            输入：text = "nlaebolko"           输出：1
+
+        6.旅行终点站：给你一份旅游线路图，该线路图中的旅行线路用数组 paths 表示，
+        其中 paths[i] = [cityAi, cityBi] 表示该线路将会从 cityAi 直接前往 cityBi 。
+        请你找出这次旅行的终点站，即没有任何可以通往其他城市的线路的城市。
+        题目数据保证线路图会形成一条不存在循环的线路，因此只会有一个旅行终点 。
+        如：输入：paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]   
+            输出："Sao Paulo"
+        */
+
+
+        // var now = 1;
+        // var t = "ballon";
+        // var test = "baanllnlaooooononnnnoobb";
+        // var min = test.length;
+        // var tarr = t.split("");
+        // for (var i = 0; i < tarr.length; i++) {
+        //     var arr = test.split("");
+        //     if (tarr.indexOf(tarr[i]) != tarr.lastIndexOf(tarr[i])) {
+        //         while (arr.indexOf(tarr[i]) != arr.lastIndexOf(tarr[i])) {
+        //             now++;
+        //             arr.splice(arr.lastIndexOf(tarr[i]), 1);
+        //         }
+        //         now = Math.floor(now/2);
+        //         if (now < min) {
+        //             min = now;
+        //         }
+        //     } else {
+        //         while (arr.indexOf(tarr[i]) != arr.lastIndexOf(tarr[i])) {
+        //             now++;
+        //             arr.splice(arr.lastIndexOf(tarr[i]), 1);
+        //         }
+        //         if (now < min) {
+        //             min = now;
+
+        //         }
+        //     }
+        //     now = 1;
+
+        // }
+        // document.write(min);
+
+        var paths = [["London", "New York"],["Sao Paulo", "china sichuan"],["Lima", "Sao Paulo"],["New York", "Lima"]];
+        var begin = paths[0][0];
+        var end = paths[0][paths[0].length - 1];
+        var flag = true;
+        while (flag) {
+            for (var i = 0; i < paths.length; i++) {
+                if (paths[i][0] == end) {
+                    begin = paths[i][0];
+                    end = paths[i][paths[i].length - 1]
+                    flag = true;
+                    break;
+                } else {
+                    flag = false;
+                }
+            }
+            
+        }
+        document.write(end);
+
+    </script>
+</body>
+
+</html>
