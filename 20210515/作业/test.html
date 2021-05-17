@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [];
+        for(var i = 0;i<5;i++){
+            var name = "a"+i;
+            console.log(name);
+            var test = {
+                a:i,
+                b:i+1
+            };
+            arr.push(test);
+            console.log(test.a,test.b);
+            console.log(typeof test);
+        }
+        console.log(arr);
+        for(var i =0;i<arr.length;i++){
+            console.log(arr[i],arr[i].a,arr[i].b);
+        }
+    </script>
+</body>
+</html>

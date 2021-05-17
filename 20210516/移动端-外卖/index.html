@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 开启理想视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            font-size: 50px;
+        }
+        body{
+            height: 100vh;
+            margin: 0;
+        }
+        #box{
+            width: 100%;
+            height: 100%;
+            background-color: rgb(243, 243, 243);
+        }
+        #box #main{
+            width: 100%;
+            height: 50%;
+            background-color: #fff;
+        }
+        #box #fix-footer{
+            width: 100%;
+            height: 1rem;
+            position: fixed;
+            bottom: 0px;
+            background-color: #fff;
+            display: flex;
+            flex-wrap: nowrap;
+            align-content: stretch;
+        }
+        #fix-footer .fix-left{
+            flex-grow: 1;
+        }
+        #fix-footer .fix-left p{
+            color: rgb(204, 29, 29);
+            box-sizing: border-box;
+            padding:0 0.3rem;
+            font-size: 0.3rem;
+        }
+        #fix-footer .fix-right{
+            width: 1.5rem;
+            line-height: 1rem;
+            text-align: center;
+            background-color: #ddd;
+            color: #fff;
+            font-size: 0.4rem;
+        }
+    </style>
+    <script src="../屏幕适配.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!-- 内容区域 -->
+        <div id="main"></div>
+
+        <!-- 固定区域 -->
+        <div id="fix-footer">
+            <div class="fix-left">
+                <p>已选：<span id="num">0</span>份 <span>总计：</span> ￥<span id="totalmoney">0</span>元</p>
+            </div>
+            <div class="fix-right">结算</div>
+        </div>
+    </div>
+</body>
+</html>

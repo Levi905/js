@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        1.最大数量气球：给你一个字符串 text，你需要使用 text 中的字母来拼凑尽可能多的单词 "balloon"（气球）
+        。字符串 text 中的每个字母最多只能被使用一次。请你返回最多可以拼凑出多少个单词 "balloon"。
+如：输入：text = "loonbalxballpoon"   输出：2
+    输入：text = "nlaebolko"           输出：1
+    思路：需要找到每个字母出现的次数。判断出现次数最少的那个，其出现的次数就是单词的数量
+    思路：
+        */
+       var str = "loonbalxballpoon";"are you ok"
+       var arr =[0,0,0,0,0];//保存字母出现的次数
+       //确定数组中的 哪个下标保存哪个字母的次数 
+       for(var i=0;i<str.length;i++){
+           var s = str[i];
+           switch (s) {
+               case "b":arr[0]++;break;
+               case "a":arr[1]++;break;
+               case "l":arr[2]++;break;
+               case "o":arr[3]++;break;
+               case "n":arr[4]++;break;
+           }
+       }
+
+       // 需要将l和o的数量除以2
+       arr[2]=parseInt(arr[2]/2);
+       arr[3]=parseInt(arr[3]/2);
+       // 取最小值
+       arr.sort((a,b)=>a-b);
+       console.log(`单词出现的次数为: ${arr[0]}`);
+    </script>
+</body>
+</html>
