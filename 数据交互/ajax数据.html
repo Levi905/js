@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <h1>商品列表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>商品编号</th>
+                <th>商品图片</th>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 动态生成 -->
+            <!-- <tr>
+                <td>1</td>
+                <td><img src="" alt=""></td>
+                <td>【成都】陕西人艺《白鹿原》2021封箱告别之旅【复活经典 九维钜献】</td>
+                <td>380</td>
+                <td><button>删除</button></td>
+            </tr> -->
+
+        </tbody>
+    </table>
+    <script>
+        //从网络中获取数据
+        $.ajax({
+            "url":"https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllArts",
+            "success":function(data){
+                console.log(data.goods);
+                var arr =data.goods;
+                //数组
+                for(var i=0;i<arr.length;i++){
+                    var good = arr[i];//good 是每次遍历时拿到的一个商品对象
+                    //放在页面上
+                    showData(good);
+                }
+            }
+        });
+       
+
+
+        function showData(good){
+            //把一个对象里的数据展示在页面上：新建标签，将对象里的数据放入到新建标签中，再把新标签放在页面上
+            var htmlStr = `
+                <td>${good.id}</td>
+                <td><img src="${good.img_src}" alt=""></td>
+                <td>${good.good_name}</td>
+                <td>${good.price}</td>
+                <td><button>删除</button></td>
+            `;
+            var $tr = $(`<tr>${htmlStr}</tr>`);
+            // $tr.html(htmlStr)
+            //放在页面上
+            $('tbody').append($tr);
+        }
+    </script>
+</body>
+</html>

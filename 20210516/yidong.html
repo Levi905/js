@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html{
+        font-size: 50px;
+    }
+    body{
+      
+        margin: 0;
+    }
+    #content{
+       
+        width: 100%;
+        height: 100vh;
+        background-color: #eee;
+    }
+    #main{
+        width: 100%;
+        height: 60%;
+        background-color: #fff;
+        display: flex;
+    }
+    #footer{
+        width: 100%;
+        background-color: #fff;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        height: 1rem;
+        font-size: 0.3rem;
+    }
+    #footer-left{
+        flex-grow: 1;
+        line-height: 1rem;
+        color: coral;
+    }
+    p{
+        margin: 0;
+        padding:0 .3rem;
+    }
+    #footer-right{
+        width: 2rem;
+        line-height: 1rem;
+    }
+    button{
+        width: 2rem;
+        height: 1rem;
+        font-size: .3rem;
+        margin: 0;
+        padding: 0;
+    }
+   #main ul{
+        width: 2.5rem;
+        overflow: scroll;
+        list-style: none;
+       
+        margin: 0;
+        padding: 0;
+    }
+    #main-right{
+        padding: .1rem .1rem;
+    }
+   #main li{
+        font-size: .3rem;
+        text-align: center;
+        box-sizing: border-box;
+        padding:.5rem .3rem ;
+        background-color: #ccc;
+    }
+    .main-chose{
+        position: relative;
+        width: 100%;
+        display: flex;
+        padding:.2rem .2rem ;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ccc;
+    }
+   #img{
+    width: 1.2rem;
+   }
+   #img img{
+    width: 100%;
+   }
+   #main-right{
+       width: 100%;
+   }
+    #main-right .main-chose li{
+        margin-left: .1rem;
+        font-size: .3rem;
+        padding: 0;
+        text-align: left;
+        background-color: #fff;
+    }
+    #main-right .main-chose li:nth-child(1){
+        font-size: .35rem;
+    }
+    #main-right .main-chose li:nth-child(3){
+        color: coral;
+        font-weight: bold;          
+    }
+    .btn{
+        position: absolute;
+        width: .5rem;
+        height: .5rem;
+        text-align: center;
+        line-height: .5rem;
+        border:3px solid rgb(226, 224, 224);
+        border-radius: 50%;
+        font-size: .4rem;
+        right: .3rem;
+        bottom: .5rem;
+    }
+</style>
+<script>
+    window.addEventListener("load",function(){
+        window.addEventListener("resize",function(){
+            var width = window.innerWidth;
+            if(width>=375){
+                document.documentElement.style.fontSize = 100/750*width + "px"
+            }
+        })
+    })
+</script>
+<body>
+    <div id="content">
+        <div id="main">
+            <ul>
+                <li>营养套餐</li>
+                <li>酒水饮料</li>
+                <li>营养套餐</li>
+                <li>酒水饮料</li>
+                <li>营养套餐</li>
+                <li>酒水饮料</li>
+                <li>营养套餐</li>
+                <li>酒水饮料</li>
+            </ul>
+            <div id="main-right">
+                <div class="main-chose">
+                    <div id="img"><img src="img/logo.jpg" alt=""></div>        
+                   <ul>
+                       <li>宫保鸡丁</li>
+                       <li>家常菜</li>
+                       <li>￥25</li>
+                   </ul> 
+                   <div class="btn">+</div> 
+                </div>
+                <div class="main-chose">
+                    <div id="img"><img src="img/logo.jpg" alt=""></div>        
+                   <ul>
+                       <li>宫保鸡丁</li>
+                       <li>家常菜</li>
+                       <li>￥25</li>
+                   </ul> 
+                   <div class="btn">+</div> 
+                </div>
+                <div class="main-chose">
+                    <div id="img"><img src="img/logo.jpg" alt=""></div>        
+                   <ul>
+                       <li>宫保鸡丁</li>
+                       <li>家常菜</li>
+                       <li>￥25</li>
+                   </ul> 
+                   <div class="btn">+</div> 
+                </div>
+
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footer-left">
+                <p> 已选：<span>0</span>份 <span>总价；</span> ￥<span>0</span>元</p>
+            </div>
+            <div id="fotter-right">
+                <button>结算</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
