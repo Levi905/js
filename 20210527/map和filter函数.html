@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div a {
+        margin-right: 10px;
+    }
+
+    .red {
+        color: red;
+    }
+</style>
+
+<body>
+    <input type="text">
+    <button onclick="add()">新增</button>
+    <ul>
+    </ul>
+    <div>
+
+    </div>
+
+    <script>
+        var lis = [
+            { value: "HTML", done: false },
+            { value: "CSS", done: false },
+            { value: "JS", done: false }
+        ]
+        var divs = [
+            { value: "全部", done: false },
+            { value: "已完成", done: false },
+            { value: "未完成", done: false }
+        ]
+
+        window.onload = () => {
+            let divAdd = document.querySelector("div");
+            divs.forEach(item => {
+                let newA = document.createElement("a");
+                newA.innerHTML = `<a>${item.value}</a>`;
+                divAdd.appendChild(newA);
+            });
+        }
+
+        const add = () => {
+            let buttonAdd = document.querySelector("button");
+            let ulNode = document.querySelector("ul");
+            ulNode.innerHTML = "";
+            let inputValue = document.querySelector("input").value;
+            lis.push({ value: inputValue, done: false });
+            let newArray = lis.map(item => {
+                return `<li>${item.value}</li>`;
+            });
+            newArray.forEach(item => {
+                let newLi = document.createElement("li");
+                newLi.innerHTML = item;
+                ulNode.appendChild(newLi);
+            });
+        }
+
+        const changeLi = () => {
+            let nowLi = event.target.innerHTML;
+            lis.forEach(item => {
+                if (item.value == nowLi) {
+                    if (item.done == false) {
+                        item.done = true;
+                        event.target.className = "red";
+                    } else {
+                        item.done = false;
+                        event.target.className = "";
+                    }
+
+                }
+            });
+        }
+
+        const changeA = function () {
+            let arr = this.querySelectorAll("a");
+            arr.forEach(item => {
+                item.className = "";
+            })
+            event.target.className = "red";
+            let ulNode = document.querySelector("ul");
+            ulNode.innerHTML = "";
+            switch (event.target.innerHTML) {
+                case "全部":
+                    lis.forEach(item => {
+                        let newLi = document.createElement("li");
+                        if (item.done == false) {
+                            newLi.innerHTML = `<li>${item.value}</li>`;
+                        } else {
+                            newLi.innerHTML = `<li class="red">${item.value}</li>`;
+                        }
+                        ulNode.appendChild(newLi);
+                    })
+                    break;
+                case "已完成":
+                    let a = lis.filter(item => {
+                        return item.done == true;
+                    })
+                    a.forEach(item => {
+                        let newLi = document.createElement("li");
+                        newLi.innerHTML = `<li class="red">${item.value}</li>`;
+                        ulNode.appendChild(newLi);
+                    })
+                    break;
+                case "未完成":
+                    let newArray = lis.filter(item => {
+                        return item.done == false;
+                    })
+                    newArray.forEach(item => {
+                        let newLi = document.createElement("li");
+                        newLi.innerHTML = `<li>${item.value}</li>`;
+                        ulNode.appendChild(newLi);
+                    })
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        document.querySelector("ul").addEventListener("click", changeLi);
+        document.querySelector("div").addEventListener("click", changeA);
+
+    </script>
+</body>
+
+</html>
