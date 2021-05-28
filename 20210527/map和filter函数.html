@@ -53,9 +53,7 @@
             ulNode.innerHTML = "";
             let inputValue = document.querySelector("input").value;
             lis.push({ value: inputValue, done: false });
-            let newArray = lis.map(item => {
-                return `<li>${item.value}</li>`;
-            });
+            let newArray = lis.map(item => `<li class="${item.done == true ? 'red' : ''}">${item.value}</li>`);
             newArray.forEach(item => {
                 let newLi = document.createElement("li");
                 newLi.innerHTML = item;

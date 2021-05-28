@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .completed {
+            color: crimson;
+            text-decoration: line-through;
+        }
+
+        #buttons>* {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="addText">
+        <input type="button" value="增加" id="addBtn">
+    </div>
+    <ul id="list">
+    </ul>
+    <div id="buttons"></div>
+
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script>
+        let data = {
+            list: [{
+                text: "HTML",
+                completed: false
+            }, {
+                text: "CSS",
+                completed: true
+            }, {
+                text: "JS",
+                completed: false
+            }],
+            state: "全部"
+        }
+        render();
+
+        $("#addBtn").on("click", function () {
+            let text = $("#addText").val();
+            data.list.push({
+                text,
+                completed: false
+            });
+            render();
+        })
+
+        function render() {
+            $("#list").empty();
+            listFilter(data.state).forEach(function (item) {
+                $("<li>")
+                    .html(item.text)
+                    .addClass(item.completed ? "completed" : "")
+                    .appendTo("#list")
+                    .on("click", function () {
+                        item.completed = !item.completed;
+                        render();
+                    })
+            })
+            buttonsRender();
+        }
+
+        function buttonsRender() {
+            $("#buttons").empty();
+            ["全部", "已完成", "未完成"].forEach(function (item) {
+                if (item == data.state) {
+                    $("<span>")
+                        .html(item)
+                        .appendTo("#buttons")
+                } else {
+                    $("<a>")
+                        .html(item)
+                        .attr("href", "#")
+                        .appendTo("#buttons")
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            data.state = item;
+                            render();
+                        })
+                }
+            })
+        }
+
+        function listFilter(state) {
+            switch (state) {
+                case "全部":
+                    return data.list;
+                case "已完成":
+                    return data.list.filter((item) => item.completed)
+                case "未完成":
+                    return data.list.filter((item) => !item.completed)
+            }
+        }
+    </script>
+</body>
+
+</html>
