@@ -1,45 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h5>学生管理系统</h5>
     <h2>新增</h2>
-    姓名：<input type="text"><br>
-    年龄：<input type="text"><br>
-    性别：男<input type="radio" name="sex">女<input type="radio" name="sex"><br>
+    姓名：<input type="text" id="addname"><br>
+    年龄：<input type="text" id="addage"><br>
+    性别：男<input type="radio" name="addsex" value="男">女<input type="radio" name="addsex" value="女"><br>
     <button onclick="add()">新增</button>
     <h2>修改</h2>
-    姓名：<input type="text"><br>
-    年龄：<input type="text"><br>
-    性别：男<input type="radio" name="sex">女<input type="radio" name="sex"><br>
+    姓名：<input type="text" id="changename"><br>
+    年龄：<input type="text" id="changeage"><br>
+    性别：男<input type="radio" name="sex" value="男">女<input type="radio" name="sex" value="女"><br>
     <button onclick="change()">确认修改</button>
     <h2>查询</h2>
     <select name="find" id="find">
+        <option value="全部">全部</option>
         <option value="姓名">姓名</option>
         <option value="年龄">年龄</option>
         <option value="性别">性别</option>
     </select>
-    <input type="text"><button onclick="select()">搜索</button>
+    <input type="text" id="findinput"><button onclick="select()">搜索</button>
 
     <h4>学生列表</h4>
     <table>
         <thead>
-            <tr>
-                <td>姓名</td>
-                <td>年龄</td>
-                <td>性别</td>
-                <td>操作</td>
-            </tr>
         </thead>
     </table>
 
     <script>
-
+        //定义要添加子标签的父标签
+        const parentTag = document.querySelector("thead");
+        par = `<tr><td>姓名</td><td>年龄</td><td>性别</td><td>操作</td></tr>`;
+        parentTag.innerHTML = par;
+        //定义一个用于存储学生对象的数组studentes，每个对象具有name：，age：，sex：，属性
+        const studentes = [];
+        //定义新增学生函数add()
+        var count = 1;
+        function add() {
+            //新增学生流程：1.获取新增学生的属性值，然后赋值给新的学生对象，然后添加到数组中，最后执行渲染数据函数。
+            // let sname = document.querySelector("#addname").value;
+            // let sage = document.querySelector("#addage").value;
+            // let ssex = getRadio();
+            // studentes.push({name,age,sex} = {name:sname,age:sage,sex:ssex});
+            studentes.push({ id, name, age, sex } = { id: count, name: document.querySelector("#addname").value, age: document.querySelector("#addage").value, sex: getRadio("addsex") });
+            //渲染studentes数组中的数据：1.获取要添加在哪个父标签下，然后创建新标签，然后拼接字符串，最后append
+            //使用innerHtml改变父标签下的所有标签
+            count++;
+            Rendering(studentes);
+        }
+        //定义确认修改函数
+        function change() {
+            let student = studentes.find(item => item.id == document.querySelector("#changename").getAttribute("data-index"));
+            let index = studentes.indexOf(student);
+            studentes[index].name = document.querySelector("#changename").value;
+            studentes[index].age = document.querySelector("#changeage").value;
+            studentes[index].sex = getRadio("sex");
+            Rendering();
+        }
+        //定义将数据传入修改框函数
+        function mychange() {
+            //获取当前修改的学生的id
+            let delId = event.target.getAttribute("data-index");
+            //获取当前学生对象
+            let student = studentes.find(item => item.id == delId);
+            document.querySelector("#changename").value = student.name;
+            document.querySelector("#changeage").value = student.age;
+            document.querySelector("#changename").setAttribute("data-index", student.id);
+            let Radios = document.getElementsByName("sex");
+            Radios.forEach(item => {
+                if (item.value == student.sex) {
+                    item.checked = true;
+                }
+            });
+        }
+        //定义删除函数
+        function del() {
+            //获取当前删除的学生的id
+            let delId = event.target.getAttribute("data-index");
+            studentes.splice(studentes.indexOf(studentes.find(item => item.id == delId)), 1);
+            Rendering();
+        }
+        //定义查询函数
+        function select() {
+            let s = document.querySelector("#find");
+            let index = s.selectedIndex;
+            let lei = s.options[index].value;
+            let inp = document.querySelector("#findinput").value;
+            let newArray = [];
+            switch (lei) {
+                case "姓名":
+                    newArray = studentes.filter(item => item.name == inp);
+                    Rendering(newArray);
+                    break;
+                case "年龄":
+                    newArray = studentes.filter(item => item.age == inp);
+                    Rendering(newArray);
+                    break;
+                case "性别":
+                    newArray = studentes.filter(item => item.sex == inp);
+                    Rendering(newArray);
+                    break;
+                default:
+                    Rendering(studentes);
+                    break;
+            }
+        }
+        //定义渲染页面的函数
+        function Rendering(arr) {
+            let str = arr.map(item => (
+                `<tr>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.sex}</td>
+                    <td><button  data-index="${item.id}" onclick="mychange()">修改</button><button data-index="${item.id}" onclick="del()">删除</button></td>
+                </tr>`
+            )).join("");
+            parentTag.innerHTML = par + str;
+        }
+        //定义获取单选框中值的函数
+        function getRadio(name) {
+            let Radios = document.getElementsByName(`${name}`);
+            let r;
+            Radios.forEach(item => {
+                if (item.checked) {
+                    r = item.value;
+                }
+            })
+            return r;
+        }
     </script>
 </body>
+
 </html>
