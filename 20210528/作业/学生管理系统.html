@@ -86,7 +86,7 @@
             //获取当前删除的学生的id
             let delId = event.target.getAttribute("data-index");
             studentes.splice(studentes.indexOf(studentes.find(item => item.id == delId)), 1);
-            Rendering();
+            Rendering(studentes);
         }
         //定义查询函数
         function select() {

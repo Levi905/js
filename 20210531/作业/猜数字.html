@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //生成要猜测的随机数的数组
+        const romArr = rom();
+        console.log(romArr);
+        let sum = 10;
+        while (sum > 0) {
+            //输入猜测的数字
+            const input = prompt("请输入4位数");
+            //生成要猜测的数字的数组
+            const inputArr = inputChange(input);
+            console.log(inputArr);
+            const f = contrast(inputArr,romArr);
+            sum--;
+            if (f.A == 4) {
+                alert(`A${f.A}B${f.B}：猜对了游戏结束`);
+                sum = 0;
+            }else{
+                alert(`A${f.A}B${f.B}：猜错了还剩${sum}次猜测机会`);
+            }
+        }
+
+        //执行猜测数组与随机数组对比的方法
+        function contrast(inpArr,randomArr){
+            const count = {
+                A:0,
+                B:0,
+            }
+            for(var i = 0;i<inpArr.length;i++){
+                if (inpArr[i] == randomArr[i]) {
+                    count.A++;
+                }
+                if (randomArr.indexOf(inpArr[i]) != -1) {
+                    count.B++;
+                }
+            }
+            count.B -= count.A
+            return count;
+        }
+        //拆分猜测的数字的方法
+        function inputChange(arr) {
+            let a = arr.split("");
+            return a;
+        }
+        //生成随机数的方法
+        function rom() {
+            let arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+            arr.sort(() => 0.5 - Math.random());
+            arr = arr.slice(0, 4);
+            return arr;
+        }
+    </script>
+</body>
+
+</html>
