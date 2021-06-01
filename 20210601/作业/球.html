@@ -17,6 +17,7 @@
         border-radius: 50%;
         animation-direction: alternate;
         animation-timing-function: ease-in-out;
+        transform-origin: center center;
     }
 </style>
 
@@ -32,10 +33,10 @@
             }
             add() {
                 let newDiv = document.createElement("div");
-                newDiv.innerHTML = `<div style="left: ${this.x - this.d / 2}px; top: ${this.y - this.d / 2}px; width: ${this.d}px;height: ${this.d}px;background-color: ${this.bg};"></div>`;
+                newDiv.innerHTML = `<div style="left: ${this.x - this.d / 2}px; top: ${this.y - this.d / 2}px; width: ${this.d}px;height: ${this.d}px;background-color: ${this.bg};animation: 2s ease 0s infinite alternate none running move${this.anima}; transform-origin: center center;"></div>`;
                 document.styleSheets[0].insertRule(`@keyframes move${this.anima} {
                             from{
-                                transform: scale(1);
+                                transform: scale(0.5);
                                 opacity: 0.2;
                             }
                             to {
@@ -43,7 +44,6 @@
                                 opacity: 1;
                             }
                         }`,document.styleSheets[0].length);
-                newDiv.style.animation = `move${this.anima} 2s infinite`;
                 document.body.appendChild(newDiv);
             }
             change() {
@@ -56,8 +56,6 @@
             addDiv.add();
             console.log(event.clientX, event.clientY);
         }
-        // document.styleSheets[0].insertRule(`@keyframes move${this.clienty}{from{ width:10px;height:10px;opacity:1;top:${this.clienty-5}px;left:${this.clientx-5}px; }to{width:${width}px;height:${width}px;opacity:0;top:${this.clienty-width/2}px;left:${this.clientx-width/2}px;}}`,document.styleSheets[0].length);
-        // newDiv.style.animation = `move${this.clienty} 2s infinite`;
     </script>
 </body>
 
