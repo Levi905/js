@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Father {
+            constructor() {
+                this.name = '张'
+            }
+            sayHello() {
+                console.log('hello');
+            }
+        }
+
+        class Child extends Father {
+            constructor() {
+                super();
+                this.age = 12;
+            }
+            homework() {
+                console.log('写作业');
+            }
+        }
+
+        const f1 = new Father();
+        const c1 = new Child();
+        
+        console.log(f1);
+        console.log(c1);
+        c1.sayHello();
+
+    </script>
+</body>
+</html>

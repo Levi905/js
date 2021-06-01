@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class 是 ES5 构造函数的“语法糖”
+        class Juicer {
+            constructor(name, width, height) {
+                this.name = name
+                this.width = width;
+                this.height = height;
+            }
+            open() {
+                if(this.width < 1000) {
+                    console.log('open');
+                } else {
+                    this.close();
+                }
+            }
+            close() {
+                console.log('close');
+            }
+        }
+
+        class Animal {
+
+        }
+
+
+
+        // 实例对象
+        const bingxiang = new Juicer('冰箱', 1000, 2000);
+        // 方法
+        bingxiang.open();
+        bingxiang.close();
+        // 属性
+        console.log(bingxiang.name);
+
+    </script>
+</body>
+
+</html>

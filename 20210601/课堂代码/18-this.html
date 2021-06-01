@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="outer">
+        <div class="inner">
+
+        </div>
+    </div>
+
+    <script>
+
+        // console.log(this);
+
+        // function foo() {
+        //     console.log(this);
+        // }
+        // foo();
+
+        // const bar = function() {
+        //     console.log(this);
+        // }
+        // bar();
+
+        const student = {
+            name: 'student',
+        }
+
+        const person = {
+            name: 'person',
+            sayName(age, gender) {
+                console.log(this.name, age, gender);
+            }
+        };
+
+        person.sayName.call(student, 20, '男');
+        person.sayName.apply(student, [30, '女']);
+        person.sayName.bind(student)(40, '男');
+
+
+        // const outer = document.querySelector('.outer');
+        // // 事件源
+        // outer.onclick = function() {
+        //     console.log(this);
+        // }
+
+        // function Person() {
+        //     this.name = 'zhangsan'
+        // }
+
+        // Person.prototype.sayName = function() {
+        //     console.log(this);
+        // }
+
+        // const p = new Person();
+
+    </script>
+</body>
+
+</html>

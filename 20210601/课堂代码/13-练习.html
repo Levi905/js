@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建电器类
+        function Juicer(name, width, height) {
+            // 给对象添加属性
+            this.name = name
+            this.width = width;
+            this.height = height;
+            
+        }
+
+        Juicer.prototype.open = function () {
+            // ...
+        }
+        Juicer.prototype.close = function () {
+            // ...
+        }
+
+        // 创建动物类
+        function Animal(name, height, weight) {
+            this.name = name;
+            this.height = height;
+            this.weight = weight;
+        }
+        Animal.prototype.into = function () {
+            // ...
+        }
+
+        const bingxiang = new Juicer('冰箱', 1000, 2000);
+        const daxiang = new Animal('大象', 200, 1000);
+
+        bingxiang.open();
+        daxiang.into();
+        bingxiang.close();
+
+
+
+
+
+    </script>
+</body>
+
+</html>

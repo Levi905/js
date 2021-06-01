@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Game {
+            constructor() {
+                // 属性
+                this.systemNumber = ''; // 系统随机数
+                this.userNumber = '';  // 用户输入的数字
+            }
+            // 欢迎进入游戏
+            welcome() {
+                alert('欢迎进入猜数字游戏。');
+                this.createSystemNumber();
+                let chance = 4;
+                // 获取到用户的四位数
+                while (chance > 0) {
+                    this.userNumber = prompt('请输入4个不重复的数字（0-9）：');
+                    // 匹配用户数字和系统数字
+                    const [a, b] = this.matchNumber();
+                    if (a === 4) {
+                        alert('恭喜你，猜对了。');
+                        return;  // 结束循环（其实结束的是整个 welcome 函数）
+                    } else {
+                        // 没猜对
+                        chance--;
+                        if(chance == 0) {
+                            alert(`对不起，游戏结束。正确答案为：${this.systemNumber}。`)
+                        } else {
+                            alert(`你还有${chance}次机会。`);
+                        }
+                    }
+                }
+            }
+            // 生成系统随机数
+            createSystemNumber() {
+                // 系统随机数
+                // let systemNumber = '';
+
+                for (let i = 0; i < 4; i++) {
+                    // 生成一个 0-9 之间的随机数
+                    const num = parseInt(Math.random() * 10);
+                    if (this.systemNumber.includes(num)) {
+                        i--;
+                    } else {
+                        this.systemNumber += num;
+                    }
+                }
+                console.log(this.systemNumber);
+            }
+            // 匹配用户数字和系统数字
+            matchNumber() {
+                let a = 0;
+                let b = 0;
+                // 遍历系统随机数
+                for (let i = 0; i < this.systemNumber.length; i++) {
+                    for (let j = 0; j < this.userNumber.length; j++) {
+                        if (this.systemNumber[i] == this.userNumber[j] && i !== j) {
+                            // 数字相等、位置不对
+                            b++;
+                        } else if (this.systemNumber[i] == this.userNumber[j] && i === j) {
+                            // 数字相等、位置也相等
+                            a++;
+                        }
+                    }
+                }
+                alert(`当前匹配结果为：${a}A${b}B。`);
+                return [a, b]
+            }
+        }
+
+        const game = new Game();
+        game.welcome();
+    </script>
+</body>
+
+</html>

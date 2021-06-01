@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数，作为一个“类”
+        function Student(name) {
+            this.name = name;
+            this.age = 20;
+            this.gender = '男';
+        }
+
+        Student.prototype.study = function() {
+            console.log('学习...');
+        }
+
+        Student.prototype.sleep = function() {
+            console.log('睡觉...');
+        }
+
+        const s = new Student('张三');
+        const s1 = new Student('李斯');
+
+        // console.log(s);
+        // console.log(s1);
+
+        s.study();
+        s1.study();
+
+
+    </script>
+</body>
+</html>

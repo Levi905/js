@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    div {
+        position: absolute;
+        border-radius: 50%;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+    }
+</style>
+
+<body>
+    <script>
+        class Ball {
+            constructor(x, y, anima) {
+                this.x = x;
+                this.y = y;
+                this.anima = anima;
+                this.d = Math.random() * 50 + 50;
+                this.bg = `rgba(${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)},${parseInt(Math.random() * 255)},${Math.random()})`;
+            }
+            add() {
+                let newDiv = document.createElement("div");
+                newDiv.innerHTML = `<div style="left: ${this.x - this.d / 2}px; top: ${this.y - this.d / 2}px; width: ${this.d}px;height: ${this.d}px;background-color: ${this.bg};"></div>`;
+                document.styleSheets[0].insertRule(`@keyframes move${this.anima} {
+                            from{
+                                transform: scale(1);
+                                opacity: 0.2;
+                            }
+                            to {
+                                transform: scale(1.1);
+                                opacity: 1;
+                            }
+                        }`,document.styleSheets[0].length);
+                newDiv.style.animation = `move${this.anima} 2s infinite`;
+                document.body.appendChild(newDiv);
+            }
+            change() {
+
+            }
+        }
+
+        document.onclick = () => {
+            let addDiv = new Ball(event.clientX, event.clientY, event.clientX);
+            addDiv.add();
+            console.log(event.clientX, event.clientY);
+        }
+        // document.styleSheets[0].insertRule(`@keyframes move${this.clienty}{from{ width:10px;height:10px;opacity:1;top:${this.clienty-5}px;left:${this.clientx-5}px; }to{width:${width}px;height:${width}px;opacity:0;top:${this.clienty-width/2}px;left:${this.clientx-width/2}px;}}`,document.styleSheets[0].length);
+        // newDiv.style.animation = `move${this.clienty} 2s infinite`;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const s = new Set([1, 2, 3, 3, 1, '1', '2']);
+        // console.log(s);
+        // // 属性
+        // console.log(s.size);
+        // // 方法
+        // s.add(10).add(11).add(12);
+        // s.delete(12);
+        // const result = s.has(100)
+        // s.clear();
+        // console.log(s);
+
+        const m = new Map([['name', 'zhangsan'], ['age', 20], [100, 10], [true, false]]);
+        console.log(m);
+
+        console.log(m.size);
+        m.set(100, 456);
+        const result = m.get('age');
+        m.delete('name')
+        console.log(m.has('name'));
+        m.clear();
+        console.log(m);
+
+        
+    </script>
+</body>
+
+</html>

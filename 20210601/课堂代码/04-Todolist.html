@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .done {
+            color: red;
+            text-decoration: line-through;
+        }
+
+        #buttons>* {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="newValue">
+        <button id="addBtn">新增</button>
+    </div>
+    <ul id="list">
+        <!-- JS 渲染 -->
+
+    </ul>
+    <div id="buttons">
+        <!-- JS 渲染 -->
+        <!-- <span>全部</span>
+        <a href="#">已完成</a>
+        <a href="#">未完成</a> -->
+    </div>
+
+    <script>
+        const list = document.getElementById('list');
+        const buttons = document.getElementById('buttons');
+        const newValue = document.getElementById('newValue');
+        const addBtn = document.getElementById('addBtn');
+
+        // 待办事项的数据
+        const listData = [{
+                value: 'HTML',
+                done: false
+            },
+            {
+                value: 'CSS',
+                done: true
+            },
+            {
+                value: 'JS',
+                done: false
+            },
+        ];
+        // 所有按钮
+        const buttonsData = ['全部', '已完成', '未完成'];
+        // 表示当前被选中的按钮
+        let state = '全部';
+
+        listRender();
+        buttonsRender();
+
+        function filterListData() {
+            switch (state) {
+                case '已完成':
+                    const filterArr = listData.filter(function (item, index) {
+                        return item.done
+                    });
+                    return filterArr;
+                case '未完成':
+                    return listData.filter(item => !item.done)
+                default:
+                    return listData;
+            }
+        }
+
+        // 按钮点击事件
+        buttons.onclick = function (e) {
+            if (e.target.nodeName == 'A') {
+                e.preventDefault();
+                state = e.target.innerText;
+                buttonsRender();
+                listRender();
+            }
+        }
+
+        // li 的点击事件，点击切换样式
+        list.onclick = function (e) {
+            // 获取到当前点击的节点
+            const current = e.target;
+            if (current.nodeName == 'LI') {
+                const i = current.getAttribute('data-index');
+                listData[i].done = !listData[i].done;
+                listRender();
+            }
+        }
+        // 新增
+        addBtn.onclick = function () {
+            // 获取输入框的值
+            const value = newValue.value;
+            // 将新的数据添加到数组中
+            listData.push({
+                value,
+                done: false
+            })
+            listRender();
+        }
+        // 按钮渲染
+        function buttonsRender() {
+            buttons.innerHTML = buttonsData.map(item => {
+                if (item == state) {
+                    // 说明当前 item 是被选中的按钮
+                    return `<span>${item}</span>`
+                }
+                // 说明当前 item 是未选中的按钮
+                return `<a href="#">${item}</a>`
+            }).join('');
+        }
+        // 列表渲染
+        function listRender() {
+            const filterArr = filterListData();
+            list.innerHTML = filterArr.map((item, index) => (
+                `<li class="${ item.done ? 'done' : '' }" data-index="${index}">${item.value}</li>`
+            )).join('');
+        }
+
+
+        
+
+
+        // 三元（三目）运算符
+        // 条件判断 ? 表达式一 : 表达式二
+
+        // if(条件判断) {
+        //     表达式一
+        // } else {
+        //     表达式二
+        // }
+
+        // if(item.done == true) {
+        //     class = 'done'
+        // } else {
+        //     class = ''
+        // }
+
+        // const newArr = listData.map(function(item, index) {
+        //     return `<li>${item.value}</li>`;
+        // })
+        // const str = newArr.join('');
+        // list.innerHTML = str;
+
+
+        // for (let i = 0; i < listData.length; i++) {
+        //     // 获取每一个待办事项的文本内容
+        //     const value = listData[i].value;
+        //     // 创建 li，并且将 value 渲染到 li 中
+        //     list.innerHTML += `<li>${value}</li>`
+        // }
+    </script>
+</body>
+
+</html>

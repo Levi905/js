@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<div>
+		<h3>新增学生</h3>
+		<form>
+			<div>
+				<label for="addName">学生姓名：</label>
+				<input type="text" id="addName">
+			</div>
+			<div>
+				<label for="addAge">学生年龄：</label>
+				<input type="text" id="addAge">
+			</div>
+			<div>
+				<span>学生性别：</span>
+				<input type="radio" id="addMale" name="addGender" value="男">
+				<label for="addMale">男</label>
+				<input type="radio" id="addFemale" name="addGender" value="女">
+				<label for="addFemale">女</label>
+			</div>
+			<div><button id="addBtn">确认新增</button></div>
+		</form>
+	</div>
+
+	<!-- 修改 -->
+	<div>
+		<h3>修改学生</h3>
+		<form>
+			<input type="hidden" id="updateId">
+			<div>
+				<label for="updateName">学生姓名：</label>
+				<input type="text" id="updateName">
+			</div>
+			<div>
+				<label for="updateAge">学生年龄：</label>
+				<input type="text" id="updateAge">
+			</div>
+			<div>
+				<span>学生性别：</span>
+				<input type="radio" id="updateMale" name="updateGender" value="男">
+				<label for="updateMale">男</label>
+				<input type="radio" id="updateFemale" name="updateGender" value="女">
+				<label for="updateFemale">女</label>
+			</div>
+			<div><button id="updateBtn">确认修改</button></div>
+		</form>
+	</div>
+
+	<!-- 搜索 -->
+	<div>
+		<h3>搜索学生</h3>
+		<div>
+			<select id="type">
+				<option value="name">姓名</option>
+				<option value="age">年龄</option>
+				<option value="gender">性别</option>
+			</select>
+			<input type="text" id="value">
+			<button id="searchBtn">搜索</button>
+		</div>
+	</div>
+
+	<div>
+		<h3>学生列表</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>学生编号</th>
+					<th>学生姓名</th>
+					<th>学生年龄</th>
+					<th>学生性别</th>
+					<th>学生操作</th>
+				</tr>
+			</thead>
+			<tbody id="studentsTbody">
+				<!-- 动态渲染 -->
+			</tbody>
+		</table>
+	</div>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+
+	<script>
+		let studentsData = [
+			{ id: 1, name: '张三', age: '20', gender: '男' },
+			{ id: 2, name: '李斯', age: '20', gender: '女' },
+			{ id: 3, name: '王五', age: '20', gender: '男' },
+		];
+		let newId = 4;
+		// 搜索条件
+		const searchData = {
+			type: "name",
+			value: ""
+		}
+
+		studentsRender();
+
+		function studentsRender() {
+			const tbodyHtml = filterStudentsData().map(item => (
+				`
+				<tr>
+					<td>${item.id}</td>    
+					<td>${item.name}</td>    
+					<td>${item.age}</td>    
+					<td>${item.gender}</td>    
+					<td>
+						<button class="updateBtn" data-id="${item.id}">修改</button>    
+						<button class="deleteBtn" data-id="${item.id}">删除</button>    
+					</td>    
+				</tr>
+				`
+			));
+			$('#studentsTbody').html(tbodyHtml);
+		}
+
+		$('#studentsTbody').on('click', '.deleteBtn', function () {
+			// 获取删除按钮节点
+			const id = $(this).data('id');
+			studentsData = studentsData.filter(item => item.id != id);
+			studentsRender();
+		})
+
+		// 新增
+		$('#addBtn').click(function (e) {
+			e.preventDefault();
+			const id = newId++;
+			const name = $('#addName').val();
+			const age = $('#addAge').val();
+			const gender = $('[name=addGender]:checked').val();
+			studentsData.push({
+				id, name, age, gender
+			});
+			studentsRender();
+		})
+
+		// 修改
+		$('#studentsTbody').on('click', '.updateBtn', function () {
+			const id = $(this).data('id');
+			const [{ name, age, gender }] = studentsData.filter(item => item.id == id);  // [ {} ]
+			$('#updateId').val(id);
+			$('#updateName').val(name)
+			$('#updateAge').val(age)
+			$(`[name=updateGender][value=${gender}]`).prop('checked', true);
+		})
+		// 确认修改
+		$('#updateBtn').click(function (e) {
+			e.preventDefault();
+			const id = $('#updateId').val();
+			const name = $('#updateName').val();
+			const age = $('#updateAge').val();
+			const gender = $('[name=updateGender]:checked').val();
+
+			studentsData = studentsData.map(item => {
+				if (item.id == id) {
+					return { id, name, age, gender }
+				}
+				return item;
+			})
+			studentsRender();
+		})
+
+		// 搜索
+		$('#searchBtn').click(function () {
+			// 全局保存
+			searchData.type = $('#type').val();
+			searchData.value = $('#value').val();
+			studentsRender();
+		})
+		// 学生数据筛选
+		function filterStudentsData() {
+			return studentsData.filter(item => item[searchData.type].includes(searchData.value));
+		}
+
+	</script>
+</body>
+
+</html>

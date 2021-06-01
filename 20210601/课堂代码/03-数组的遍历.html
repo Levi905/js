@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [
+            { num: 10 },
+            { num: 20 },
+            { num: 30 },
+            { num: 40 },
+        ];
+
+        const result = arr.reduce(function(item, next) {
+            console.log(item, next);
+            return item + next.num;
+        }, 0)
+
+        // const result = arr.every(item => item > 0);
+        console.log(result);
+
+        // const result = arr.some(item => item > 40);
+        // console.log(result);
+
+        // const newArr = arr.filter(function (item, index) {
+        //     return item > 20;
+        // })
+
+        // const newArr = arr.filter(item => true);
+        // console.log(newArr);
+
+        // const newArr = arr.map(function(item, index) {
+        //     // console.log(item, index);
+        //     return item * 2;
+        // });
+        // console.log(newArr);
+
+        // arr.forEach(item => {
+        //     console.log('item', item);
+        // });
+    </script>
+</body>
+
+</html>

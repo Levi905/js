@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function Person() {
+            this.age = 20;
+        }
+
+        Person.prototype.sayHello = function() {
+            console.log('hello');
+        }
+
+        const p1 = new Person();
+        console.log(p1.age);
+        // p1.sayHello();
+
+        // console.log(p1.__proto__);
+        // console.log(Person.prototype);
+
+
+        // const a = new Object();
+
+        new Function();
+
+
+    </script>
+</body>
+
+</html>
