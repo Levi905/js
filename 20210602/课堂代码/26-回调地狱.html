@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>学生姓名：</label><input type="text" id="name">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+    <script>
+
+        $('#name').blur(function () {
+            const name = $('#name').val();
+            $.ajax({
+                url: './data/students.json',
+                data: { name },
+                success(res) {
+                    console.log(res[0].classId);
+                    $.ajax({
+                        url: './data/classes.json',
+                        data: { id: res[0].classId },
+                        success(res) {
+                            console.log(res[0]);
+                            $.ajax({
+                                url: './data/classes.json',
+                                data: { id: res[0].classId },
+                                success(res) {
+                                    console.log(res[0]);
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

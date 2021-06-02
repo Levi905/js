@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ajax({ type, url, success }) {
+            const ajaxHttp = new XMLHttpRequest();
+            ajaxHttp.open(type,url);
+            ajaxHttp.send();
+            ajaxHttp.onreadystatechange = function () {
+                if (ajaxHttp.readyState === 4 && ajaxHttp.status === 200) {
+                    success(JSON.parse(ajaxHttp.responseText));
+                }
+            }
+        }
+        ajax({
+            type:"GET",
+            url:"./students.json",
+            success:function(data){
+                console.log(data);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            // 异步代码
+            $.ajax({
+                url: './data/students.json',
+                data: { name },
+                success(res) {
+                    // console.log(res);
+                    // 如果异步代码请求成功
+                    // resolve(res);
+                },
+                error: function () {
+                    // 如果异步代码请求失败
+                    reject('错误');
+                }
+            })
+        });
+
+        console.log(p);
+
+
+
+
+
+
+
+        p
+            .then((res) => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: './data/classes.json',
+                        data: { id: res[0].classId },
+                        success(res) {
+                            // console.log(res[0]);
+                            resolve(res);
+                        }
+                    })
+                })
+            })
+            .then((res) => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: './data/classes.json',
+                        data: { id: res[0].classId },
+                        success(res) {
+                            // console.log(res[0]);
+                            resolve(res);
+                        }
+                    })
+                })
+            })
+            .then((res) => {
+                return new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: './data/classes.json',
+                        data: { id: res[0].classId },
+                        success(res) {
+                            // console.log(res[0]);
+                            resolve(res);
+                        }
+                    })
+                })
+            })
+
+
+    </script>
+</body>
+
+</html>

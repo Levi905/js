@@ -1,0 +1,5 @@
+[
+    { "id": "1", "name": "WEB01", "teacherId": "1" },
+    { "id": "2", "name": "WEB02" },
+    { "id": "3", "name": "WEB03" }
+]

@@ -34,16 +34,16 @@
             add() {
                 let newDiv = document.createElement("div");
                 newDiv.innerHTML = `<div style="left: ${this.x - this.d / 2}px; top: ${this.y - this.d / 2}px; width: ${this.d}px;height: ${this.d}px;background-color: ${this.bg};animation: 2s ease 0s infinite alternate none running move${this.anima}; transform-origin: center center;"></div>`;
-                document.styleSheets[0].insertRule(`@keyframes move${this.anima} {
-                            from{
-                                transform: scale(0.5);
-                                opacity: 0.2;
-                            }
-                            to {
-                                transform: scale(1.1);
-                                opacity: 1;
-                            }
-                        }`,document.styleSheets[0].length);
+                // document.styleSheets[0].insertRule(`@keyframes move${this.anima} {
+                //             from{
+                //                 transform: scale(0.5);
+                //                 opacity: 0.2;
+                //             }
+                //             to {
+                //                 transform: scale(1.1);
+                //                 opacity: 1;
+                //             }
+                //         }`,document.styleSheets[0].length);
                 document.body.appendChild(newDiv);
             }
             change() {

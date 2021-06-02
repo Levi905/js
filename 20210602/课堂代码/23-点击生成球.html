@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .ball {
+            border-radius: 50%;
+            position: absolute;
+            animation: player 2s infinite linear;
+        }
+
+        @keyframes player {
+            0% {
+                transform: scale(0.1, 0.1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1, 1);
+                opacity: 0.1;
+            }
+            100% {
+                transform: scale(0.1, 0.1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        // 创建一个球的类
+        class Ball {
+            constructor(left, top) {
+                this.width = 50;
+                this.height = 50;
+                this.backgroundColor = '';
+                this.left = left;
+                this.top = top;
+            }
+            // 设置背景颜色
+            setBgColor() {
+                const bgColors = [
+                    'green', 'yellow', 'red', 'blue', 'pink', 'orange', 'tomato', 'purple'
+                ];
+                const index = parseInt(Math.random() * bgColors.length)
+                this.backgroundColor = bgColors[index];
+            }
+            render() {
+                this.setBgColor();
+                $('<div>')
+                    .appendTo($('body'))
+                    .css({
+                        width: this.width + 'px',
+                        height: this.height + 'px',
+                        backgroundColor: this.backgroundColor,
+                        top: this.top - this.height / 2 + 'px',
+                        left: this.left - this.width / 2 + 'px'
+                    })
+                    .addClass('ball')
+            }
+        }
+
+        // 点击事件
+        document.onclick = function (e) {
+            // 获取鼠标坐标
+            const left = e.clientX;
+            const top = e.clientY;
+            const ball = new Ball(left, top);
+            ball.render();
+        }
+
+    </script>
+</body>
+
+</html>

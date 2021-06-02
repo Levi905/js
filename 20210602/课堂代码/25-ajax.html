@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('GET', './data/students.json');
+        // xhr.send();
+        // xhr.onreadystatechange = function() {
+        //     if(xhr.readyState == 4 && xhr.status == 200) {
+        //         console.log(JSON.parse(xhr.responseText));
+        //     }
+        // }
+
+
+        function ajax({ type, url, success }) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(type, url);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // console.log(JSON.parse(xhr.responseText));
+                    success(JSON.parse(xhr.responseText));
+                }
+            }
+        }
+
+
+
+        ajax({
+            type: 'GET',
+            url: './data/students.json',
+            // 回调函数：将一个函数作为参数进行传递，该函数则为回调函数。
+            success: function(res) {
+                console.log(111, res);
+            }
+        });
+
+        
+
+
+    </script>
+</body>
+
+</html>
