@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="util/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="students.css">
+
+    <script src="util/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+    <script src="util/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="util/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+</head>
+<style>
+ 
+</style>
+
+<body>
+    <header>
+        学生管理系统
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    学生管理
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body" id="xinStu">
+                                新增学生
+                            </div>
+                            <div class="card-body" id="stuList">
+                                学生列表
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    班级管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                1111
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    班主任管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                1111
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree3">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree3" aria-expanded="false"
+                                    aria-controls="collapseThree3">
+                                    教师管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree3" class="collapse" aria-labelledby="headingThree3"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                新增教师
+                            </div>
+                            <div class="card-body">
+                                教师列表
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree2">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false"
+                                    aria-controls="collapseThree2">
+                                    专业管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                1111
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree1">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree1" aria-expanded="false"
+                                    aria-controls="collapseThree1">
+                                    排课管理
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree1" class="collapse" aria-labelledby="headingThree1"
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                1111
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <div id="change">
+                    <h1>学生信息</h1>
+                    <p>学生数据</p>
+                    <div id="main">
+                        <div id="sec">
+                            <select name="" id="">
+                                <option value="name" selected>姓名</option>
+                                <option value="age">年龄</option>
+                                <option value="gender">性别</option>
+                            </select>
+                            <input type="text">
+                        </div>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>学生编号</th>
+                                    <th>学生姓名</th>
+                                    <th>学生年龄</th>
+                                    <th>学生性别</th>
+                                    <th>学生班级</th>
+                                    <th>学生头像</th>
+                                    <th>班主任</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                                <td>xuesheng</td>
+                            </tr> -->
+
+                                <!-- 动态添加 -->
+                            </tbody>
+                        </table>
+                        <div id="count">
+                            每页 <select name="" id="">
+                                <option value="">3</option>
+                            </select>条数据。显示第 1 条到第 5 条数据，共计 30 条数据
+                            <span>第1/5页</span>
+                        </div>
+                        <div id="btn">
+                            <button>首页</button>
+                            <button>上一页</button>
+                            <button>下一页</button>
+                            <button>尾页</button>
+                        </div>
+                    </div>
+                
+                </div>
+                <div id="change1">
+                    <h1>新增学生</h1>
+                    <p>新增数据</p>
+                    <div id="addStudent">
+                        <label>学生姓名： </label> <input type="text" class="addName"><br>
+                        <label>学生年龄： </label> <input type="text" class="addAge"><br>
+                        <label>学生性别： </label> <input type="radio" name="sex">男 <input type="radio" name="sex">女<br>
+                        <label>学生班级： </label>  <select name="" id="addClass">
+                            <option value="" selected>WEB01</option>
+                            <option value="">WEB02</option>
+                            <option value="">WEB03</option>
+                        </select><br>
+                        上传文件： <input type="file"><br>
+                        <button>确认新增</button>
+                        <div id="img">
+                            <!-- 头像 -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="stu.js"></script>
+</body>
+
+</html>

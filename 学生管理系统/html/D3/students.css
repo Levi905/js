@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    padding-left: 1%;
+    font-size: 40px;
+    background-color: rgb(250, 249, 249);
+}
+
+.container-fluid {
+    padding: 1%;
+}
+
+.col-10 h1 {
+    border-bottom: 1px solid #ccc;
+    padding: 1% 0%;
+}
+
+.col-10 #main {
+    padding: 1%;
+    border: 1px solid #ccc;
+}
+
+p {
+    padding: 0.5% 1%;
+    margin: 0;
+    background-color: rgb(230, 228, 228);
+    border-bottom: 1px solid #ccc;
+}
+
+#sec {
+    padding: 1% 0;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    width: 1%;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+#count {
+    margin-top: 20px;
+    position: relative;
+}
+
+#count span {
+    position: absolute;
+    right: 0;
+}
+
+#btn {
+    width: 250px;
+    margin: 0 auto;
+}
+
+#btn button {
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-body:hover {
+    background-color: rgb(240, 238, 238);
+}
+
+
+
+/* 2 */
+#addStudent{
+    position: relative;
+    padding: 2%;
+}
+#addStudent input{
+    margin-top: 25px;
+}
+.addName,#addClass,.addAge{
+    width: 300px;
+}
+#img{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(31, 161, 155);
+    left: 35%;
+    top: 15%;
+}
+#addStudent button{
+    padding: 0.5% 1%;
+    outline: none;
+    border-radius: 2px;
+    border: none;
+    color:white;
+    background-color: rgb(159, 193, 233);
+    margin-top: 30px;
+    margin-left: 6%;
+}
