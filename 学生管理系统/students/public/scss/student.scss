@@ -16,3 +16,32 @@ header{
     padding: 0;
     text-align: center;
 }
+h3{
+    border-bottom: 4px solid rgb(6, 95, 109);
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+input{
+    margin-bottom: 16px;
+}
+.add{
+    padding-top: 24px;
+    padding-left: 24px;
+}
+.col-10 button{
+    outline: none;
+    border: none;
+    background-color: rgb(1, 7, 12);
+    color: rgb(58, 161, 245);
+    padding: 4px 32px;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+td{
+    width: 1%;
+    border: 1px orange solid;
+    text-align: center;
+}
+.tab{
+    display: none;
+}

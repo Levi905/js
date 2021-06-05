@@ -7,8 +7,8 @@ var logger = require('morgan');
 //与数据库奖励连接
 const mongoose = require('mongoose');
 const dbURL = 'mongodb://localhost:27017/students';
-mongoose.connect(dbURL,{ useUnifiedTopology: true ,useNewUrlParser: true});
-mongoose.connection.on('connected',()=> console.log(dbURL+"数据库连接成功"));
+mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connection.on('connected', () => console.log(dbURL + "数据库连接成功"));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,12 +29,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -45,4 +45,4 @@ app.use(function(err, req, res, next) {
 });
 
 // module.exports = app;
-app.listen(3000,() => console.log("3000端口启动成功"))
+app.listen(3000, () => console.log("3000端口启动成功"))

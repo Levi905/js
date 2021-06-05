@@ -19,3 +19,38 @@ header {
   padding: 0;
   text-align: center;
 }
+
+h3 {
+  border-bottom: 4px solid #065f6d;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+input {
+  margin-bottom: 16px;
+}
+
+.add {
+  padding-top: 24px;
+  padding-left: 24px;
+}
+
+.col-10 button {
+  outline: none;
+  border: none;
+  background-color: #01070c;
+  color: #3aa1f5;
+  padding: 4px 32px;
+  border-radius: 5px;
+  margin-top: 16px;
+}
+
+td {
+  width: 1%;
+  border: 1px orange solid;
+  text-align: center;
+}
+
+.tab {
+  display: none;
+}
