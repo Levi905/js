@@ -27,6 +27,7 @@ router.post('/login', async function (req, res, next) {
 
 router.post('/register', async function (req, res, next) {
 	let check = await usersModel.find(req.body);
+	console.log(req.body,check);
 	if(check == 0){
 		let user = await usersModel.create(req.body);
 		res.send({

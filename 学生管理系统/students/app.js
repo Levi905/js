@@ -10,7 +10,7 @@ const dbURL = 'mongodb://localhost:27017/students';
 mongoose.connect(dbURL, { useUnifiedTopology: true, useNewUrlParser: true });
 mongoose.connection.on('connected', () => console.log(dbURL + "数据库连接成功"));
 
-var indexRouter = require('./routes/index');
+var studentRouter = require('./routes/student');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/student', studentRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

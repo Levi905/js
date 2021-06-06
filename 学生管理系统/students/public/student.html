@@ -37,7 +37,7 @@
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                             data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body" onclick="listStudent()">
                                 学生列表
                             </div>
                         </div>
@@ -186,17 +186,17 @@
                 <div class="tab">
                     <h3>新增学生</h3>
                     <div class="add">
-                        学号：<input type="text"><br>
-                        姓名：<input type="text"><br>
-                        年龄：<input type="text"><br>
-                        班级：<input type="text"><br>
-                        成绩：<input type="text"><br>
+                        学号：<input type="text" id="studentId"><br>
+                        姓名：<input type="text" id="studentName"><br>
+                        年龄：<input type="text" id="studentAge"><br>
+                        班级：<input type="text" id="studentClass"><br>
+                        成绩：<input type="text" id="studentAchievement"><br>
                         <button id="addStusent" onclick="addStusent()">添加</button>
                     </div>
                 </div>
                 <div class="tab">
                     <h3>学生列表</h3>
-                    <div class="list">
+                    <div class="listStu">
                         <table>
                             <thead>
                                 <tr>
@@ -209,7 +209,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                
                             </tbody>
                         </table>
                     </div>
