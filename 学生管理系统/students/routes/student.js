@@ -20,7 +20,8 @@ router.post('/addStu', async function (req, res, next) {
 });
 
 router.post('/listStu', async function (req, res, next) {
-    let data = await studentsModel.find();
+    console.log(req.body);
+    let data = await studentsModel.find().limit(Number(req.body.pagenum)).skip(Number(req.body.pagenow)*Number(req.body.pagenum));
     res.send({
         code:200,
         data
@@ -29,12 +30,27 @@ router.post('/listStu', async function (req, res, next) {
 
 router.post('/delStu', async function (req, res, next) {
     let data = await studentsModel.deleteOne(req.body);
-    console.log(data);
     res.send({
         code:200,
         data
     });
 });
+
+router.post('/updateStu', async function (req, res, next) {
+    let data = await studentsModel.find(req.body);
+    res.send({
+        code:200,
+        data
+    });
+});
+
+router.post('/reupdate', async function (req, res, next) {
+    await studentsModel.updateOne({studentId:req.body.studentId},req.body);
+    res.send({
+        code:200,
+    });
+});
+
 
 
 module.exports = router;

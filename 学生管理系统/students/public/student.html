@@ -213,6 +213,35 @@
                             </tbody>
                         </table>
                     </div>
+                    <div>
+                        <p>每页
+                            <select class="page" onchange="pagelistStudent()">
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="7">7</option>
+                                <option value="10">10</option>
+                            </select>
+                            <span>条数据。显示第 1 条到第 5 条数据，共计 30 条数据。</span>
+                        </p>
+                        <span>第 1/5 页</span>
+                        <div class="content-row" style="text-align: center;">
+                            <button>首页</button>
+                            <button>上一页</button>
+                            <button id="nextPage">下一页</button>
+                            <button id="lastPage">尾页</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="upStu" style="display: none;">
+                    <h3>修改</h3>
+                    <div class="updateStusent">
+                        学号：<input type="text" id="upstudentId"><br>
+                        姓名：<input type="text" id="upstudentName"><br>
+                        年龄：<input type="text" id="upstudentAge"><br>
+                        班级：<input type="text" id="upstudentClass"><br>
+                        成绩：<input type="text" id="upstudentAchievement"><br>
+                        <button id="updateStusent" onclick="reupdate()">修改</button>
+                    </div>
                 </div>
             </div>
         </div>
