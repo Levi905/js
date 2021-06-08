@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // const arr = [1, 2, 3];
+        // // const arr1 = [...arr];
+        // const arr1 = JSON.parse(JSON.stringify(arr));
+        // arr1[0] = 'hello'
+        // console.log(arr, arr1);
+
+        const obj = { a: 1, b: 2, c: { d: 10 } }
+        const obj2 = { ...obj }
+
+        obj.c.d = 12;
+
+        console.log(obj2);
+
+        // 自己封装函数实现深拷贝
+        // 封装一个执行深拷贝的函数
+        function deepClone(data) {
+            if (typeof data === "object") {
+                let newData = {};
+
+                for (let item in data) {
+                    newData[item] = deepClone(data[item]);
+                }
+                console.log(newData);
+                return newData;
+            }
+            console.log(data);
+            return data;
+        }
+
+        var father = {
+            child: {
+                name: "zhangsan"
+            }
+        }
+        // 调用函数，拷贝一个新对象 newFather
+        let newFather = deepClone(father);
+        // 修改新对象的 name 属性
+        newFather.child.name = "lisi";
+
+        console.log(father.child.name);      // zhangsan
+        console.log(newFather.child.name);   // lisi
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

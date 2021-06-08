@@ -142,3 +142,13 @@ function show(data) {
 </tbody>`)).join("");
     listStu.innerHTML = a;
 }
+
+function listmajor(){
+    $.ajax({
+        url: "major/listmajor",
+        type: "post",
+        success(major) {
+            console.log(major.data);
+        }
+    });
+}

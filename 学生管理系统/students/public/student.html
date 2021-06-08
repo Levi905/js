@@ -191,6 +191,11 @@
                         年龄：<input type="text" id="studentAge"><br>
                         班级：<input type="text" id="studentClass"><br>
                         成绩：<input type="text" id="studentAchievement"><br>
+                        专业：<select name="major" id="major" onclick="listmajor()">
+                            <option value="web">web</option>
+                            <option value="java">java</option>
+                            <option value="ui">ui</option>
+                        </select><br>
                         <button id="addStusent" onclick="addStusent()">添加</button>
                     </div>
                 </div>
@@ -240,6 +245,11 @@
                         年龄：<input type="text" id="upstudentAge"><br>
                         班级：<input type="text" id="upstudentClass"><br>
                         成绩：<input type="text" id="upstudentAchievement"><br>
+                        专业：<select name="major" id="major">
+                            <option value="web">web</option>
+                            <option value="java">java</option>
+                            <option value="ui">ui</option>
+                        </select>
                         <button id="updateStusent" onclick="reupdate()">修改</button>
                     </div>
                 </div>
