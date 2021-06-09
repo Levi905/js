@@ -71,20 +71,14 @@
                                 <button class="btn btn-link btn-block text-left collapsed" type="button"
                                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                                     aria-controls="collapseThree">
-                                    xx管理
+                                    专业管理
                                 </button>
                             </h2>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                             data-parent="#accordionExample">
                             <div class="card-body">
-                                新增xx
-                            </div>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                xx列表
+                                新增专业
                             </div>
                         </div>
                     </div>
@@ -190,11 +184,10 @@
                         姓名：<input type="text" id="studentName"><br>
                         年龄：<input type="text" id="studentAge"><br>
                         班级：<input type="text" id="studentClass"><br>
-                        成绩：<input type="text" id="studentAchievement"><br>
+                        头像：<input type="file" id="studentImage" onchange="Images()">
+                        <div><img id="stuIamge" src="" alt=""></div><br>
                         专业：<select name="major" id="major" onclick="listmajor()">
-                            <option value="web">web</option>
-                            <option value="java">java</option>
-                            <option value="ui">ui</option>
+                            <option value="111">111</option>
                         </select><br>
                         <button id="addStusent" onclick="addStusent()">添加</button>
                     </div>
@@ -209,7 +202,9 @@
                                     <td>姓名</td>
                                     <td>年龄</td>
                                     <td>班级</td>
-                                    <td>成绩</td>
+                                    <td>头像</td>
+                                    <td>班级</td>
+                                    <td>专业</td>
                                     <td>操作</td>
                                 </tr>
                             </thead>
@@ -251,6 +246,13 @@
                             <option value="ui">ui</option>
                         </select>
                         <button id="updateStusent" onclick="reupdate()">修改</button>
+                    </div>
+                </div>
+                <div class="tab">
+                    <h3>新增专业</h3>
+                    <div class="add">
+                        专业：<input type="text" id="stuMajor"><br>
+                        <button id="addStusent" onclick="addMajor()">添加</button>
                     </div>
                 </div>
             </div>

@@ -1,17 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-const {Schema ,model} = require('mongoose');
-const majorSchema = new Schema({
-	majorNmae:String
-},{versionKey:false});
-const majorModel = model('majorModel',majorSchema,'major');
+const {addMajor,listMajor} = require('../controller/majorController');
 
-router.post('/listmajor',async function(req,res,next){
-    let major = await majorModel.find();
-    res.send({
-        data:major
-    });
-});
+
+router.post('/addmajor',addMajor);
+router.post('/listmajor',listMajor);
 
 module.exports = router;

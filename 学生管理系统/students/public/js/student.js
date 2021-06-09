@@ -19,11 +19,13 @@ function addStusent() {
     let studentName = $('#studentName').val();
     let studentAge = $('#studentAge').val();
     let studentClass = $('#studentClass').val();
-    let studentAchievement = $('#studentAchievement').val();
+    let stuimages = $('#stuIamge').attr('src');
+    let majorid = $('#major').val();
+    console.log(majorid);
     $.ajax({
         url: "student/addStu",
         type: "post",
-        data: { studentId, studentName, studentAge, studentClass, studentAchievement },
+        data: { studentId, studentName, studentAge,stuimages, studentClass,majorid},
         success(student) {
             if (student.code == 200) {
                 alert("添加成功");
@@ -136,11 +138,25 @@ function show(data) {
         <td>${item.studentName}</td>
         <td>${item.studentAge}</td>
         <td>${item.studentClass}</td>
-        <td>${item.studentAchievement}</td>
+        <td></td>
+        <td></td>
+        <td>${item.majorid.majorName}</td>
         <td><button onclick="updateStusent()">修改</button><button onclick="delStudent()">删除</button></td>
     </tr>
 </tbody>`)).join("");
     listStu.innerHTML = a;
+}
+
+function addMajor(){
+    let majorName = $("#stuMajor").val();
+    $.ajax({
+        url: "major/addmajor",
+        type: "post",
+        data:{majorName},
+        success(major) {
+            console.log(major.data);
+        }
+    });
 }
 
 function listmajor(){
@@ -149,6 +165,24 @@ function listmajor(){
         type: "post",
         success(major) {
             console.log(major.data);
+            $('#major').html(major.data.map(item => `<option value="${item._id}">${item.majorName}</option>`).join(""));
+        }
+    });
+}
+
+function Images(){
+    const files = event.target.files;
+    const a = new FormData();
+    a.append('file',files[0]);
+    $.ajax({
+        url:"/images/uploadImages",
+        type:"post",
+        data:a,
+        contentType:false,
+        processData:false,
+        cache:false,
+        success(res){
+            $('#stuIamge').attr('src',res.data);
         }
     });
 }
