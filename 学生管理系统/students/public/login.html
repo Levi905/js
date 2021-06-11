@@ -73,6 +73,7 @@
                 success(user) {
                     if (user.code == 200) {
                         alert(user.message);
+                        localStorage.token = user.token;
                         location.href = "./student.html";
                     } else {
                         alert(user.message);

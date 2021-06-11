@@ -1,13 +1,20 @@
 const {usersModel} = require('../model/userModel');
 
+const jwt = require('jsonwebtoken');
 
 async function login(req, res, next) {
 	let user = await usersModel.find(req.body);
+
 	if(user.length>0){
+		const token = jwt.sign({
+			user:user[0]
+		},'hello',{expiresIn:10}
+		)
 		res.send({
 			message: "登陆成功",
 			code: 200,
-			data: user
+			data: user,
+			token:'Bearer '+token
 		});
 	}else{
 		res.send({
